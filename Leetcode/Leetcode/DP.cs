@@ -7,10 +7,7 @@ namespace Leetcode
 {
     public partial class Median
     {
-        #region dynamic programming
-        /*
-         * 338
-         */
+        #region 338
         public int[] CountBits(int num)
         {
             List<int> _list = new List<int>();
@@ -18,7 +15,8 @@ namespace Leetcode
 
             return _list.ToArray();
         }
-
+        #endregion
+        #region 64
         /*
          * 64 minimun path sum
          */
@@ -53,7 +51,8 @@ namespace Leetcode
 
             return recorder[m - 1, n - 1];
         }
-
+        #endregion
+        #region 300
         /*
          * 300. Longest Increasing Subsequence
          */

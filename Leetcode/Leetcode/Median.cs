@@ -6,7 +6,8 @@ using System.Collections;
 
 namespace Leetcode
 {
-    public enum medianfunc : int {
+    public enum medianfunc : int
+    {
         longestPalidrome = 0,
         longestPalidrome_dp,
         insertLinkedlist,
@@ -19,9 +20,9 @@ namespace Leetcode
         ConstructTreeFromPrePost,
         bfs_minesweeper
     }
-    
+
     public partial class Median
-    {                       
+    {
         public void MedianRun(string func)
         {
             string result = "";
@@ -94,6 +95,26 @@ namespace Leetcode
                 int[] post = new int[3] { 3, 1, 2 };
                 //Console.WriteLine(input);                   
                 TreeNode root = this.ConstructFromPrePost(pre, post);
+            }
+            if (func == medianfunc.bfs_minesweeper.ToString())
+            {
+                char[,] board = new char[4, 4]
+                {
+                    { 'E','E','E','E' },
+                    { 'E','E','M','E' },
+                    { 'E','E','E','E' },
+                    { 'E','E','E','E' }
+                };
+
+                int[] click = new int[2] { 0, 0 };
+                char[,] re = UpdateBoard(board, click);
+                
+                for (int y = 0; y < board.GetLength(0); ++y)
+                {
+                    for (int x = 0; x < board.GetLength(1); ++x)
+                        Console.Write(re[y, x]);
+                    Console.WriteLine();
+                }
             }
         }
     }

@@ -76,27 +76,22 @@ namespace Leetcode
             LC_LEVEL cl = LC_LEVEL.MEDIAN;
             //LC_LEVEL cl = LC_LEVEL.EASY;
             //string func = easyfunc.letterpermutate.ToString();
-            string func = medianfunc.ConstructTreeFromPrePost.ToString();
+            string func = medianfunc.bfs_minesweeper.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
-            #region easy
             if (cl == LC_LEVEL.EASY)
             {
                 easy.EasyRun(func);
             }
-            #endregion
-            #region median
             else if (cl == LC_LEVEL.MEDIAN)
             {
                 med.MedianRun(func);
             }
-            #endregion
-            #region hard
             else
             {
                 hard.HardRun(func);
             }
-            #endregion
+
             watch.Stop();
             Console.WriteLine("Processing Time: {0:F4} ms", watch.Elapsed.TotalMilliseconds);
         }

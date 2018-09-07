@@ -7,7 +7,7 @@ namespace Leetcode
 {
     public partial class Median
     {
-        #region heap
+        #region 347
         /*347. Top K Frequent Elements
          */
         public IList<int> TopKFrequent(int[] nums, int k)
@@ -17,6 +17,5 @@ namespace Leetcode
             return list;
         }
         #endregion
-
     }
 }

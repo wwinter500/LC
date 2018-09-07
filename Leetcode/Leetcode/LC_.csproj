@@ -43,16 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackTracking.cs" />
+    <Compile Include="backTracking.cs" />
     <Compile Include="bfs.cs" />
     <Compile Include="dfs.cs" />
     <Compile Include="divideconqure.cs" />
-    <Compile Include="DP.cs" />
+    <Compile Include="dp.cs" />
     <Compile Include="Easy.cs" />
     <Compile Include="greedy.cs" />
     <Compile Include="Hard.cs" />
     <Compile Include="heap.cs" />
-    <Compile Include="LinkedList.cs" />
+    <Compile Include="linkedList.cs" />
     <Compile Include="Median.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
