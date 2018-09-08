@@ -170,4 +170,32 @@ namespace Leetcode
         }
         #endregion
     }
+
+    public partial class Easy
+    {
+        #region tree
+        double min = Double.MaxValue;
+        int val = int.MaxValue;
+        public int ClosestValue(TreeNode root, double target)
+        {
+            FindMiniDiff(root, target);
+            return val;
+        }
+
+        public void FindMiniDiff(TreeNode root, double target)
+        {
+            double diff = Math.Abs((double)root.val - target);
+            if (diff < min)
+            {
+                val = root.val;
+                min = diff;
+            }
+
+            if (root.left != null)
+                FindMiniDiff(root.left, target);
+            if (root.right != null)
+                FindMiniDiff(root.right, target);
+        }
+        #endregion
+    }
 }
