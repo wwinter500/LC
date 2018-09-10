@@ -15,9 +15,10 @@ namespace Leetcode
         dp_climb,
         subset,
         findcloset,
-        letterpermutate
+        letterpermutate,
+        candyexchange
     }
-    public partial class EasySolution
+    public partial class Easy
     {
         public void EasyRun(string func)
         {
@@ -68,8 +69,17 @@ namespace Leetcode
                 foreach (string s in r)
                     Console.WriteLine(s);
             }
-            Console.WriteLine("result: {0}", result);            
+            if (func == easyfunc.candyexchange.ToString())
+            {
+                int[] A = new int[3] { 1, 2, 5};
+                int[] B = new int[2] { 2, 4 };
+                int[] re = FairCandySwap(A, B);
+
+                Console.WriteLine(re[0] + " " + re[1]);
+            }                        
         }
+
+        ////////////////////////////////
         /**/
         public int FindRadius(int[] houses, int[] heaters)
         {
@@ -110,295 +120,6 @@ namespace Leetcode
 
             return radius;
         }
-
-        ////////////////////////////////
-        #region string
-        /*581. Shortest Unsorted Continuous Subarray
-        Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, 
-        then the whole array will be sorted in ascending order, too.
-        You need to find the shortest such subarray and output its length.
-        [2, 6, 4, 8, 10, 9, 15] -> [6, 4, 8, 10, 9]
-        */
-        public int FindUnsortedSubarray(int[] nums) {
-	        int result = 0;
-            int len = nums.Length;            
-            //TODO : find the shortest array to be ascended.
-            //top to bottom to recursive             
-            int head = 0, end = len - 1;
-            int preh = head, pree = end;
-            while (end > head)
-            {                            
-                Console.WriteLine("{0}_{1}", head, end);
-                if (needSort(nums, ref head, ref end))
-                {
-                    if (preh == head && pree == end)
-                    {
-                        //
-                        result = end - head + 1;
-                        break;
-                    }
-                    
-                    preh = head;
-                    pree = end;
-                }                
-            }
-            
-            return result;
-        }
-
-        private bool needSort(int[] nums, ref int head, ref int end)
-        {
-            int max = 0, min = 10000;
-            int imax = 0, imin = 0;
-            //find min and max loc
-            for (int i = head; i <= end; i++)
-            {
-                if (nums[i] > max)
-                {
-                    max = nums[i];
-                    imax = i;
-                }
-
-                if (nums[i] < min)
-                {
-                    min = nums[i];
-                    imin = i;
-                }
-            }
-
-            //check if loc is on end
-            bool result = false;
-            if (imin != head)            
-                result = true;            
-            else
-                head++;
-
-            if (imax != end)
-                result = true;
-            else
-                end--;
-                
-            return result;
-        }
-
-        ///////////////////////////////////////////////////////////////////////////////               
-        /*
-         * 696 - solution 2
-         */ 
-        public int CountBinarySubstrings(string s, int i=0)
-        {
-            int w_width = (s.Length / 2) * 2;
-            
-            return CountHelper(s, w_width, 0, s.Length - 1);
-        }
-
-        public int CountHelper(string s, int width, int start, int end)
-        {
-            int sum = 0;
-            if (width < 2)
-                return 0;
-
-            int ilen = start + width - 1;
-            
-            //check within start - end
-            for(int ip = start; ip <= end - (width - 1);)
-            {
-                //ip - ip + width
-                if(CheckZeroString(s, ip, width))
-                {
-                    sum += width / 2;
-                    start = end;
-                    
-                }
-                else
-                {
-                    sum += CountHelper(s, width / 2, ip, ip + width - 1);
-                }
-                    
-            }
-
-            return sum;
-        }
-
-        public bool CheckZeroString(string s, int head, int width)
-        {
-            int h = head, w = width, mid = w / 2;
-            bool converse = (1 - (s[head] - '0') == (s[head + width - 1] - '0') ? true : false);
-            for (int i = 0; i < mid; i++)
-            {
-                if (!converse || s[i + head] != s[head] || s[w - i + head - 1] != s[w + head - 1])
-                    return false;
-            }
-
-            return true;
-        }
-
-        /**/
-        #endregion      
-        
-        #region dynamic programming
-        /*256 paint house - 265 pain house II(hard)
-         */
-        public int MinCost(int[,] costs)
-        {
-            int result = int.MaxValue;
-            int nhouse = costs.GetLength(0);
-            int ncolor = costs.GetLength(1);
-
-            if (nhouse == 0 || ncolor == 0)
-                return 0;
-
-            //define optimal substructure
-            int[,] recorder = new int[nhouse, ncolor];
-
-            //define status transfier equlation
-            for(int c = 0; c < ncolor; c++)
-            {
-                recorder[0, c] = costs[0, c];
-            }
-            
-            for(int i = 1; i < nhouse; i++)
-            {                
-                for(int c = 0; c < ncolor; c++)
-                {
-                    recorder[i, c] = int.MaxValue;
-                    for (int c2 = 0; c2 < ncolor; c2++)
-                    {
-                        if(c2 != c)
-                        {
-                            int temp = recorder[i - 1, c2] + costs[i, c];
-                            if (recorder[i, c] > temp)
-                                recorder[i, c] = temp;
-                        }                        
-                    }                     
-                }
-            }
-
-
-            for (int c = 0; c < ncolor; c++)
-                if (result > recorder[nhouse - 1, c])
-                    result = recorder[nhouse - 1, c];
-            return result;
-        }
-
-        /*746. Min Cost Climbing Stairs
-         */
-        public int MinCostClimbingStairs(int[] cost)
-        {
-            int nl = cost.Length;
-            if (nl == 0)
-                return 0;
-            //define optimal substructure
-            int[] recorder = new int[nl];
-
-            //define status transifer equlation
-            recorder[0] = 0;
-            recorder[1] = 0;
-            for(int i = 2; i < nl; i++)
-            {
-               recorder[i] = Math.Min(recorder[i - 1] + cost[i - 1], recorder[i - 2] + cost[i - 2]);                
-            }
-
-            string m = "";
-            for (int i = 0; i < nl; i++)
-                m += recorder[i].ToString() + "_";
-            Console.WriteLine(m);
-
-            return Math.Min(recorder[nl - 1] + cost[nl - 1], recorder[nl - 2] + cost[nl - 2]);
-        }
-
-        /*276 paint fence
-         */
-        public int NumWays(int n, int k)
-        {
-            int total = 0;
-            if (n <= 0 || k <= 0)
-                return 0;
-
-            //define optimal sub structure - total numbers
-            int[,] recorder = new int[n, k];
-
-            //define status transmission equalation
-            for (int c = 0; c < k; c++)
-                recorder[0, c] = 1;
-            for(int f = 0; f < n; f++)
-            {
-                for(int c = 0; c < k; c++)
-                {
-                    if (f == 0)
-                        recorder[f, c] = 1;
-                    else
-                    {
-                        recorder[f, c] = 0;
-                    }
-                }
-            }
-
-            return total;
-        }
-        #endregion
-        
-        #region back track
-        /*401. binary watch
-         */
-        public IList<string> ReadBinaryWatch(int num)
-        {
-            //            
-            List<string> r = new List<string>();
-
-            for(int i = 1; i < num; i++)
-            {
-                List<IList<int>> hour = Getsubset(i, 1, 3);
-            }
-            return r;
-        }   
-        
-        public List<IList<int>> Getsubset(int ci, int start ,int end)
-        {
-            List<IList<int>> ll = new List<IList<int>>();
-            int n = end - start + 1;
-            
-            if (ci < 1)
-                return ll;
-            if (n < ci)
-                return ll;
-            if (n == ci)
-            {
-                List<int> l = new List<int>();
-                for (int i = start; i < start + n; i++)
-                    l.Add(i);
-
-                ll.Add(l);
-                return ll;
-            }
-            
-            if(ci == 1)
-            {
-                for (int i = start; i < start + n; i++)
-                {
-                    List<int> l = new List<int>();
-                    l.Add(i);
-                    ll.Add(l);
-                }
-            }
-            else
-            {
-                for (int i = start; i <= end; i++)
-                {
-                    List<IList<int>> sll = Getsubset(ci - 1, i + 1, end);//
-                    
-                    foreach (List<int> sl in sll)
-                    {
-                        List<int> nl = new List<int>(sl);
-                        nl.Add(i);
-                        ll.Add(nl);
-                    }                    
-                }
-            }
-            
-            return ll;
-        }
-        #endregion
 
         public int FindCloset(int val, List<int> arr, int start, int end)
         {

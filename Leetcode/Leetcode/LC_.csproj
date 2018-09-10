@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="array.cs" />
     <Compile Include="backTracking.cs" />
     <Compile Include="bfs.cs" />
+    <Compile Include="design.cs" />
     <Compile Include="dfs.cs" />
     <Compile Include="divideconqure.cs" />
     <Compile Include="dp.cs" />

@@ -18,14 +18,19 @@ namespace Leetcode
         LIS,
         RemoveKDig,
         ConstructTreeFromPrePost,
-        bfs_minesweeper
+        bfs_minesweeper,
+        sum3closet,
+        sum3smaller,
+        validtriangenumber,
+        maxbyswap,
+        candycrush
     }
 
     public partial class Median
     {
         public void MedianRun(string func)
         {
-            string result = "";
+            object result = null;
             if (func == medianfunc.longestPalidrome.ToString())
             {
                 string test = "babad";
@@ -115,6 +120,49 @@ namespace Leetcode
                         Console.Write(re[y, x]);
                     Console.WriteLine();
                 }
+            }
+            if(func == medianfunc.sum3closet.ToString())
+            {
+                int[] input = new int[4] {-1, 2, 1, -4};
+                int target = 2;
+                int re = ThreeSumClosest(input, target);
+                Console.WriteLine(re);
+            }
+            if(func == medianfunc.sum3smaller.ToString())
+            {
+                int[] input = new int[4] { 2, 0, 1, 3 };
+                int target = 2;
+                int re = ThreeSumSmaller(input, target);
+                Console.WriteLine(re);                
+            }
+            if(func == medianfunc.validtriangenumber.ToString())
+            {
+                int[] input = new int[6] {1, 2, 3, 4, 5, 6};
+                int re = TriangleNumber(input);
+                Console.WriteLine(re);
+            }
+            if(func == medianfunc.maxbyswap.ToString())
+            {
+                int input = 98368;
+                Console.WriteLine(MaximumSwap(input));
+            }
+            if(func == medianfunc.candycrush.ToString())
+            {
+                int[,] board = new int[,]
+                {
+                    { 110, 5, 112, 113, 114 },
+                    { 210, 211, 5, 213, 214 },
+                    { 310, 311, 3, 313, 314 },
+                    { 410, 411, 412, 5, 414 },
+                    { 5, 1, 512, 3, 3 },
+                    { 610, 4, 1, 613, 614 },
+                    { 710, 1, 2, 713, 714 },
+                    { 810, 1, 2, 1, 1 },
+                    { 1, 1, 2, 2, 2 },
+                    { 4, 1, 4, 4, 1014 }
+                };
+
+                int[,] re = CandyCrush(board);                
             }
         }
     }

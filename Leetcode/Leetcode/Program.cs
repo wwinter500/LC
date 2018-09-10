@@ -37,46 +37,37 @@ namespace Leetcode
 
     public partial class Program
     {
-        static public int FindCloset(int val, List<int> arr, int start, int end)
+        static public bool binarySearch(int[] A, int head, int tail, int target)
         {
-            if (start == end)
-                return Math.Abs(arr[start] - val);
-            else if (start == end - 1)
-                return Math.Min(Math.Abs(arr[start] - val), Math.Abs(arr[end] - val));
-            else
+            if (head == tail)
             {
-                int mid = (start + end) / 2;
-                int dl = FindCloset(val, arr, start, mid);
-                int dr = FindCloset(val, arr, mid + 1, end);
-
-                return Math.Min(dl, dr);
+                if (A[head] == target)
+                    return true;
+                else
+                    return false;
             }
-        }
 
-        static void test()
-        {
-            string S = "abc";
-            char[] s = S.ToCharArray();
-            for (int i = 0; i < S.Length; ++i)
-                s[i] = (char)(s[i] - 'a' + 'A');
-
-            string s1 = new string(s);
-            Console.WriteLine(s1);
+            int mid = (head + tail) / 2;
+            if (A[mid] == target)
+                return true;
+            else
+                return binarySearch(A, head, mid, target) ||
+                    binarySearch(A, mid + 1, tail, target);
         }
 
         static void Main(string[] args)
         {
-            EasySolution easy = new EasySolution();
+            Easy easy = new Easy();
             Hard hard = new Hard();
             Median med = new Median();
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
             
-            LC_LEVEL cl = LC_LEVEL.MEDIAN;
+            LC_LEVEL cl = LC_LEVEL.EASY;
             //LC_LEVEL cl = LC_LEVEL.EASY;
-            //string func = easyfunc.letterpermutate.ToString();
-            string func = medianfunc.bfs_minesweeper.ToString();
+            string func = easyfunc.candyexchange.ToString();
+            //string func = medianfunc.maxbyswap.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)

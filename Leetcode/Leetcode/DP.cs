@@ -128,4 +128,109 @@ namespace Leetcode
         }
         #endregion
     }
+
+    public partial class Easy
+    {
+        #region dynamic programming
+        /*256 paint house - 265 pain house II(hard)
+         */
+        public int MinCost(int[,] costs)
+        {
+            int result = int.MaxValue;
+            int nhouse = costs.GetLength(0);
+            int ncolor = costs.GetLength(1);
+
+            if (nhouse == 0 || ncolor == 0)
+                return 0;
+
+            //define optimal substructure
+            int[,] recorder = new int[nhouse, ncolor];
+
+            //define status transfier equlation
+            for (int c = 0; c < ncolor; c++)
+            {
+                recorder[0, c] = costs[0, c];
+            }
+
+            for (int i = 1; i < nhouse; i++)
+            {
+                for (int c = 0; c < ncolor; c++)
+                {
+                    recorder[i, c] = int.MaxValue;
+                    for (int c2 = 0; c2 < ncolor; c2++)
+                    {
+                        if (c2 != c)
+                        {
+                            int temp = recorder[i - 1, c2] + costs[i, c];
+                            if (recorder[i, c] > temp)
+                                recorder[i, c] = temp;
+                        }
+                    }
+                }
+            }
+
+
+            for (int c = 0; c < ncolor; c++)
+                if (result > recorder[nhouse - 1, c])
+                    result = recorder[nhouse - 1, c];
+            return result;
+        }
+
+        /*746. Min Cost Climbing Stairs
+         */
+        public int MinCostClimbingStairs(int[] cost)
+        {
+            int nl = cost.Length;
+            if (nl == 0)
+                return 0;
+            //define optimal substructure
+            int[] recorder = new int[nl];
+
+            //define status transifer equlation
+            recorder[0] = 0;
+            recorder[1] = 0;
+            for (int i = 2; i < nl; i++)
+            {
+                recorder[i] = Math.Min(recorder[i - 1] + cost[i - 1], recorder[i - 2] + cost[i - 2]);
+            }
+
+            string m = "";
+            for (int i = 0; i < nl; i++)
+                m += recorder[i].ToString() + "_";
+            Console.WriteLine(m);
+
+            return Math.Min(recorder[nl - 1] + cost[nl - 1], recorder[nl - 2] + cost[nl - 2]);
+        }
+
+        /*276 paint fence
+         */
+        public int NumWays(int n, int k)
+        {
+            int total = 0;
+            if (n <= 0 || k <= 0)
+                return 0;
+
+            //define optimal sub structure - total numbers
+            int[,] recorder = new int[n, k];
+
+            //define status transmission equalation
+            for (int c = 0; c < k; c++)
+                recorder[0, c] = 1;
+            for (int f = 0; f < n; f++)
+            {
+                for (int c = 0; c < k; c++)
+                {
+                    if (f == 0)
+                        recorder[f, c] = 1;
+                    else
+                    {
+                        recorder[f, c] = 0;
+                    }
+                }
+            }
+
+            return total;
+        }
+        #endregion
+    }
 }

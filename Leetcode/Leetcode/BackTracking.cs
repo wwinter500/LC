@@ -58,4 +58,69 @@ namespace Leetcode
 
         #endregion        
     }
+
+    public partial class Easy
+    {
+        #region back track
+        /*401. binary watch
+         */
+        public IList<string> ReadBinaryWatch(int num)
+        {
+            //            
+            List<string> r = new List<string>();
+
+            for (int i = 1; i < num; i++)
+            {
+                List<IList<int>> hour = Getsubset(i, 1, 3);
+            }
+            return r;
+        }
+
+        public List<IList<int>> Getsubset(int ci, int start, int end)
+        {
+            List<IList<int>> ll = new List<IList<int>>();
+            int n = end - start + 1;
+
+            if (ci < 1)
+                return ll;
+            if (n < ci)
+                return ll;
+            if (n == ci)
+            {
+                List<int> l = new List<int>();
+                for (int i = start; i < start + n; i++)
+                    l.Add(i);
+
+                ll.Add(l);
+                return ll;
+            }
+
+            if (ci == 1)
+            {
+                for (int i = start; i < start + n; i++)
+                {
+                    List<int> l = new List<int>();
+                    l.Add(i);
+                    ll.Add(l);
+                }
+            }
+            else
+            {
+                for (int i = start; i <= end; i++)
+                {
+                    List<IList<int>> sll = Getsubset(ci - 1, i + 1, end);//
+
+                    foreach (List<int> sl in sll)
+                    {
+                        List<int> nl = new List<int>(sl);
+                        nl.Add(i);
+                        ll.Add(nl);
+                    }
+                }
+            }
+
+            return ll;
+        }
+        #endregion
+    }
 }
