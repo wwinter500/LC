@@ -50,12 +50,12 @@
     <Compile Include="dfs.cs" />
     <Compile Include="divideconqure.cs" />
     <Compile Include="dp.cs" />
-    <Compile Include="Easy.cs" />
+    <Compile Include="_Easy.cs" />
     <Compile Include="greedy.cs" />
-    <Compile Include="Hard.cs" />
+    <Compile Include="_Hard.cs" />
     <Compile Include="heap.cs" />
     <Compile Include="linkedList.cs" />
-    <Compile Include="Median.cs" />
+    <Compile Include="_Median.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="string.cs" />

@@ -171,7 +171,7 @@ namespace Leetcode
         #endregion
     }
 
-    public partial class Easy
+    public partial class _Easy
     {
         #region tree
         double min = Double.MaxValue;

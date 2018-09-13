@@ -108,11 +108,11 @@ namespace Leetcode
 
         #endregion
     }
-    public partial class Hard
+    public partial class _Hard
     {
     }
 
-    public partial class Easy
+    public partial class _Easy
     {
         #region 339
         /*

@@ -129,7 +129,7 @@ namespace Leetcode
         #endregion
     }
 
-    public partial class Easy
+    public partial class _Easy
     {
         #region dynamic programming
         /*256 paint house - 265 pain house II(hard)

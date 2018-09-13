@@ -98,7 +98,7 @@ namespace Leetcode
         #endregion
     }
 
-    public partial class Hard
+    public partial class _Hard
     {
 
     }

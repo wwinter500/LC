@@ -9,4 +9,9 @@ namespace Leetcode
     {
         
     }
+
+    public partial class _Easy
+    {
+
+    }
 }

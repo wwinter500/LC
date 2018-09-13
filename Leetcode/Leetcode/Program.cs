@@ -57,8 +57,8 @@ namespace Leetcode
 
         static void Main(string[] args)
         {
-            Easy easy = new Easy();
-            Hard hard = new Hard();
+            _Easy easy = new _Easy();
+            _Hard hard = new _Hard();
             Median med = new Median();
             Stopwatch watch = new Stopwatch();
             watch.Start();

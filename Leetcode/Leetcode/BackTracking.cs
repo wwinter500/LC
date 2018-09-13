@@ -59,7 +59,7 @@ namespace Leetcode
         #endregion        
     }
 
-    public partial class Easy
+    public partial class _Easy
     {
         #region back track
         /*401. binary watch

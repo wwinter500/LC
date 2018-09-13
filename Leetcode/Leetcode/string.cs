@@ -76,7 +76,7 @@ namespace Leetcode
         #endregion
     }
 
-    public partial class Easy
+    public partial class _Easy
     {
         #region string
         /*581. Shortest Unsorted Continuous Subarray

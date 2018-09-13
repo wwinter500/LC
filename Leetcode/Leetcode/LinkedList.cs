@@ -337,7 +337,7 @@ namespace Leetcode
         #endregion
     }
 
-    public partial class Hard
+    public partial class _Hard
     {
         #region linked list - optimal solution O(n), worse solutoin = O(k * Maxlength)
         public ListNode MergeKLists(ListNode[] lists)

@@ -154,7 +154,7 @@ namespace Leetcode
         #endregion
     }
 
-    public partial class Easy
+    public partial class _Easy
     {
         #region 888
         public int[] FairCandySwap(int[] A, int[] B)
