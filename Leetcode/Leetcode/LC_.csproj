@@ -46,10 +46,12 @@
     <Compile Include="array.cs" />
     <Compile Include="backTracking.cs" />
     <Compile Include="bfs.cs" />
+    <Compile Include="binarySearch.cs" />
     <Compile Include="design.cs" />
     <Compile Include="dfs.cs" />
     <Compile Include="divideconqure.cs" />
     <Compile Include="dp.cs" />
+    <Compile Include="hashtable.cs" />
     <Compile Include="_Easy.cs" />
     <Compile Include="greedy.cs" />
     <Compile Include="_Hard.cs" />

@@ -64,10 +64,10 @@ namespace Leetcode
             watch.Start();
 
             
-            LC_LEVEL cl = LC_LEVEL.EASY;
+            LC_LEVEL cl = LC_LEVEL.MEDIAN;
             //LC_LEVEL cl = LC_LEVEL.EASY;
-            string func = easyfunc.candyexchange.ToString();
-            //string func = medianfunc.maxbyswap.ToString();
+            //string func = easyfunc.candyexchange.ToString();
+            string func = medianfunc.sum4from4group.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)
