@@ -145,11 +145,66 @@ namespace Leetcode
             return re;
         }
         #endregion
-
+                
         #region 723 candy crush
         public int[,] CandyCrush(int[,] board)
         {
+
             return board;
+        }
+        #endregion
+
+        #region 18 4sum
+        public IList<IList<int>> FourSum(int[] nums, int target)
+        {
+            List<IList<int>> re = new List<IList<int>>();
+            if (nums == null || nums.Length < 4)
+                return re;
+
+            Array.Sort(nums);
+            Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
+
+            for (int i = 0; i < nums.Length - 1; ++i)
+                for (int j = i + 1; j < nums.Length; ++j)
+                {
+                    int sum2 = nums[i] + nums[j];
+                    if (dic.ContainsKey(sum2))
+                    {
+                        if (!dic[sum2].ContainsKey(nums[i]))
+                            dic[sum2].Add(nums[i], nums[j]);
+                    }
+                    else
+                    {
+                        Dictionary<int, int> subd = new Dictionary<int, int>();
+                        subd.Add(nums[i], nums[j]);
+                        dic.Add(sum2, subd);
+                    }
+                }
+
+            List<int> sum2l = new List<int>(dic.Keys);
+            foreach (int s in sum2l)
+            {
+                int rest = target - s;
+                if (dic.ContainsKey(rest))
+                {
+                    foreach (KeyValuePair<int, int> p in dic[s])
+                        foreach (KeyValuePair<int, int> p2 in dic[rest])
+                        {
+                            List<int> l = new List<int>();
+                            l.Add(p.Key);
+                            l.Add(p.Value);
+                            l.Add(p2.Key);
+                            l.Add(p2.Value);
+
+                            re.Add(l);
+                        }
+
+                    dic.Remove(rest);
+                    dic.Remove(s);
+                }
+            }
+
+            return re;
         }
         #endregion
     }

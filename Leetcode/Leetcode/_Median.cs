@@ -24,7 +24,8 @@ namespace Leetcode
         validtriangenumber,
         maxbyswap,
         candycrush,
-        sum4from4group
+        sum4from4group,
+        sum4to0
     }
 
     public partial class Median
@@ -175,6 +176,19 @@ namespace Leetcode
                 int re = FourSumCount(A, B, C, D);
 
                 Console.WriteLine(re);
+            }
+            if(func == medianfunc.sum4to0.ToString())
+            {
+                int[] input = new int[6] { 1, 0, -1, 0, -2, 2 };
+                int target = 0;
+                IList<IList<int>> re = FourSum(input, target);
+
+                foreach (List<int> l in re)
+                {
+                    foreach (int v in l)
+                        Console.Write(v);
+                    Console.WriteLine();
+                }
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Leetcode
 {
     public partial class Median
     {
-        #region tree
+        #region 366
         /*
          * Find all tree leaves
          */
@@ -32,7 +32,8 @@ namespace Leetcode
 
             return lv;
         }
-
+        #endregion
+        #region 513
         /*
          *513. Find Bottom Left Tree Value
          */
@@ -64,7 +65,8 @@ namespace Leetcode
             height = Math.Max(lh, rh);
             return (height == lh ? lv : rv);
         }
-
+        #endregion
+        #region 889
         /// <summary>
         /// 889 construct binary tree from pre - post order
         /// </summary>
@@ -130,6 +132,8 @@ namespace Leetcode
             return root;
         }
 
+        #endregion
+        #region 536
         /// <summary>
         /// 536 contruct from string 
         /// </summary>
@@ -168,6 +172,46 @@ namespace Leetcode
 
             return null;
         }
+        #endregion
+        #region 666
+        public int PathSum(int[] nums)
+        {
+            int re = 0;
+            Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
+
+            //parse
+            foreach(int v in nums)
+            {
+                int l = v / 100;
+                int i = v / 10;
+                int va = v % 10;
+                if(dic.ContainsKey(l))
+                {
+                    if(!dic[l].ContainsKey(i))                    
+                        dic[l].Add(i, va);                    
+                }
+                else
+                {
+                    Dictionary<int, int> subdic = new Dictionary<int, int>();
+                    subdic.Add(i, va);
+                    dic.Add(l, subdic);
+                }
+            }
+
+            List<int> le = new List<int>(dic.Keys);
+
+
+            return re;
+        }
+
+        public int GetSum(Dictionary<int, Dictionary<int,int>> dic, int max, int level)
+        {
+            int re = 0;
+            //if(level == max)
+            //    return dic[level]
+            return re;
+        }
+        
         #endregion
     }
 
