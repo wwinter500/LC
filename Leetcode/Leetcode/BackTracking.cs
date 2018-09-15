@@ -56,7 +56,7 @@ namespace Leetcode
             return s;
         }
 
-        #endregion        
+        #endregion
     }
 
     public partial class _Easy

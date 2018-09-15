@@ -26,7 +26,9 @@ namespace Leetcode
         candycrush,
         sum4from4group,
         sum4to0,
-        sumpath
+        sumpath,
+        uniqpath,
+        uniqpathwithobstacle
     }
 
     public partial class _Median
@@ -195,6 +197,23 @@ namespace Leetcode
             {
                 int[] input = new int[5] {111, 217, 221, 315, 415};
                 int re = PathSum(input);
+                Console.WriteLine(re);
+            }
+            if(func == medianfunc.uniqpath.ToString())
+            {
+                int re = UniquePaths(3, 1);
+                Console.WriteLine(re);
+            }
+            if(func == medianfunc.uniqpathwithobstacle.ToString())
+            {
+                int[,] ob = new int[3, 3]
+                {
+                    { 0,0,0 },
+                    { 0,1,0 },
+                    { 0,0,0 }
+                };
+
+                int re = UniquePathsWithObstacles(ob);
                 Console.WriteLine(re);
             }
         }

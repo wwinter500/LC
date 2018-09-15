@@ -127,6 +127,90 @@ namespace Leetcode
             return re + 1;
         }
         #endregion
+        #region 62 - 63 unique path without / with obstacle
+        public int UniquePaths(int m, int n)
+        {
+            //decare and init
+            int[,] record = new int[n,m];
+            
+            //declare queue to access all point
+            Queue<int[]> que = new Queue<int[]>();
+            int[] target = new int[2] { n - 1, m - 1};
+                        
+            que.Enqueue(target);
+            while(que.Count > 0)
+            {
+                int[] poi = que.Dequeue();
+                if(poi[0] == n - 1 && poi[1] == m - 1)                
+                    record[poi[0], poi[1]] = 1;                                                        
+                else if(poi[0] == n - 1)                
+                    record[poi[0], poi[1]] = record[poi[0], poi[1] + 1];
+                else if(poi[1] == m - 1)
+                    record[poi[0], poi[1]] = record[poi[0] + 1, poi[1]];
+                else                
+                    record[poi[0], poi[1]] = record[poi[0], poi[1] + 1] + record[poi[0] + 1, poi[1]];
+                
+
+                if(poi[0] - 1 >= 0 && record[poi[0] - 1, poi[1]] == 0)
+                {
+                    int[] pu = new int[2] { poi[0] - 1, poi[1]};
+                    que.Enqueue(pu);
+                }
+
+                if(poi[1] - 1 >= 0 && record[poi[0], poi[1] - 1] == 0)
+                {
+                    int[] pl = new int[2] { poi[0], poi[1] - 1};
+                    que.Enqueue(pl);
+                }
+            }
+                
+            return record[0, 0];
+        }
+
+        public int UniquePathsWithObstacles(int[,] obstacleGrid)
+        {          
+            int n = obstacleGrid.GetLength(0);
+            int m = obstacleGrid.GetLength(1);
+            if (obstacleGrid[n - 1, m - 1] == 1)//obstacle at target position
+                return 0;
+
+            int[,] record = new int[n, m];
+            Queue<int[]> que = new Queue<int[]>();
+            int[] target = new int[2] { n - 1, m - 1 };
+
+            que.Enqueue(target);
+            while (que.Count > 0)
+            {
+                int[] poi = que.Dequeue();
+                if (poi[0] == n - 1 && poi[1] == m - 1)
+                    record[poi[0], poi[1]] = 1;
+                else if (poi[0] == n - 1 && obstacleGrid[poi[0], poi[1] + 1] == 0)
+                    record[poi[0], poi[1]] = record[poi[0], poi[1] + 1];
+                else if (poi[1] == m - 1 && obstacleGrid[poi[0] + 1, poi[1]] == 0)
+                    record[poi[0], poi[1]] = record[poi[0] + 1, poi[1]];
+                else
+                {
+                    if (obstacleGrid[poi[0], poi[1] + 1] == 0)
+                        record[poi[0], poi[1]] += record[poi[0], poi[1] + 1];
+                    if (obstacleGrid[poi[0] + 1, poi[1]] == 0)
+                        record[poi[0], poi[1]] += record[poi[0] + 1, poi[1]];
+                }
+                if (poi[0] - 1 >= 0 && record[poi[0] - 1, poi[1]] == 0 && obstacleGrid[poi[0] - 1, poi[1]] == 0)
+                {
+                    int[] pu = new int[2] { poi[0] - 1, poi[1] };
+                    que.Enqueue(pu);
+                }
+
+                if (poi[1] - 1 >= 0 && record[poi[0], poi[1] - 1] == 0 && obstacleGrid[poi[0], poi[1] - 1] == 0)
+                {
+                    int[] pl = new int[2] { poi[0], poi[1] - 1 };
+                    que.Enqueue(pl);
+                }
+            }
+
+            return record[0,0];
+        }
+        #endregion
     }
 
     public partial class _Easy
