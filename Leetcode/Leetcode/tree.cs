@@ -182,9 +182,13 @@ namespace Leetcode
             //parse
             foreach(int v in nums)
             {
-                int l = v / 100;
-                int i = v / 10;
-                int va = v % 10;
+                int cp = v;
+                int va = cp % 10;
+                cp /= 10;
+                int i = cp % 10;
+                cp /= 10;
+                int l = cp;
+
                 if(dic.ContainsKey(l))
                 {
                     if(!dic[l].ContainsKey(i))                    
@@ -198,17 +202,27 @@ namespace Leetcode
                 }
             }
 
-            List<int> le = new List<int>(dic.Keys);
-
-
-            return re;
+            List<int> ll = new List<int>(dic.Keys);            
+            return GetSum(dic, ll[ll.Count - 1], 1, 1);
         }
 
-        public int GetSum(Dictionary<int, Dictionary<int,int>> dic, int max, int level)
+        public int GetSum(Dictionary<int, Dictionary<int,int>> dic, int max, int level, int idx)
         {
+            if (!dic[level].ContainsKey(idx))
+                return 0;
+
+            if(level == max)            
+                return dic[level][idx];                
+
             int re = 0;
-            //if(level == max)
-            //    return dic[level]
+            int leftv = GetSum(dic, max, level + 1, idx * 2 - 1);
+            if(leftv != 0)            
+                re += dic[level][idx] + leftv;
+
+            int rightv = GetSum(dic, max, level + 1, idx * 2);
+            if (rightv != 0)
+                re += dic[level][idx] + rightv;
+
             return re;
         }
         

@@ -25,7 +25,8 @@ namespace Leetcode
         maxbyswap,
         candycrush,
         sum4from4group,
-        sum4to0
+        sum4to0,
+        sumpath
     }
 
     public partial class Median
@@ -189,6 +190,12 @@ namespace Leetcode
                         Console.Write(v);
                     Console.WriteLine();
                 }
+            }
+            if(func == medianfunc.sumpath.ToString())
+            {
+                int[] input = new int[2] { 113, 221 };
+                int re = PathSum(input);
+                Console.WriteLine(re);
             }
         }
     }
