@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Leetcode
 {
-    public partial class Median
+    public partial class _Median
     {
         #region Linked list
         public ListNode ReverseLinkedList(ListNode ln)

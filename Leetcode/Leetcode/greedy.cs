@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leetcode
 {
-    public partial class Median
+    public partial class _Median
     {
         #region greedy
         public string RemoveKdigits(string num, int k)

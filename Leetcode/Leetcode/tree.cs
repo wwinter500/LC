@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leetcode
 {
-    public partial class Median
+    public partial class _Median
     {
         #region 366
         /*
@@ -175,8 +175,7 @@ namespace Leetcode
         #endregion
         #region 666
         public int PathSum(int[] nums)
-        {
-            int re = 0;
+        {          
             Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
 
             //parse
@@ -201,27 +200,44 @@ namespace Leetcode
                     dic.Add(l, subdic);
                 }
             }
+          
+            List<IList<int>> re = GetPaths(dic, 1, 1);
+            int sum = 0;
+            foreach (List<int> l in re)
+                foreach (int v in l)
+                    sum += v;
 
-            List<int> ll = new List<int>(dic.Keys);            
-            return GetSum(dic, ll[ll.Count - 1], 1, 1);
+            return sum;
         }
 
-        public int GetSum(Dictionary<int, Dictionary<int,int>> dic, int max, int level, int idx)
+        public List<IList<int>> GetPaths(Dictionary<int, Dictionary<int,int>> dic,int level, int idx)
         {
-            if (!dic[level].ContainsKey(idx))
-                return 0;
-
-            if(level == max)            
-                return dic[level][idx];                
-
-            int re = 0;
-            int leftv = GetSum(dic, max, level + 1, idx * 2 - 1);
-            if(leftv != 0)            
-                re += dic[level][idx] + leftv;
-
-            int rightv = GetSum(dic, max, level + 1, idx * 2);
-            if (rightv != 0)
-                re += dic[level][idx] + rightv;
+            List<IList<int>> re = new List<IList<int>>();
+            if(dic.ContainsKey(level) && dic[level].ContainsKey(idx))
+            {
+                if(!dic.ContainsKey(level + 1) || (!dic[level + 1].ContainsKey(idx * 2 - 1) && !dic[level + 1].ContainsKey(idx * 2)))
+                {
+                    List<int> l = new List<int>();
+                    l.Add(dic[level][idx]);
+                    re.Add(l);
+                }
+                else
+                {                                                            
+                    List<IList<int>> left = GetPaths(dic, level + 1, 2 * idx - 1);
+                    foreach (List<int> ll in left)
+                    {
+                        ll.Add(dic[level][idx]);
+                        re.Add(ll);
+                    }
+                    
+                    List<IList<int>> right = GetPaths(dic, level + 1, 2 * idx);
+                    foreach (List<int> rl in right)
+                    {
+                        rl.Add(dic[level][idx]);
+                        re.Add(rl);
+                    }                    
+                }
+            }
 
             return re;
         }
@@ -254,6 +270,13 @@ namespace Leetcode
             if (root.right != null)
                 FindMiniDiff(root.right, target);
         }
+        #endregion
+    }
+
+    public partial class _Hard
+    {
+        #region 158 max sum path of tree
+
         #endregion
     }
 }

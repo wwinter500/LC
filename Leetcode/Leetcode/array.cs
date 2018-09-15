@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leetcode
 {    
-    public partial class Median
+    public partial class _Median
     {
         #region 16- three sum closet  +  259 three sum smaller
         public int ThreeSumClosest(int[] nums, int target)

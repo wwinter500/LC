@@ -59,7 +59,7 @@ namespace Leetcode
         {
             _Easy easy = new _Easy();
             _Hard hard = new _Hard();
-            Median med = new Median();
+            _Median med = new _Median();
             Stopwatch watch = new Stopwatch();
             watch.Start();
 

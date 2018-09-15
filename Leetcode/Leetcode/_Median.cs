@@ -29,7 +29,7 @@ namespace Leetcode
         sumpath
     }
 
-    public partial class Median
+    public partial class _Median
     {
         public void MedianRun(string func)
         {
@@ -193,7 +193,7 @@ namespace Leetcode
             }
             if(func == medianfunc.sumpath.ToString())
             {
-                int[] input = new int[2] { 113, 221 };
+                int[] input = new int[5] {111, 217, 221, 315, 415};
                 int re = PathSum(input);
                 Console.WriteLine(re);
             }

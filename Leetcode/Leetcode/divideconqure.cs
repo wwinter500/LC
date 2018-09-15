@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leetcode
 {
-    public partial class Median
+    public partial class _Median
     {
         #region divide and conqure
         /*240. Search a 2D Matrix II

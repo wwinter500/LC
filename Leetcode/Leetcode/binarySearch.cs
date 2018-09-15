@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Leetcode
 {
-    public partial class Median
+    public partial class _Median
     {
         #region 454
         public int FourSumCount(int[] A, int[] B, int[] C, int[] D)
