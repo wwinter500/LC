@@ -133,37 +133,20 @@ namespace Leetcode
             //decare and init
             int[,] record = new int[n,m];
             
-            //declare queue to access all point
-            Queue<int[]> que = new Queue<int[]>();
-            int[] target = new int[2] { n - 1, m - 1};
-                        
-            que.Enqueue(target);
-            while(que.Count > 0)
-            {
-                int[] poi = que.Dequeue();
-                if(poi[0] == n - 1 && poi[1] == m - 1)                
-                    record[poi[0], poi[1]] = 1;                                                        
-                else if(poi[0] == n - 1)                
-                    record[poi[0], poi[1]] = record[poi[0], poi[1] + 1];
-                else if(poi[1] == m - 1)
-                    record[poi[0], poi[1]] = record[poi[0] + 1, poi[1]];
-                else                
-                    record[poi[0], poi[1]] = record[poi[0], poi[1] + 1] + record[poi[0] + 1, poi[1]];
-                
-
-                if(poi[0] - 1 >= 0 && record[poi[0] - 1, poi[1]] == 0)
+            //declare queue to access all point            
+            for(int y = n -1; y >= 0; --y)
+                for(int x = m -1; x >= 0; --x)
                 {
-                    int[] pu = new int[2] { poi[0] - 1, poi[1]};
-                    que.Enqueue(pu);
+                    if (y == n - 1 && x == m - 1)
+                        record[y, x] = 1;
+                    else if (y == n - 1)
+                        record[y, x] = record[y, x + 1];
+                    else if (x == m - 1)
+                        record[y, x] = record[y + 1, x];
+                    else
+                        record[y, x] = record[y, x + 1] + record[y + 1, x];                    
                 }
-
-                if(poi[1] - 1 >= 0 && record[poi[0], poi[1] - 1] == 0)
-                {
-                    int[] pl = new int[2] { poi[0], poi[1] - 1};
-                    que.Enqueue(pl);
-                }
-            }
-                
+             
             return record[0, 0];
         }
 
@@ -174,40 +157,22 @@ namespace Leetcode
             if (obstacleGrid[n - 1, m - 1] == 1)//obstacle at target position
                 return 0;
 
-            int[,] record = new int[n, m];
-            Queue<int[]> que = new Queue<int[]>();
-            int[] target = new int[2] { n - 1, m - 1 };
-
-            que.Enqueue(target);
-            while (que.Count > 0)
-            {
-                int[] poi = que.Dequeue();
-                if (poi[0] == n - 1 && poi[1] == m - 1)
-                    record[poi[0], poi[1]] = 1;
-                else if (poi[0] == n - 1 && obstacleGrid[poi[0], poi[1] + 1] == 0)
-                    record[poi[0], poi[1]] = record[poi[0], poi[1] + 1];
-                else if (poi[1] == m - 1 && obstacleGrid[poi[0] + 1, poi[1]] == 0)
-                    record[poi[0], poi[1]] = record[poi[0] + 1, poi[1]];
-                else
+            int[,] record = new int[n, m];            
+            for (int y = n - 1; y >= 0; --y)
+                for (int x = m - 1; x >= 0; --x)
                 {
-                    if (obstacleGrid[poi[0], poi[1] + 1] == 0)
-                        record[poi[0], poi[1]] += record[poi[0], poi[1] + 1];
-                    if (obstacleGrid[poi[0] + 1, poi[1]] == 0)
-                        record[poi[0], poi[1]] += record[poi[0] + 1, poi[1]];
-                }
-                if (poi[0] - 1 >= 0 && record[poi[0] - 1, poi[1]] == 0 && obstacleGrid[poi[0] - 1, poi[1]] == 0)
-                {
-                    int[] pu = new int[2] { poi[0] - 1, poi[1] };
-                    que.Enqueue(pu);
-                }
+                    if (obstacleGrid[y, x] == 1)
+                        continue;
 
-                if (poi[1] - 1 >= 0 && record[poi[0], poi[1] - 1] == 0 && obstacleGrid[poi[0], poi[1] - 1] == 0)
-                {
-                    int[] pl = new int[2] { poi[0], poi[1] - 1 };
-                    que.Enqueue(pl);
+                    if (y == n - 1 && x == m - 1)
+                        record[y, x] = 1;
+                    else if (y == n - 1)
+                        record[y, x] = record[y, x + 1];
+                    else if (x == m - 1)
+                        record[y, x] = record[y + 1, x];
+                    else
+                        record[y, x] = record[y, x + 1] + record[y + 1, x];
                 }
-            }
-
             return record[0,0];
         }
         #endregion

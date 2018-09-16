@@ -201,7 +201,7 @@ namespace Leetcode
             }
             if(func == medianfunc.uniqpath.ToString())
             {
-                int re = UniquePaths(3, 1);
+                int re = UniquePaths(7, 3);
                 Console.WriteLine(re);
             }
             if(func == medianfunc.uniqpathwithobstacle.ToString())
