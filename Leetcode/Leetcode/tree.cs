@@ -241,7 +241,90 @@ namespace Leetcode
 
             return re;
         }
-        
+
+        #endregion
+        #region 776*
+        public TreeNode[] SplitBST(TreeNode root, int V)
+        {
+            TreeNode[] re = new TreeNode[2];
+            if (root == null)
+                return re;
+
+            if(root.val <= V)
+            {
+                TreeNode[] right = SplitBST(root.right, V);
+                if(right != null)
+                {
+                    root.right = right[0];
+                    re[0] = root;                        
+                    re[1] = right[1];
+                }
+                else
+                {
+                    re[0] = root;
+                    re[1] = null;
+                }
+            }
+
+            if(root.val > V)
+            {
+                TreeNode[] left = SplitBST(root.left, V);
+                if(left != null)
+                {
+                    root.left = left[1];
+                    re[0] = left[0];
+                    re[1] = root;
+                }
+                else
+                {
+                    re[0] = null;
+                    re[1] = root;
+                }                
+            }
+
+            return re;
+        }
+
+
+        #endregion
+        #region 450*
+        public TreeNode DeleteNode(TreeNode root, int key)
+        {
+            //stage 1 find the node
+            if (root == null)
+                return root;
+            
+            if(root.val == key)
+            {
+                if(root.right == null)
+                {
+                    TreeNode left = root.left;
+                    root.left = null;
+                    return left;
+                }
+                else
+                {
+                    TreeNode swap = root.right;
+                    while(swap.left != null)                    
+                        swap = swap.left;
+
+                    root.val ^= swap.val;
+                    swap.val ^= root.val;
+                    root.val ^= swap.val;
+                }
+            }
+
+            root.left = DeleteNode(root.left, key);
+            root.right = DeleteNode(root.right, key);
+
+            return root;
+        }
+        #endregion
+        #region 129
+        public int SumNumbers(TreeNode root)
+        {
+            return 0;
+        }
         #endregion
     }
 
