@@ -331,7 +331,10 @@ namespace Leetcode
         {
             //[1, null, 2, 2]- test case
             int sum = UpdateTree(root);
-
+            if (CheckValueExist(root, sum))
+                return true;
+            else
+                return false;
         }
 
         public int UpdateTree(TreeNode root)
@@ -354,12 +357,63 @@ namespace Leetcode
         {
             if (root == null)
                 return false;
-            if (root.val == val / 2)
-                return true;
-            else
-            {
 
+            if (root.left != null)
+            {
+                if (root.left.val * 2 == val)
+                    return true;
+                else
+                {
+                    bool left = CheckValueExist(root.left, val);
+                    if (left)
+                        return true;
+                }
             }
+
+            if (root.right != null)
+            {
+                if (root.right.val * 2 == val)
+                    return true;
+                else
+                {
+                    bool right = CheckValueExist(root.right, val);
+                    if (right)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+        #endregion
+        #region 199
+        public IList<int> RightSideView(TreeNode root)
+        {
+            List<int> re = new List<int>();
+            if (root == null)
+                return re;           
+            Queue<TreeNode> qu = new Queue<TreeNode>();
+            TreeNode cp = root;
+            qu.Enqueue(cp);
+            while(qu.Count > 0)
+            {
+                List<TreeNode> list = new List<TreeNode>();
+                while(qu.Count > 0)
+                {
+                    TreeNode tn = qu.Dequeue();
+                    if (qu.Count == 0)
+                        re.Add(tn.val);
+
+                    if (tn.left != null)
+                        list.Add(tn.left);
+                    if (tn.right != null)
+                        list.Add(tn.right);
+                }
+
+                foreach (TreeNode tn in list)
+                    qu.Enqueue(tn);
+            }
+
+            return re;
         }
         #endregion
     }

@@ -96,6 +96,16 @@ namespace Leetcode
             return m;
         }
         #endregion
+        #region 310
+        public IList<int> FindMinHeightTrees(int n, int[,] edges)
+        {
+            List<int> re = new List<int>();
+            Queue<int> qu = new Queue<int>();
+
+
+            return re;
+        }
+        #endregion
     }
 
     public partial class _Hard
