@@ -175,11 +175,11 @@ namespace Leetcode
         #endregion
         #region 666
         public int PathSum(int[] nums)
-        {          
+        {
             Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
 
             //parse
-            foreach(int v in nums)
+            foreach (int v in nums)
             {
                 int cp = v;
                 int va = cp % 10;
@@ -188,10 +188,10 @@ namespace Leetcode
                 cp /= 10;
                 int l = cp;
 
-                if(dic.ContainsKey(l))
+                if (dic.ContainsKey(l))
                 {
-                    if(!dic[l].ContainsKey(i))                    
-                        dic[l].Add(i, va);                    
+                    if (!dic[l].ContainsKey(i))
+                        dic[l].Add(i, va);
                 }
                 else
                 {
@@ -200,7 +200,7 @@ namespace Leetcode
                     dic.Add(l, subdic);
                 }
             }
-          
+
             List<IList<int>> re = GetPaths(dic, 1, 1);
             int sum = 0;
             foreach (List<int> l in re)
@@ -210,32 +210,32 @@ namespace Leetcode
             return sum;
         }
 
-        public List<IList<int>> GetPaths(Dictionary<int, Dictionary<int,int>> dic,int level, int idx)
+        public List<IList<int>> GetPaths(Dictionary<int, Dictionary<int, int>> dic, int level, int idx)
         {
             List<IList<int>> re = new List<IList<int>>();
-            if(dic.ContainsKey(level) && dic[level].ContainsKey(idx))
+            if (dic.ContainsKey(level) && dic[level].ContainsKey(idx))
             {
-                if(!dic.ContainsKey(level + 1) || (!dic[level + 1].ContainsKey(idx * 2 - 1) && !dic[level + 1].ContainsKey(idx * 2)))
+                if (!dic.ContainsKey(level + 1) || (!dic[level + 1].ContainsKey(idx * 2 - 1) && !dic[level + 1].ContainsKey(idx * 2)))
                 {
                     List<int> l = new List<int>();
                     l.Add(dic[level][idx]);
                     re.Add(l);
                 }
                 else
-                {                                                            
+                {
                     List<IList<int>> left = GetPaths(dic, level + 1, 2 * idx - 1);
                     foreach (List<int> ll in left)
                     {
                         ll.Add(dic[level][idx]);
                         re.Add(ll);
                     }
-                    
+
                     List<IList<int>> right = GetPaths(dic, level + 1, 2 * idx);
                     foreach (List<int> rl in right)
                     {
                         rl.Add(dic[level][idx]);
                         re.Add(rl);
-                    }                    
+                    }
                 }
             }
 
@@ -250,13 +250,13 @@ namespace Leetcode
             if (root == null)
                 return re;
 
-            if(root.val <= V)
+            if (root.val <= V)
             {
                 TreeNode[] right = SplitBST(root.right, V);
-                if(right != null)
+                if (right != null)
                 {
                     root.right = right[0];
-                    re[0] = root;                        
+                    re[0] = root;
                     re[1] = right[1];
                 }
                 else
@@ -266,10 +266,10 @@ namespace Leetcode
                 }
             }
 
-            if(root.val > V)
+            if (root.val > V)
             {
                 TreeNode[] left = SplitBST(root.left, V);
-                if(left != null)
+                if (left != null)
                 {
                     root.left = left[1];
                     re[0] = left[0];
@@ -279,7 +279,7 @@ namespace Leetcode
                 {
                     re[0] = null;
                     re[1] = root;
-                }                
+                }
             }
 
             return re;
@@ -293,10 +293,10 @@ namespace Leetcode
             //stage 1 find the node
             if (root == null)
                 return root;
-            
-            if(root.val == key)
+
+            if (root.val == key)
             {
-                if(root.right == null)
+                if (root.right == null)
                 {
                     TreeNode left = root.left;
                     root.left = null;
@@ -305,7 +305,7 @@ namespace Leetcode
                 else
                 {
                     TreeNode swap = root.right;
-                    while(swap.left != null)                    
+                    while (swap.left != null)
                         swap = swap.left;
 
                     root.val ^= swap.val;
@@ -324,6 +324,42 @@ namespace Leetcode
         public int SumNumbers(TreeNode root)
         {
             return 0;
+        }
+        #endregion
+        #region 663
+        public bool CheckEqualTree(TreeNode root)
+        {
+            //[1, null, 2, 2]- test case
+            int sum = UpdateTree(root);
+
+        }
+
+        public int UpdateTree(TreeNode root)
+        {
+            if (root == null)
+                return 0;
+            else if (root.left == null && root.right == null)
+                return root.val;
+            else
+            {
+                int lv = UpdateTree(root.left);
+                int rv = UpdateTree(root.right);
+                root.val += lv + rv;
+
+                return root.val;
+            }
+        }
+
+        public bool CheckValueExist(TreeNode root, int val)
+        {
+            if (root == null)
+                return false;
+            if (root.val == val / 2)
+                return true;
+            else
+            {
+
+            }
         }
         #endregion
     }
