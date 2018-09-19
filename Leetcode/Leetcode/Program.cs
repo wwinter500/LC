@@ -67,7 +67,7 @@ namespace Leetcode
             LC_LEVEL cl = LC_LEVEL.MEDIAN;
             //LC_LEVEL cl = LC_LEVEL.EASY;
             //string func = easyfunc.candyexchange.ToString();
-            string func = medianfunc.uniqpathwithobstacle.ToString();
+            string func = medianfunc.patitionlabel.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)

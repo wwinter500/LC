@@ -77,27 +77,33 @@ namespace Leetcode
             if (S == null || S.Length == 0)
                 return re;
 
-            Dictionary<char, int[]> dic = new Dictionary<char, int[]>();
+            Dictionary<char, int> dic = new Dictionary<char, int>();
             for(int i = 0; i < S.Length; ++i)
             {
-                if(dic.ContainsKey(S[i]))
-                {
-                    dic[S[i]][1] = i;
-                }
-                else
-                {
-                    int[] range = new int[2] { i, i };
-                    dic.Add(S[i], range);
-                }
+                if(dic.ContainsKey(S[i]))     
+                    dic[S[i]] = i;                
+                else                   
+                    dic.Add(S[i], i);                
             }
 
             int head = 0, tail = 0;
-            int cp = 0;
-            while(tail < S.Length)
-            {
-                //if(dic[S[head]])
-                if(dic[S[head]][1] == tail)
+            int start = head;
+            while (head < S.Length && tail < S.Length)
+            {                
+                tail = dic[S[start]];
+                while(start < tail)
                 {
+<<<<<<< HEAD
+                    if (dic[S[start]] > tail)
+                        tail = dic[S[start]];
+
+                    start++;
+                }
+                
+                re.Add(tail - head + 1);
+                head = tail + 1;
+                start = head;                
+=======
                     re.Add(tail - head + 1);
                 }
                 if (dic[S[head]][1] > tail)
@@ -106,8 +112,41 @@ namespace Leetcode
                     head++;
                 }
                 
+>>>>>>> 5a2a2ca0ff3c53b5cf204ddb227a4540af70832a
             }
+
             return re;
+        }
+        #endregion
+
+        #region 236
+        public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+        {
+            //find the lowest common ancestor            
+            return helper(root, p, q);
+        }
+
+        public TreeNode helper(TreeNode root, TreeNode p, TreeNode q)
+        {
+            if (root == null)
+                return null;
+            
+            TreeNode left = helper(root.left, p, q);
+            TreeNode right = helper(root.right, p, q);
+
+            if (root == p || root == q)//find the target
+                return root;
+
+            if (left != null && right == null)//left contain but right did not
+                return left;
+
+            if (right != null && left == null)//right contain but left did not
+                return right;
+
+            if (left != null && right != null)//the first one contains both
+                return root;
+
+            return null;
         }
         #endregion
     }

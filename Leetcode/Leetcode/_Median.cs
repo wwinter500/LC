@@ -28,7 +28,8 @@ namespace Leetcode
         sum4to0,
         sumpath,
         uniqpath,
-        uniqpathwithobstacle
+        uniqpathwithobstacle,
+        patitionlabel
     }
 
     public partial class _Median
@@ -215,6 +216,14 @@ namespace Leetcode
 
                 int re = UniquePathsWithObstacles(ob);
                 Console.WriteLine(re);
+            }
+            if (func == medianfunc.patitionlabel.ToString())
+            {
+                string s = "caedbdedda";
+                IList<int> l = PartitionLabels(s);
+                foreach (int v in l)
+                    Console.Write(v + " ");
+                Console.WriteLine();
             }
         }
     }
