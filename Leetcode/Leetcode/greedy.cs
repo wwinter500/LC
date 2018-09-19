@@ -105,8 +105,7 @@ namespace Leetcode
                     tail = dic[S[head]][1];
                     head++;
                 }
-
-                    
+                
             }
             return re;
         }
