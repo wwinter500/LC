@@ -16,7 +16,8 @@ namespace Leetcode
         subset,
         findcloset,
         letterpermutate,
-        candyexchange
+        candyexchange,
+        sortbyparity
     }
     public partial class _Easy
     {
@@ -76,65 +77,15 @@ namespace Leetcode
                 int[] re = FairCandySwap(A, B);
 
                 Console.WriteLine(re[0] + " " + re[1]);
-            }                        
-        }
-
-        ////////////////////////////////
-        /**/
-        public int FindRadius(int[] houses, int[] heaters)
-        {
-            int radius = 1;
-            int hn = houses.Length, heats = heaters.Length;
-            if (heats <= 0)
-                return 0;
-            if (hn <= 0)
-                return 1;
-
-            Hashtable hs = new Hashtable();
-            while (true)
-            {
-                foreach (int hi in heaters)
-                {
-                    for (int i = radius; i >= 0; i--)
-                    {
-                        if (!hs.ContainsKey(hi - i))
-                            hs.Add(hi - i, 1);
-                        if (!hs.ContainsKey(hi + i))
-                            hs.Add(hi + i, 1);
-                    }
-                }
-
-                bool coverall = true;
-                foreach (int ho in houses)
-                    if (!hs.ContainsKey(ho))
-                    {
-                        coverall = false;
-                        radius++;
-                        hs.Clear();
-                        break;
-                    }
-
-                if (coverall)
-                    break;
             }
-
-            return radius;
-        }
-
-        public int FindCloset(int val, List<int> arr, int start, int end)
-        {
-            if (start == end)
-                return Math.Abs(arr[start] - val);
-            else if (start == end - 1)
-                return Math.Min(Math.Abs(arr[start] - val), Math.Abs(arr[end] - val));
-            else
+            if (func == easyfunc.sortbyparity.ToString())
             {
-                int mid = (start + end) / 2;
-                int dl = FindCloset(val, arr, start, mid);
-                int dr = FindCloset(val, arr, mid + 1, end);
-
-                return Math.Min(dl, dr);
+                int[] input = new int[6] { 3, 1, 2, 2,2,6 };
+                int[] re = SortArrayByParity(input);
+                foreach (int v in re)
+                    Console.Write(v + " ");
+                Console.WriteLine();
             }
-        }
+        }        
     }
 }

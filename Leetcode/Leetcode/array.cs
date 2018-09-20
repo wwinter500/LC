@@ -65,7 +65,6 @@ namespace Leetcode
             return re;
         }
         #endregion
-
         #region 611 - valid triangle number
         public int TriangleNumber(int[] nums)
         {
@@ -104,7 +103,6 @@ namespace Leetcode
             return re;
         }
         #endregion
-
         #region 670 - maximun swap
         public int MaximumSwap(int num)
         {
@@ -145,7 +143,6 @@ namespace Leetcode
             return re;
         }
         #endregion
-                
         #region 723 candy crush
         public int[,] CandyCrush(int[,] board)
         {
@@ -153,7 +150,6 @@ namespace Leetcode
             return board;
         }
         #endregion
-
         #region 18 4sum
         public IList<IList<int>> FourSum(int[] nums, int target)
         {
@@ -210,7 +206,7 @@ namespace Leetcode
     }
 
     public partial class _Easy
-    {
+    {        
         #region 888
         public int[] FairCandySwap(int[] A, int[] B)
         {
@@ -243,7 +239,58 @@ namespace Leetcode
 
             return re;
         }
-        
+
+        #endregion
+        #region 905
+        public int[] SortArrayByParity(int[] A)
+        {
+            int e = 0, o = 0;
+            for(int i = A.Length - 1; i >= 0; --i)//find left most odd
+            {
+                if (A[i] % 2 == 1)
+                    o = i;               
+            }
+
+            for(int i = A.Length - 1; i > o; --i)//find left most even right to odd
+            {
+                if (A[i] % 2 == 0)
+                    e = i;
+            }
+
+            while(e < A.Length)
+            {
+                //no even number between e and o
+                if (A[e] % 2 == 1)
+                    e++;
+                else if (A[o] % 2 == 0)
+                    o++;
+                else
+                {
+                    SharedFunc.swap(ref A[e], ref A[o]);
+                    e++;
+                    o++;
+                }
+            }
+
+            return A;
+        }
+        #endregion
+        #region findcloset
+        public int FindCloset(int val, List<int> arr, int start, int end)
+        {
+            if (start == end)
+                return Math.Abs(arr[start] - val);
+            else if (start == end - 1)
+                return Math.Min(Math.Abs(arr[start] - val), Math.Abs(arr[end] - val));
+            else
+            {
+                int mid = (start + end) / 2;
+                int dl = FindCloset(val, arr, start, mid);
+                int dr = FindCloset(val, arr, mid + 1, end);
+
+                return Math.Min(dl, dr);
+            }
+        }
         #endregion
     }
 }

@@ -93,7 +93,6 @@ namespace Leetcode
                 tail = dic[S[start]];
                 while(start < tail)
                 {
-<<<<<<< HEAD
                     if (dic[S[start]] > tail)
                         tail = dic[S[start]];
 
@@ -103,16 +102,6 @@ namespace Leetcode
                 re.Add(tail - head + 1);
                 head = tail + 1;
                 start = head;                
-=======
-                    re.Add(tail - head + 1);
-                }
-                if (dic[S[head]][1] > tail)
-                {
-                    tail = dic[S[head]][1];
-                    head++;
-                }
-                
->>>>>>> 5a2a2ca0ff3c53b5cf204ddb227a4540af70832a
             }
 
             return re;

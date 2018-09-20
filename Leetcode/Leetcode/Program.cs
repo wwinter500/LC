@@ -35,7 +35,7 @@ namespace Leetcode
         public TreeNode(int x) { val = x; }
     }
 
-    public partial class Program
+    public class SharedFunc
     {
         static public bool binarySearch(int[] A, int head, int tail, int target)
         {
@@ -55,6 +55,17 @@ namespace Leetcode
                     binarySearch(A, mid + 1, tail, target);
         }
 
+        static public void swap(ref int a, ref int b)
+        {
+            a ^= b;
+            b ^= a;
+            a ^= b;
+        }
+    }
+
+    public partial class Program
+    {
+        
         static void Main(string[] args)
         {
             _Easy easy = new _Easy();
@@ -64,10 +75,10 @@ namespace Leetcode
             watch.Start();
 
             
-            LC_LEVEL cl = LC_LEVEL.MEDIAN;
-            //LC_LEVEL cl = LC_LEVEL.EASY;
-            //string func = easyfunc.candyexchange.ToString();
-            string func = medianfunc.patitionlabel.ToString();
+            //LC_LEVEL cl = LC_LEVEL.MEDIAN;
+            LC_LEVEL cl = LC_LEVEL.EASY;
+            string func = easyfunc.sortbyparity.ToString();
+            //string func = medianfunc.patitionlabel.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)

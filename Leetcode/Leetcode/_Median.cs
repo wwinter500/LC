@@ -8,32 +8,14 @@ namespace Leetcode
 {
     public enum medianfunc : int
     {
-        longestPalidrome = 0,
-        longestPalidrome_dp,
-        insertLinkedlist,
-        removeNth,
-        ReverseLinkedList,
-        CopyRandomList,
-        Permutate,
-        LIS,
-        RemoveKDig,
-        ConstructTreeFromPrePost,
-        bfs_minesweeper,
-        sum3closet,
-        sum3smaller,
-        validtriangenumber,
-        maxbyswap,
-        candycrush,
-        sum4from4group,
-        sum4to0,
-        sumpath,
-        uniqpath,
-        uniqpathwithobstacle,
-        patitionlabel
+        longestPalidrome = 0,longestPalidrome_dp,insertLinkedlist, removeNth,ReverseLinkedList,
+        CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
+        sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4to0,sumpath,uniqpath,
+        uniqpathwithobstacle,patitionlabel
     }
 
     public partial class _Median
-    {
+    {        
         public void MedianRun(string func)
         {
             object result = null;
@@ -224,7 +206,7 @@ namespace Leetcode
                 foreach (int v in l)
                     Console.Write(v + " ");
                 Console.WriteLine();
-            }
+            }            
         }
     }
 }
