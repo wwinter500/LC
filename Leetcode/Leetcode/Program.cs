@@ -76,9 +76,9 @@ namespace Leetcode
 
             
             //LC_LEVEL cl = LC_LEVEL.MEDIAN;
-            LC_LEVEL cl = LC_LEVEL.EASY;
-            string func = easyfunc.sortbyparity.ToString();
-            //string func = medianfunc.patitionlabel.ToString();
+            LC_LEVEL cl = LC_LEVEL.MEDIAN;
+            //string func = easyfunc.sortbyparity.ToString();
+            string func = medianfunc.sum4totarget.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)

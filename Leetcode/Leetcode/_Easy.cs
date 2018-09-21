@@ -80,7 +80,7 @@ namespace Leetcode
             }
             if (func == easyfunc.sortbyparity.ToString())
             {
-                int[] input = new int[6] { 3, 1, 2, 2,2,6 };
+                int[] input = new int[2] { 0, 2};
                 int[] re = SortArrayByParity(input);
                 foreach (int v in re)
                     Console.Write(v + " ");

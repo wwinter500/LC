@@ -10,7 +10,7 @@ namespace Leetcode
     {
         longestPalidrome = 0,longestPalidrome_dp,insertLinkedlist, removeNth,ReverseLinkedList,
         CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
-        sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4to0,sumpath,uniqpath,
+        sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4totarget,sumpath,uniqpath,
         uniqpathwithobstacle,patitionlabel
     }
 
@@ -154,18 +154,18 @@ namespace Leetcode
             }
             if(func == medianfunc.sum4from4group.ToString())
             {
-                int[] A = new int[2] { 1, 2 };
-                int[] B = new int[2] { -2, -1 };
-                int[] C = new int[2] { -1, 2 };
-                int[] D = new int[2] { 0, 2 };
+                int[] A = new int[2] { -1, -1 };
+                int[] B = new int[2] { -1, 1 };
+                int[] C = new int[2] { -1, 1 };
+                int[] D = new int[2] { 1, -1 };
 
                 int re = FourSumCount(A, B, C, D);
 
                 Console.WriteLine(re);
             }
-            if(func == medianfunc.sum4to0.ToString())
+            if(func == medianfunc.sum4totarget.ToString())
             {
-                int[] input = new int[6] { 1, 0, -1, 0, -2, 2 };
+                int[] input = new int[6] { 0, 0, 0, 0, -2, 2 };
                 int target = 0;
                 IList<IList<int>> re = FourSum(input, target);
 

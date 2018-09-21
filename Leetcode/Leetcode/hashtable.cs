@@ -8,7 +8,66 @@ namespace Leetcode
 {
     public partial class _Median
     {
-        
+        #region 454
+        public int FourSumCount(int[] A, int[] B, int[] C, int[] D)
+        {
+            int re = 0;
+            Array.Sort(A);
+            Array.Sort(B);
+            Array.Sort(C);
+            Array.Sort(D);
+
+            Dictionary<int, List<int>> dic = new Dictionary<int, List<int>>();
+            Dictionary<int, List<int>> dic2 = new Dictionary<int, List<int>>();
+            int len = A.Length;
+            for (int a = 0; a < A.Length; ++a)
+            {
+                for (int b = 0; b < B.Length; ++b)
+                {
+                    int sum2 = A[a] + B[b];
+                    if (dic.ContainsKey(sum2))
+                    {
+                        dic[sum2].Add(A[a]);
+                    }
+                    else
+                    {
+                        List<int> l = new List<int>();
+                        l.Add(A[a]);
+                        dic.Add(sum2, l);
+                    }
+                }
+            }
+
+            for (int c = 0; c < C.Length; ++c)
+            {
+                for (int d = 0; d < D.Length; ++d)
+                {
+                    int sum2 = C[c] + D[d];
+                    if (dic2.ContainsKey(sum2))
+                    {
+                        dic2[sum2].Add(C[c]);
+                    }
+                    else
+                    {
+                        List<int> l = new List<int>();
+                        l.Add(C[c]);
+                        dic2.Add(sum2, l);
+                    }
+                }
+            }
+
+            foreach (KeyValuePair<int, List<int>> p in dic)
+            {
+                int rest = -p.Key;
+                if (dic2.ContainsKey(rest))
+                {
+                    re += p.Value.Count * dic2[rest].Count;
+                }
+            }
+
+            return re;
+        }
+        #endregion
     }
 
     public partial class _Easy
@@ -52,6 +111,5 @@ namespace Leetcode
 
             return radius;
         }
-
     }
 }

@@ -6,8 +6,21 @@ using System.Collections;
 
 namespace Leetcode
 {
-    public partial class _Median
+    public class Node
     {
+        public int val;
+        public Node next;
+
+        public Node() { }
+        public Node(int _val, Node _next)
+        {
+            val = _val;
+            next = _next;
+        }
+    }
+
+    public partial class _Median
+    {        
         #region Linked list
         public ListNode ReverseLinkedList(ListNode ln)
         {
@@ -127,9 +140,8 @@ namespace Leetcode
 
             return pn.next;
         }
-
-        /*445
-         */
+        #endregion
+        #region 445
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
             if (l1 == null || l2 == null)
@@ -140,7 +152,8 @@ namespace Leetcode
 
             return result;
         }
-
+        #endregion
+        #region 24
         /*24 swap nodes in pairs
          */
         public ListNode SwapPairs(ListNode head)
@@ -174,7 +187,8 @@ namespace Leetcode
 
             return ph.next;
         }
-
+        #endregion
+        #region 328
         /*
          * 328. Odd Even Linked List
          */
@@ -213,7 +227,8 @@ namespace Leetcode
 
             return ph.next;
         }
-
+        #endregion
+        #region 143
         /*
          * 143. Reorder List
          */
@@ -251,7 +266,8 @@ namespace Leetcode
                 }
             }
         }
-
+        #endregion
+        #region 144
         /*
          * 144. plus one linked list
          */
@@ -278,7 +294,8 @@ namespace Leetcode
             ph.next = chead;
             return (credit == 0 ? ph.next : ph);
         }
-
+        #endregion
+        #region 138
         /*
          * 138 Copy random linked list
          */
@@ -333,6 +350,35 @@ namespace Leetcode
             }
 
             return re;
+        }
+        #endregion
+        #region 708
+        public Node Insert(Node head, int insertVal)
+        {
+            Node nn = new Node();
+            nn.val = insertVal;
+            if(head.next == null)
+            {
+                nn.next = nn;
+                head.next = nn;                
+            }
+            else
+            {
+                Node cp = head;
+                while(true)
+                {
+                    if (cp.next.val <= nn.val)
+                        cp = cp.next;
+                    else
+                    {
+                        nn.next = cp.next;
+                        cp.next = nn;
+                        break;
+                    }
+                }
+            }
+
+            return head.next;
         }
         #endregion
     }

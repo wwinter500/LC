@@ -150,19 +150,107 @@ namespace Leetcode
             return board;
         }
         #endregion
-        #region 18 4sum
+        #region 15 3sum / 18 4sum
+        public IList<IList<int>> ThreeSum(int[] nums)
+        {
+            Array.Sort(nums);
+            return ThreeSum(nums, 0);
+        }
+
+        public IList<IList<int>> ThreeSum(int[] nums, int s, int target = 0)
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+            if (nums.Length == 0 || s >= nums.Length)
+                return result;
+            
+            for (int ap = s; ap < nums.Length - 2; ap++)
+            {
+                if (ap > s && nums[ap - 1] == nums[ap])
+                    continue;
+                else
+                {
+                    //search 2sum from sorted array
+                    int bp = ap + 1, cp = nums.Length - 1;
+                    while (cp > bp)
+                    {
+                        int sum2 = nums[cp] + nums[bp];
+                        int rest = target - nums[ap];
+                        if (sum2 == rest)
+                        {
+                            if (bp > ap + 1 && nums[bp - 1] == nums[bp])//if already exist
+                            {
+                                bp++;
+                                continue;
+                            }
+
+                            List<int> list = new List<int>();
+                            list.Add(nums[ap]);
+                            list.Add(nums[bp++]);
+                            list.Add(nums[cp--]);
+                            result.Add(list);
+                        }
+                        else if (sum2 < rest)
+                            bp++;
+                        else
+                            cp--;
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public IList<IList<int>> FourSum(int[] nums, int target)
         {
             List<IList<int>> re = new List<IList<int>>();
             if (nums == null || nums.Length < 4)
                 return re;
 
+            //a. sort array
             Array.Sort(nums);
-            Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
+            
+            //b. 
+            for(int a = 0; a < nums.Length - 3; ++a)
+            {
+                if (a > 0 && nums[a] == nums[a - 1])
+                    continue;
 
+                IList<IList<int>> ll = ThreeSum(nums, a + 1, target - nums[a]);
+                if (ll.Count > 0)
+                {
+                    foreach (List<int> l in ll)
+                    {
+                        l.Add(nums[a]);
+                        re.Add(l);
+                    }                    
+                }
+            }
+
+            return re;
+        }
+
+        public IList<IList<int>> FourSum2(int[] nums, int target)
+        {
+            //2 + 2 solution for 4 sum
+            List<IList<int>> re = new List<IList<int>>();
+            if (nums == null || nums.Length < 4)
+                return re;
+
+            //a. sort array
+            Array.Sort(nums);
+
+            //b. 
+            Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
             for (int i = 0; i < nums.Length - 1; ++i)
+            {
+                if (i > 0 && nums[i] == nums[i - 1])
+                    continue;
+
                 for (int j = i + 1; j < nums.Length; ++j)
                 {
+                    if (j > 0 && nums[j] == nums[j - 1])
+                        continue;
+
                     int sum2 = nums[i] + nums[j];
                     if (dic.ContainsKey(sum2))
                     {
@@ -176,6 +264,8 @@ namespace Leetcode
                         dic.Add(sum2, subd);
                     }
                 }
+            }
+                
 
             List<int> sum2l = new List<int>(dic.Keys);
             foreach (int s in sum2l)
@@ -186,13 +276,16 @@ namespace Leetcode
                     foreach (KeyValuePair<int, int> p in dic[s])
                         foreach (KeyValuePair<int, int> p2 in dic[rest])
                         {
-                            List<int> l = new List<int>();
-                            l.Add(p.Key);
-                            l.Add(p.Value);
-                            l.Add(p2.Key);
-                            l.Add(p2.Value);
+                            if(p2.Key >= p.Value)
+                            {
+                                List<int> l = new List<int>();
+                                l.Add(p.Key);
+                                l.Add(p.Value);
+                                l.Add(p2.Key);
+                                l.Add(p2.Value);
 
-                            re.Add(l);
+                                re.Add(l);
+                            }                            
                         }
 
                     dic.Remove(rest);
@@ -201,6 +294,20 @@ namespace Leetcode
             }
 
             return re;
+        }
+
+        #endregion
+        #region 548
+        public bool SplitArray(int[] nums)
+        {
+            //0 - i -1 ; i + 1 - j -1 ; j + 1 - k -1 ; k + 1 - n -1 
+            return false;
+        }
+
+        public int EqualSubArray(int[] nums, int head, int tail)
+        {
+
+            return -1;
         }
         #endregion
     }
@@ -244,12 +351,18 @@ namespace Leetcode
         #region 905
         public int[] SortArrayByParity(int[] A)
         {
-            int e = 0, o = 0;
+            if (A == null || A.Length <= 1)
+                return A;
+
+            int e = A.Length, o = A.Length;
             for(int i = A.Length - 1; i >= 0; --i)//find left most odd
             {
                 if (A[i] % 2 == 1)
-                    o = i;               
+                    o = i;       
             }
+
+            if (o == A.Length)
+                return A;
 
             for(int i = A.Length - 1; i > o; --i)//find left most even right to odd
             {
