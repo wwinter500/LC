@@ -381,6 +381,41 @@ namespace Leetcode
             return head.next;
         }
         #endregion
+        #region 86 - partition list
+        public ListNode Partition(ListNode head, int x)
+        {
+            //smaller head of larger
+            ListNode preh = new ListNode(0);
+            preh.next = head;
+
+            //
+            ListNode pre = preh;
+            ListNode nt = preh;
+            while(nt.next != null)
+            {
+                if (nt.next.val <= x)
+                {
+                    if (pre == nt)
+                    {
+                        nt = nt.next;
+                        continue;
+                    }                        
+                    else
+                    {
+                        ListNode temp = nt.next;
+                        nt.next = nt.next.next;
+                        temp.next = pre.next;
+                        pre.next = temp;
+                        pre = pre.next;
+                    }
+                }
+                else
+                    nt = nt.next;
+            }
+
+            return preh.next;
+        }
+        #endregion
     }
 
     public partial class _Hard

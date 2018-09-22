@@ -69,7 +69,6 @@ namespace Leetcode
             return sre;
         }
         #endregion
-
         #region 763
         public IList<int> PartitionLabels(string S)
         {
@@ -107,14 +106,12 @@ namespace Leetcode
             return re;
         }
         #endregion
-
         #region 236
         public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
         {
             //find the lowest common ancestor            
             return helper(root, p, q);
         }
-
         public TreeNode helper(TreeNode root, TreeNode p, TreeNode q)
         {
             if (root == null)
