@@ -11,7 +11,7 @@ namespace Leetcode
         longestPalidrome = 0,longestPalidrome_dp,insertLinkedlist, removeNth,ReverseLinkedList,
         CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
         sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4totarget,sumpath,uniqpath,
-        uniqpathwithobstacle,patitionlabel, partitionLinkedList
+        uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist,compree1darray,compress2darray
     }
 
     public partial class _Median
@@ -210,18 +210,62 @@ namespace Leetcode
             if(func == medianfunc.partitionLinkedList.ToString())
             {
                 int[] arr = new int[6] { 1, 4, 3, 2 ,5 ,2};
-                ListNode l = new ListNode(0);
+                ListNode head = new ListNode(0);
+                ListNode l = head;
                 for(int i = 0; i < 6; ++i)
                 {
-                    l.next = new ListNode(arr[i]);
+                    ListNode n = new ListNode(arr[i]);
+                    l.next = n;
                     l = l.next;
                 }
 
-                ListNode re = Partition(l.next, 2);
+                ListNode re = Partition(head.next, 2);
                 while(re != null)
                 {
                     Console.Write(re.val + " ");
                     re = re.next;
+                }
+            }
+            if(func == medianfunc.insertocyclelinkedlist.ToString())
+            {
+                int[] arr = new int[3] { 3, 3, 3 };
+                Node head = new Node(0,null);
+                Node l = head;
+                for (int i = 0; i < arr.Length; ++i)
+                {
+                    Node n = new Node(arr[i], null);
+                    l.next = n;
+                    l = l.next;
+                }
+
+                l.next = head.next;
+                Node re = Insert(head, 0);
+
+                for(int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine(re.val);
+                    re = re.next;
+                }                    
+            }
+            if (func == medianfunc.compress2darray.ToString())
+            {
+                int[,] arr = new int[5, 5]
+                {
+                    { 0, 10, 0, 2, 0 },
+                    { 1, 3, 4, 0, 0 },
+                    { 2, 0, 0, 2, 1},
+                    { 0, 1, 1, 0, 3},
+                    { 0, 0, 1, 3, 0}
+                };
+
+                CompressBoard(ref arr, 5, 5);
+                for(int y = 0; y < 5; ++y)
+                {
+                    for(int x = 0; x < 5; ++x)
+                    {
+                        Console.Write(arr[y,x] + " ");
+                    }
+                    Console.WriteLine();
                 }
             }
         }

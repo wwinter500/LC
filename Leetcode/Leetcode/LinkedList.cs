@@ -355,65 +355,74 @@ namespace Leetcode
         #region 708
         public Node Insert(Node head, int insertVal)
         {
-            Node nn = new Node();
-            nn.val = insertVal;
-            if(head.next == null)
+            if (head == null)
+                return new Node(insertVal, null);
+            if (head.next == null)
             {
-                nn.next = nn;
-                head.next = nn;                
+                head.next = new Node(insertVal, null);
+                return head.next;
             }
             else
-            {
-                Node cp = head;
-                while(true)
+            {                
+                int x = insertVal;
+                Node start = head.next;
+                while(start.next != head.next)
                 {
-                    if (cp.next.val <= nn.val)
-                        cp = cp.next;
-                    else
+                    if(start.val <= x && start.next.val >= x)
                     {
-                        nn.next = cp.next;
-                        cp.next = nn;
+                        insert(ref start, x);
                         break;
                     }
+
+                    start = start.next;
                 }
+
+                if (start.next == head.next)
+                    insert(ref start, x);
             }
 
             return head.next;
         }
+
+        public void insert(ref Node old, int val)
+        {
+            Node ne = new Node(val, old.next);
+            old.next = ne;
+        }
         #endregion
-        #region 86 - partition list
+        #region 86 
+        //partition list
         public ListNode Partition(ListNode head, int x)
         {
             //smaller head of larger
             ListNode preh = new ListNode(0);
             preh.next = head;
+            ListNode hcp = preh;
 
-            //
-            ListNode pre = preh;
-            ListNode nt = preh;
-            while(nt.next != null)
+            ListNode nhead = new ListNode(0);
+            ListNode nhcp = nhead;
+            while (hcp.next != null)
             {
-                if (nt.next.val <= x)
+                if (hcp.next.val <= x)
                 {
-                    if (pre == nt)
-                    {
-                        nt = nt.next;
-                        continue;
-                    }                        
-                    else
-                    {
-                        ListNode temp = nt.next;
-                        nt.next = nt.next.next;
-                        temp.next = pre.next;
-                        pre.next = temp;
-                        pre = pre.next;
-                    }
+                    nhcp.next = hcp.next;
+                    hcp.next = hcp.next.next;
+
+                    nhcp = nhcp.next;
+                    nhcp.next = null;                    
                 }
                 else
-                    nt = nt.next;
+                    hcp = hcp.next;
             }
 
-            return preh.next;
+            nhcp.next = preh.next;
+            return nhead.next;
+        }
+        #endregion
+        #region 426^
+        public Node treeToDoublyList(Node root)
+        {
+            return null;
         }
         #endregion
     }

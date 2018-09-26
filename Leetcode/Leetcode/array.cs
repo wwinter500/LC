@@ -146,8 +146,122 @@ namespace Leetcode
         #region 723 candy crush
         public int[,] CandyCrush(int[,] board)
         {
+            int w = board.GetLength(1);
+            int h = board.GetLength(0);
 
-            return board;
+            //a. clear crush candy
+            List<Coordinates> l = new List<Coordinates>();
+            for (int i = 0; i < h; i++)
+            {
+                for (int j = 0; j < w; j++)
+                {
+                    int cur = board[i, j];
+                    if (cur == 0) continue;
+                    if ((i - 2 >= 0 && board[i - 1, j] == cur && board[i - 2, j] == cur) ||                                                 // check left 2 candies
+                       (i + 2 <= h - 1 && board[i + 1, j] == cur && board[i + 2, j] == cur) ||                                   // check right 2 candies
+                       (j - 2 >= 0 && board[i, j - 1] == cur && board[i, j - 2] == cur) ||                                                 // check 2 candies top
+                       (j + 2 <= w - 1 && board[i, j + 1] == cur && board[i, j + 2] == cur) ||                               // check 2 candies below
+                       (i - 1 >= 0 && i + 1 <= h - 1 && board[i - 1, j] == cur && board[i + 1, j] == cur) ||                    // check if it is a mid candy in row
+                       (j - 1 >= 0 && j + 1 <= h - 1 && board[i, j - 1] == cur && board[i, j + 1] == cur))
+                    {                
+                        // check if it is a mid candy in column
+                        l.Add(new Coordinates(i, j));
+                    }
+                }
+            }
+
+            if (l.Count == 0)
+                return board;
+            else
+            {
+                foreach (Coordinates co in l)
+                    board[co.y, co.x] = 0;
+            }
+            
+            //b. clear 0 and move first
+            CompressBoard(ref board, w, h);
+            return CandyCrush(board);
+        }
+        
+        public bool CompressBoard(ref int[,] board, int w, int h)
+        {
+            bool updated = false;
+            //clear all 0 pointer if under values
+            for (int x = 0; x < w; ++x)
+            {
+                int z = h - 1, o =  h - 2;
+                while (o >= 0)
+                {
+                    if (o >= z)
+                    {
+                        o = z - 1;
+                        continue;
+                    }
+                    else
+                    {
+                        if (board[z, x] != 0)
+                        {
+                            z--;
+                            continue;
+                        }
+                        else
+                        {
+                            if (board[o, x] == 0)
+                            {
+                                o--;
+                                continue;
+                            }
+                            else
+                            {
+                                board[o, x] ^= board[z, x];
+                                board[z, x] ^= board[o, x];
+                                board[o, x] ^= board[z, x];
+
+                                updated = true;
+                            }
+                        }
+                    }
+                }                
+            }
+
+            return updated;
+        }
+        
+        public void CompressArray(ref int[] arr)
+        {
+            int len = arr.Length;
+
+            int z = 0, o = 1;
+            while(o < len)
+            {
+                if (o <= z)
+                {
+                    o = z + 1;
+                    continue;
+                }
+                else
+                {
+                    if(arr[z] != 0)
+                    {
+                        z++;
+                        continue;
+                    }
+                    else
+                    {
+                        if(arr[o] == 0)
+                        {
+                            o++;
+                            continue;
+                        }
+                        else
+                        {
+                            arr[o] ^= arr[z];
+                            arr[z] ^= arr[o];
+                            arr[o] ^= arr[z];
+                        }
+                    }
+                }                    
+            }
         }
         #endregion
         #region 15 3sum / 18 4sum
@@ -227,75 +341,7 @@ namespace Leetcode
             }
 
             return re;
-        }
-
-        public IList<IList<int>> FourSum2(int[] nums, int target)
-        {
-            //2 + 2 solution for 4 sum
-            List<IList<int>> re = new List<IList<int>>();
-            if (nums == null || nums.Length < 4)
-                return re;
-
-            //a. sort array
-            Array.Sort(nums);
-
-            //b. 
-            Dictionary<int, Dictionary<int, int>> dic = new Dictionary<int, Dictionary<int, int>>();
-            for (int i = 0; i < nums.Length - 1; ++i)
-            {
-                if (i > 0 && nums[i] == nums[i - 1])
-                    continue;
-
-                for (int j = i + 1; j < nums.Length; ++j)
-                {
-                    if (j > 0 && nums[j] == nums[j - 1])
-                        continue;
-
-                    int sum2 = nums[i] + nums[j];
-                    if (dic.ContainsKey(sum2))
-                    {
-                        if (!dic[sum2].ContainsKey(nums[i]))
-                            dic[sum2].Add(nums[i], nums[j]);
-                    }
-                    else
-                    {
-                        Dictionary<int, int> subd = new Dictionary<int, int>();
-                        subd.Add(nums[i], nums[j]);
-                        dic.Add(sum2, subd);
-                    }
-                }
-            }
-                
-
-            List<int> sum2l = new List<int>(dic.Keys);
-            foreach (int s in sum2l)
-            {
-                int rest = target - s;
-                if (dic.ContainsKey(rest))
-                {
-                    foreach (KeyValuePair<int, int> p in dic[s])
-                        foreach (KeyValuePair<int, int> p2 in dic[rest])
-                        {
-                            if(p2.Key >= p.Value)
-                            {
-                                List<int> l = new List<int>();
-                                l.Add(p.Key);
-                                l.Add(p.Value);
-                                l.Add(p2.Key);
-                                l.Add(p2.Value);
-
-                                re.Add(l);
-                            }                            
-                        }
-
-                    dic.Remove(rest);
-                    dic.Remove(s);
-                }
-            }
-
-            return re;
-        }
-
+        }        
         #endregion
         #region 548
         public bool SplitArray(int[] nums)

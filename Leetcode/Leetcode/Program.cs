@@ -13,6 +13,17 @@ namespace Leetcode
         HARD
     }
 
+    public class Coordinates
+    {
+        public int x;
+        public int y;
+        public Coordinates(int y0, int x0)
+        {
+            x = x0;
+            y = y0;
+        }
+    }
+
     public class ListNode
     {
         public int val;
@@ -64,8 +75,7 @@ namespace Leetcode
     }
 
     public partial class Program
-    {
-        
+    {        
         static void Main(string[] args)
         {
             _Easy easy = new _Easy();
@@ -78,7 +88,7 @@ namespace Leetcode
             //LC_LEVEL cl = LC_LEVEL.MEDIAN;
             LC_LEVEL cl = LC_LEVEL.MEDIAN;
             //string func = easyfunc.sortbyparity.ToString();
-            string func = medianfunc.partitionLinkedList.ToString();
+            string func = medianfunc.compress2darray.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)
