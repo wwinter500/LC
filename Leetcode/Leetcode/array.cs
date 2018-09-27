@@ -346,13 +346,57 @@ namespace Leetcode
         #region 548
         public bool SplitArray(int[] nums)
         {
-            //0 - i -1 ; i + 1 - j -1 ; j + 1 - k -1 ; k + 1 - n -1 
+            //0 ~ i - 1 ; i + 1 ~ j -1 ; j + 1 ~ k - 1 ; k + 1 ~ n -1
+            
             return false;
         }
 
         public int EqualSubArray(int[] nums, int head, int tail)
         {
+            if (tail - head < 2)
+                return -1;
+            
+            for(int i = head + 1; i < tail; ++i)
+            {
+                if (nums[i - 1] - nums[head] == nums[tail] - nums[i + 1])
+                    return i;
+            }
 
+            return -1;
+        }
+        #endregion
+        #region 277
+        bool Knows(int a, int b){ return true; }
+        public int FindCelebrity(int n)
+        {
+            //find celebrity with minimun quest
+            Queue<int> known = new Queue<int>();
+            for (int i = 0; i < n; ++i)
+                known.Enqueue(i);
+            
+            for(int i = 0; i < n; ++i)
+            {
+                int c = known.Count;
+                for(int a = 0; a < c; ++a)
+                {
+                    int check = known.Dequeue();
+                    if (Knows(i, check))
+                        known.Enqueue(check);
+                }
+            }
+
+            if (known.Count == 1)
+            {
+                int re = known.Dequeue();
+                for(int i = 0; i < n; ++i)
+                {
+                    if (Knows(re, i) && i != re)
+                        return -1;
+                }
+
+                return re;
+            }
+           
             return -1;
         }
         #endregion
