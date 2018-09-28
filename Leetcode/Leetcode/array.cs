@@ -343,27 +343,62 @@ namespace Leetcode
             return re;
         }        
         #endregion
-        #region 548
+        #region 548*
         public bool SplitArray(int[] nums)
         {
             //0 ~ i - 1 ; i + 1 ~ j -1 ; j + 1 ~ k - 1 ; k + 1 ~ n -1
-            
-            return false;
-        }
+            if (nums == null || nums.Length <= 3)
+                return false;
 
-        public int EqualSubArray(int[] nums, int head, int tail)
-        {
-            if (tail - head < 2)
-                return -1;
-            
-            for(int i = head + 1; i < tail; ++i)
+            //front to end
+            int[] sums = new int[nums.Length];
+            for(int i = 0; i < nums.Length; ++i)
             {
-                if (nums[i - 1] - nums[head] == nums[tail] - nums[i + 1])
-                    return i;
+                if (i == 0)
+                    sums[i] = nums[i];
+                else
+                    sums[i] = sums[i - 1] + nums[i];
             }
 
-            return -1;
-        }
+            //end to front by using dictionary
+            Dictionary<int, List<int>> r_dic = new Dictionary<int, List<int>>();
+            int rsum = 0;
+            for(int i = nums.Length - 1; i >= 0; --i)
+            {
+                rsum += nums[i];
+                if (r_dic.ContainsKey(rsum))
+                    r_dic[rsum].Add(i);
+                else
+                {
+                    List<int> l = new List<int>();
+                    l.Add(i);
+                    r_dic.Add(rsum, l);
+                }
+            }
+
+            //search
+            for(int lo = 0; lo < nums.Length - 6; ++lo)
+            {
+                if(r_dic.ContainsKey(sums[lo]))
+                {
+                    foreach(int hi in r_dic[sums[lo]])
+                    {
+                        if(lo < hi - 5)
+                        {
+                            for (int mid = lo + 3; mid < hi - 2; mid++)
+                            {
+                                int mlv = sums[mid - 1] - sums[lo + 2] + nums[lo + 2];
+                                int mrv = sums[hi - 2] - sums[mid + 1] + nums[mid + 1];
+                                if (mlv == mrv)
+                                    return true;
+                            }
+                        }                        
+                    }
+                }
+            }
+
+            return false;
+        }        
         #endregion
         #region 277
         bool Knows(int a, int b){ return true; }

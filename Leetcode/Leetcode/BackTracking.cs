@@ -55,7 +55,15 @@ namespace Leetcode
 
             return s;
         }
+        #endregion
 
+        #region 842 -split to fabonachi sequence
+        public IList<int> SplitIntoFibonacci(string S)
+        {
+            List<int> re = new List<int>();
+
+            return re;
+        }
         #endregion
     }
 

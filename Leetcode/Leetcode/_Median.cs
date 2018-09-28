@@ -11,7 +11,8 @@ namespace Leetcode
         longestPalidrome = 0,longestPalidrome_dp,insertLinkedlist, removeNth,ReverseLinkedList,
         CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
         sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4totarget,sumpath,uniqpath,
-        uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist,compree1darray,compress2darray
+        uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist,compree1darray,compress2darray,
+        splitArrayto4equals
     }
 
     public partial class _Median
@@ -267,6 +268,12 @@ namespace Leetcode
                     }
                     Console.WriteLine();
                 }
+            }
+            if(func == medianfunc.splitArrayto4equals.ToString())
+            {
+                int[] arr = new int[] { 1, 2, 1, 2, 1, 2, 1, 2};
+                bool re = SplitArray(arr);
+                Console.WriteLine(re);
             }
         }
     }

@@ -336,7 +336,6 @@ namespace Leetcode
             else
                 return false;
         }
-
         public int UpdateTree(TreeNode root)
         {
             if (root == null)
@@ -352,7 +351,6 @@ namespace Leetcode
                 return root.val;
             }
         }
-
         public bool CheckValueExist(TreeNode root, int val)
         {
             if (root == null)
