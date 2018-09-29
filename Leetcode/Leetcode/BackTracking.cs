@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Numerics;
 
 namespace Leetcode
 {
@@ -56,13 +57,63 @@ namespace Leetcode
             return s;
         }
         #endregion
-
-        #region 842 -split to fabonachi sequence
+        #region 842+ -split to fibonacci sequence - amazon
         public IList<int> SplitIntoFibonacci(string S)
         {
+            //123， 456， 579
+            //since val < 2^31 - 1, the number is length < 13
             List<int> re = new List<int>();
+            if (S == null || S.Length == 0)
+                return re;
+            
+            for(int i = 1; i < S.Length && i < 13; ++i)
+            {
+                for(int j = i + 1; j < S.Length && j - i < 13; ++j)
+                {
+                    string sub0 = S.Substring(0,  i);
+                    string sub1 = S.Substring(i, j - i);
+                    if (sub0.Length > 1 && sub0[0] == '0')
+                        break;
+                    if (sub1.Length > 1 && sub1[0] == '0')
+                        break;
+
+                    int val0 = 0, val1 = 0;
+                    if (!int.TryParse(sub0, out val0) || !int.TryParse(sub1, out val1))
+                        break;
+
+                    re.Add(val0);
+                    re.Add(val1);
+
+                    if (backtracking(S, j, ref re))
+                        return re;
+                    else                    
+                        re.Clear();                    
+                }
+            }
 
             return re;
+        }
+
+        public bool backtracking(string S, int idx, ref List<int> l)
+        {
+            //to check backtracking            
+            string head = S.Substring(0, idx);
+            if (head.Length > S.Length)
+                return false;
+            else if (head.Length == S.Length)
+                return true;
+            else
+            {
+                int check = l[l.Count - 1] + l[l.Count - 2];
+                string scheck = head + check.ToString();
+                if (S.Contains(scheck))
+                {
+                    l.Add(check);
+                    return backtracking(S, scheck.Length, ref l);
+                }
+                else
+                    return false;
+            }            
         }
         #endregion
     }

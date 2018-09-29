@@ -12,7 +12,7 @@ namespace Leetcode
         CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
         sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4totarget,sumpath,uniqpath,
         uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist,compree1darray,compress2darray,
-        splitArrayto4equals
+        splitArrayto4equals,splitStringToFibonacci, IsAdditiveNumber
     }
 
     public partial class _Median
@@ -274,6 +274,19 @@ namespace Leetcode
                 int[] arr = new int[] { 1, 2, 1, 2, 1, 2, 1, 2};
                 bool re = SplitArray(arr);
                 Console.WriteLine(re);
+            }
+            if(func == medianfunc.splitStringToFibonacci.ToString())
+            {
+                string input = "121474836472147483648";
+                IList<int> re = SplitIntoFibonacci(input);
+                foreach (int i in re)
+                    Console.Write(i + " ");
+                Console.WriteLine();
+            }
+            if(func == medianfunc.IsAdditiveNumber.ToString())
+            {
+                string input = "121474836472147483648";
+                Console.WriteLine(IsAdditiveNumber(input));
             }
         }
     }

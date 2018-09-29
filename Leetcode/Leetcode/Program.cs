@@ -88,7 +88,7 @@ namespace Leetcode
             //LC_LEVEL cl = LC_LEVEL.MEDIAN;
             LC_LEVEL cl = LC_LEVEL.MEDIAN;
             //string func = easyfunc.sortbyparity.ToString();
-            string func = medianfunc.splitArrayto4equals.ToString();
+            string func = medianfunc.splitStringToFibonacci.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)
@@ -97,7 +97,7 @@ namespace Leetcode
             }
             else if (cl == LC_LEVEL.MEDIAN)
             {
-                med.MedianRun(func);
+                med.MedianRun(func);                
             }
             else
             {

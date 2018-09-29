@@ -435,6 +435,57 @@ namespace Leetcode
             return -1;
         }
         #endregion
+        #region 306
+        public bool IsAdditiveNumber(string num)
+        {
+            if (num == null || num.Length < 3)
+                return false;
+
+            for (int i = 1; i < num.Length && i < 13; ++i)
+            {
+                string f = num.Substring(0, i);
+                if (f.Length > 1 && f[0] == '0')
+                    break;
+
+                int fv = 0;
+                if (!int.TryParse(f, out fv))
+                    break;
+
+                for (int j = i + 1; j < num.Length && j - i < 13; ++j)
+                {
+                    string s = num.Substring(i, j - i);
+                    if (s.Length > 1 && s[0] == '0')
+                        break;
+
+                    int sv = 0;
+                    if (!int.TryParse(s, out sv))
+                        break;
+
+                    if (backtracking(num, j, fv, sv))
+                        return true;                    
+                }
+            }
+
+            return false;
+        }
+
+        public bool backtracking(string num, int idx, int hv, int sv)
+        {
+            if (idx > num.Length)
+                return false;
+            else if (idx == num.Length)
+                return true;
+            else
+            {
+                int v = hv + sv;
+                string s = num.Substring(0, idx) + v.ToString();
+                if (num.Contains(s))
+                    return backtracking(num, s.Length, sv, v);
+                else
+                    return false;
+            }
+        }
+        #endregion
     }
 
     public partial class _Easy
@@ -528,6 +579,20 @@ namespace Leetcode
 
                 return Math.Min(dl, dr);
             }
+        }
+        #endregion
+        #region 54
+        public IList<int> SpiralOrder(int[,] matrix)
+        {
+            List<int> ls = new List<int>();
+            if (matrix == null)
+                return ls;
+
+            int h = matrix.GetLength(0);
+            int w = matrix.GetLength(1);
+            int turn = 0;
+
+            return ls;
         }
         #endregion
     }
