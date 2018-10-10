@@ -68,6 +68,42 @@ namespace Leetcode
             return re;
         }
         #endregion
+        #region 609
+        public IList<IList<string>> FindDuplicate(string[] paths)
+        {
+            List<IList<string>> re = new List<IList<string>>();
+            if (paths == null || paths.Length == 0)
+                return re;
+
+            Dictionary<string, List<string>> sdic = new Dictionary<string, List<string>>();
+            foreach(string s in paths)
+            {
+                string[] subs = s.Split(' ');
+                string head = subs[0] + "/";
+                for(int i = 1; i < subs.Length; ++i)
+                {
+                    string[] ssub = subs[i].Split('(');
+
+                    if (sdic.ContainsKey(ssub[1]))
+                    {
+                        sdic[ssub[1]].Add(fn);
+                    }
+                    else
+                    {
+                        List<string> ls = new List<string>();
+                        ls.Add(fn);
+                        sdic.Add(ssub[1], ls);
+                    }
+                        
+                }
+            }
+
+            foreach (KeyValuePair<string, List<string>> pair in sdic)
+                re.Add(pair.Value);
+
+            return re;
+        }
+        #endregion
     }
 
     public partial class _Easy

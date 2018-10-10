@@ -12,7 +12,7 @@ namespace Leetcode
         CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
         sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4totarget,sumpath,uniqpath,
         uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist,compree1darray,compress2darray,
-        splitArrayto4equals,splitStringToFibonacci, IsAdditiveNumber
+        splitArrayto4equals,splitStringToFibonacci, IsAdditiveNumber, finddupliatefile
     }
 
     public partial class _Median
@@ -287,6 +287,19 @@ namespace Leetcode
             {
                 string input = "121474836472147483648";
                 Console.WriteLine(IsAdditiveNumber(input));
+            }
+            if(func == medianfunc.finddupliatefile.ToString())
+            {
+                string[] input = new string[]{ "root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d 4.txt(efgh)", "root 4.txt(efgh)" };
+                IList<IList<string>> ret = FindDuplicate(input);
+
+                foreach (List<string> ls in ret)
+                {
+                    foreach (string ss in ls)
+                        Console.Write(ss + " ");
+
+                    Console.WriteLine();
+                }
             }
         }
     }

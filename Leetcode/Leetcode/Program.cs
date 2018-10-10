@@ -88,7 +88,7 @@ namespace Leetcode
             //LC_LEVEL cl = LC_LEVEL.MEDIAN;
             LC_LEVEL cl = LC_LEVEL.MEDIAN;
             //string func = easyfunc.sortbyparity.ToString();
-            string func = medianfunc.splitStringToFibonacci.ToString();
+            string func = medianfunc.finddupliatefile.ToString();
             //string func = hardfunc.MergeLists.ToString();
 
             if (cl == LC_LEVEL.EASY)
