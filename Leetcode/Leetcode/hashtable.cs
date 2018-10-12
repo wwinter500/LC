@@ -83,7 +83,7 @@ namespace Leetcode
                 for(int i = 1; i < subs.Length; ++i)
                 {
                     string[] ssub = subs[i].Split('(');
-
+                    string fn = head + ssub[0];
                     if (sdic.ContainsKey(ssub[1]))
                     {
                         sdic[ssub[1]].Add(fn);

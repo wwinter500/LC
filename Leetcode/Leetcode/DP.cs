@@ -282,4 +282,16 @@ namespace Leetcode
         }
         #endregion
     }
+
+    public partial class _Hard
+    {
+        #region 10
+        public bool IsMatch(string s, string p)
+        {
+            
+
+            return true;
+        }
+        #endregion
+    }
 }
