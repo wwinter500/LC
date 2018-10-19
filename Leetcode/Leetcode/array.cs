@@ -486,6 +486,41 @@ namespace Leetcode
             }
         }
         #endregion
+        #region 209 - minimum size subarray sum{same direction double pointer, binary search}
+        public int MinSubArrayLen(int s, int[] nums)
+        {
+            if (s <= 0 || nums == null || nums.Length == 0)
+                return 0;
+
+            int minL = nums.Length + 1;
+            int i = 0, j = 0;
+            int sum = nums[i];
+            //travel i to end
+            while(i < nums.Length && j < nums.Length)
+            {
+                //judge if period sum larger than s
+                if(sum >= s)
+                {
+                    int len = j - i + 1;
+                    if (len < minL)
+                        minL = len;
+
+                    sum -= nums[i++];
+                    if (j < i)
+                        j = i;                                     
+                }
+                else
+                {
+                    if(++j < nums.Length)
+                        sum += nums[j];
+                }
+            }
+
+            if (minL == nums.Length + 1)
+                return 0;
+            return minL;
+        }
+        #endregion
     }
 
     public partial class _Easy

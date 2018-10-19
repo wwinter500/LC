@@ -6,19 +6,12 @@ using System.Collections;
 
 namespace Leetcode
 {
-    public enum medianfunc : int
-    {
-        longestPalidrome = 0,longestPalidrome_dp,insertLinkedlist, removeNth,ReverseLinkedList,
-        CopyRandomList, Permutate,LIS,RemoveKDig,ConstructTreeFromPrePost,bfs_minesweeper,sum3closet,
-        sum3smaller,validtriangenumber,maxbyswap,candycrush,sum4from4group,sum4totarget,sumpath,uniqpath,
-        uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist,compree1darray,compress2darray,
-        splitArrayto4equals,splitStringToFibonacci, IsAdditiveNumber, finddupliatefile
-    }
-
+    
     public partial class _Median
     {        
         public void MedianRun(string func)
         {
+            #region hidden
             object result = null;
             if (func == medianfunc.longestPalidrome.ToString())
             {
@@ -301,7 +294,24 @@ namespace Leetcode
                     Console.WriteLine();
                 }
             }
-        }
+            #endregion
+            if(func == medianfunc.minimunsubarray.ToString())
+            {
+                int[] input = new int[] { 8,3,1,2,4,3};
+                int s = 7;
+                int re = MinSubArrayLen(s, input);
+                Console.WriteLine("minimun subarray len:" + re);
+            }
+        }        
+    }
+
+    public enum medianfunc : int
+    {
+        longestPalidrome = 0, longestPalidrome_dp, insertLinkedlist, removeNth, ReverseLinkedList,
+        CopyRandomList, Permutate, LIS, RemoveKDig, ConstructTreeFromPrePost, bfs_minesweeper, sum3closet,
+        sum3smaller, validtriangenumber, maxbyswap, candycrush, sum4from4group, sum4totarget, sumpath, uniqpath,
+        uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist, compree1darray, compress2darray,
+        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray
     }
 }
 
