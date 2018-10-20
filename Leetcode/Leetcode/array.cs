@@ -486,6 +486,133 @@ namespace Leetcode
             }
         }
         #endregion
+        #region 54 - 59 
+        public IList<int> SpiralOrder(int[,] matrix)
+        {
+            List<int> ls = new List<int>();
+            if (matrix == null)
+                return ls;
+            
+            int turn = 0, x0 = 0, y0 = 0;
+            int top = 0, bottom = matrix.GetLength(0) - 1, left = 0, right = matrix.GetLength(1) - 1;            
+            while (top <= bottom && left <= right)
+            {
+                if(turn % 4 == 0)
+                {                    
+                    if (x0 < right)
+                    {
+                        ls.Add(matrix[y0, x0++]);                        
+                    }                        
+                    else if (x0 == right)
+                    {
+                        ls.Add(matrix[y0++, x0]);
+                        turn++;
+                        top++;
+                    }                    
+                }
+                else if(turn % 4 == 1)
+                {                    
+                    if (y0 < bottom)
+                    {
+                        ls.Add(matrix[y0++, x0]);                        
+                    }
+                    else if(y0 == bottom)
+                    {
+                        ls.Add(matrix[y0, x0--]);
+                        right--;
+                        turn++;                        
+                    }
+                }
+                else if(turn % 4 == 2)
+                {                    
+                    if (x0 > left)                    
+                        ls.Add(matrix[y0, x0--]);                                                       
+                    else if(x0 == left)
+                    {
+                        ls.Add(matrix[y0--, x0]);
+                        bottom--;
+                        turn++;                        
+                    }
+                }
+                else
+                {                    
+                    if (y0 > top)
+                        ls.Add(matrix[y0--, x0]);
+                    else if (y0 == top)
+                    {
+                        ls.Add(matrix[y0, x0++]);
+                        left++;
+                        turn++;
+                    }                    
+                }
+            }
+
+            return ls;
+        }
+
+        public int[,] GenerateMatrix(int n)
+        {
+            if (n < 1)
+                return null;
+
+            int[,] re = new int[n, n];
+            int count = 1;
+            int turn = 0, x0 = 0, y0 = 0;
+            int top = 0, bottom = n - 1, left = 0, right = n - 1;
+            while (top <= bottom && left <= right)
+            {
+                if (turn % 4 == 0)
+                {
+                    if (x0 < right)
+                    {
+                        re[y0, x0++] = count++;
+                    }
+                    else if (x0 == right)
+                    {
+                        re[y0++, x0] = count++;
+                        turn++;
+                        top++;
+                    }
+                }
+                else if (turn % 4 == 1)
+                {
+                    if (y0 < bottom)                    
+                        re[y0++, x0] = count++;                    
+                    else if (y0 == bottom)
+                    {
+                        re[y0, x0--] = count++;
+                        right--;
+                        turn++;
+                    }
+                }
+                else if (turn % 4 == 2)
+                {
+                    if (x0 > left)
+                        re[y0, x0--] = count++;
+                    else if (x0 == left)
+                    {
+                        re[y0--, x0] = count++;
+                        bottom--;
+                        turn++;
+                    }
+                }
+                else
+                {
+                    if (y0 > top)
+                        re[y0--, x0] = count++;
+                    else if (y0 == top)
+                    {
+                        re[y0, x0++] = count++;
+                        left++;
+                        turn++;
+                    }
+                }
+            }
+
+
+            return re;
+        }
+        #endregion
         #region 209 - minimum size subarray sum{same direction double pointer}
         public int MinSubArrayLen(int s, int[] nums)
         {

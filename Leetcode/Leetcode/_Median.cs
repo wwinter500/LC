@@ -294,6 +294,31 @@ namespace Leetcode
                     Console.WriteLine();
                 }
             }
+			if (func == medianfunc.SpiralMatrix.ToString())
+            {
+                int[,] input = new int[,]
+                {
+                   { 1 }, {2 }, { 3 },                   
+                };
+
+                IList<int> ls = SpiralOrder(input);
+                foreach (int v in ls)
+                    Console.Write(v + " ");
+                Console.WriteLine();
+            }
+            if(func == medianfunc.GenerateMatrix.ToString())
+            {
+                int n = 3;
+                int[,] re = GenerateMatrix(n);
+
+                for(int y = 0; y < re.GetLength(0); ++y)
+                {
+                    for (int x = 0; x < re.GetLength(1); ++x)
+                        Console.Write(re[y, x] + " ");
+                    Console.WriteLine();
+                }
+                  
+            }        
             #endregion
             if(func == medianfunc.minimunsubarray.ToString())
             {
@@ -317,7 +342,8 @@ namespace Leetcode
         CopyRandomList, Permutate, LIS, RemoveKDig, ConstructTreeFromPrePost, bfs_minesweeper, sum3closet,
         sum3smaller, validtriangenumber, maxbyswap, candycrush, sum4from4group, sum4totarget, sumpath, uniqpath,
         uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist, compree1darray, compress2darray,
-        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray,longestLeastK
+        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray,longestLeastK，
+		SpiralMatrix, GenerateMatrix
     }
 }
 
