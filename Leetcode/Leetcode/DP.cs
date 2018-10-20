@@ -285,6 +285,47 @@ namespace Leetcode
 
     public partial class _Hard
     {
+        #region N-queen
+        public List<string> Nqueen(int n = 4)
+        {
+            List<string> result = new List<string>();
+            string fl = "Q...";
+            result.Add(fl);
+
+            //record used space
+            int[] record = new int[n];//to record occupied queen
+            record[0] = 0;
+            for (int row = 1; row < n; row++)
+            {
+                //for each line detect if that line is ok to use
+                string str = "";
+                for (int col = 0; col < n; col++)
+                {
+                    bool avail = true;
+                    for (int i = 0; i <= row; i++)
+                    {
+                        if (col == record[i] || Math.Abs(col - record[i]) == Math.Abs(row - i))
+                        {
+                            avail = false;
+                            break;
+                        }
+                    }
+
+                    if (avail)
+                    {
+                        str += 'Q';
+                        break;
+                    }
+                    else
+                        str += '.';
+                }
+
+                result.Add(str);
+            }
+            return result;
+        }
+        #endregion
+
         #region 10
         public bool IsMatch(string s, string p)
         {

@@ -44,4 +44,17 @@ namespace Leetcode
         }
         #endregion        
     }
+
+    public partial class _Hard
+    {
+        #region 312
+        /*312. Burst Balloons
+         */
+        public int MaxCoins(int[] nums)
+        {
+            return 0;
+        }
+        #endregion
+
+    }
 }

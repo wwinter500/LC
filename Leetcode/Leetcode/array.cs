@@ -486,7 +486,7 @@ namespace Leetcode
             }
         }
         #endregion
-        #region 209 - minimum size subarray sum{same direction double pointer, binary search}
+        #region 209 - minimum size subarray sum{same direction double pointer}
         public int MinSubArrayLen(int s, int[] nums)
         {
             if (s <= 0 || nums == null || nums.Length == 0)
@@ -520,6 +520,48 @@ namespace Leetcode
                 return 0;
             return minL;
         }
+        #endregion
+        #region 395 - longest substring with at least K repeatable character
+        public int LongestSubstring(string s, int k)
+        {
+            if (s == null || s.Length == 0)
+                return 0;
+            if (k <= 1)
+                return s.Length;
+
+            int maxL = 0;
+            Dictionary<char, int> dic = new Dictionary<char, int>();            
+            int i = 0, j = 0;
+            while(i < s.Length && j < s.Length)
+            {
+                int len = j - i + 1;
+                if(dic.ContainsKey(s[j]))
+                {                    
+                    dic[s[j++]]++;
+                    if (dic.Count * k <= len)
+                    {
+                        if(len > maxL)
+                            maxL = len;
+                    }                        
+                    else
+                    {
+                        dic[s[i]]--;
+                        if (dic[s[i]] == 0)
+                            dic.Remove(s[i]);
+
+                        i++;
+                    }
+                }
+                else
+                {
+                    dic.Add(s[j++], 1);
+                }
+            }
+
+            return maxL;
+        }
+
+
         #endregion
     }
 
@@ -628,6 +670,100 @@ namespace Leetcode
             int turn = 0;
 
             return ls;
+        }
+        #endregion
+    }
+
+    public partial class _Hard
+    {
+        #region 159 - longest substring with at most 2 distinct character {2 pointer with same direction}
+        public int LengthOfLongestSubstringTwoDistinct(string s)
+        {
+            if (s == null || s.Length == 0)
+                return 0;
+
+            Dictionary<char, int> dic = new Dictionary<char, int>();
+            int i = 0, j = 0;
+            int maxL = 0;
+            while (i < s.Length && j < s.Length)
+            {
+                int len = j - i + 1;
+                if(dic.ContainsKey(s[j]))
+                {
+                    if (len > maxL)
+                        maxL = len;
+
+                    dic[s[j++]]++;                    
+                }
+                else
+                {
+                    if(dic.Count >= 2)
+                    {
+                        if(dic.ContainsKey(s[i]))
+                        {
+                            dic[s[i]]--;
+                            if (dic[s[i]] == 0)
+                                dic.Remove(s[i]);
+
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        if (len > maxL)
+                            maxL = len;
+
+                        dic.Add(s[j++], 1);
+                    }                    
+                }
+            }
+            
+            return maxL;
+        }
+        #endregion
+        #region 340 - longest substring with at most k distinct character
+        public int LengthOfLongestSubstringKDistinct(string s, int k)
+        {
+            if (s == null || s.Length == 0 || k <= 0)
+                return 0;
+
+            Dictionary<char, int> dic = new Dictionary<char, int>();
+            int i = 0, j = 0;
+            int maxL = 0;
+            while (i < s.Length && j < s.Length)
+            {
+                int len = j - i + 1;
+                if (dic.ContainsKey(s[j]))
+                {
+                    if (len > maxL)
+                        maxL = len;
+
+                    dic[s[j++]]++;
+                }
+                else
+                {
+                    if (dic.Count >= k)
+                    {
+                        if (dic.ContainsKey(s[i]))
+                        {
+                            dic[s[i]]--;
+                            if (dic[s[i]] == 0)
+                                dic.Remove(s[i]);
+
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        if (len > maxL)
+                            maxL = len;
+
+                        dic.Add(s[j++], 1);
+                    }
+                }
+            }
+
+            return maxL;
         }
         #endregion
     }

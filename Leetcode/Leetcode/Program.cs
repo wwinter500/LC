@@ -13,6 +13,7 @@ namespace Leetcode
         HARD
     }
 
+    #region structure
     public class Coordinates
     {
         public int x;
@@ -73,6 +74,7 @@ namespace Leetcode
             a ^= b;
         }
     }
+    #endregion
 
     public partial class Program
     {        
@@ -83,13 +85,12 @@ namespace Leetcode
             _Median med = new _Median();
             Stopwatch watch = new Stopwatch();
             watch.Start();
-
             
-            //LC_LEVEL cl = LC_LEVEL.MEDIAN;
             LC_LEVEL cl = LC_LEVEL.MEDIAN;
+            //LC_LEVEL cl = LC_LEVEL.HARD;
             //string func = easyfunc.sortbyparity.ToString();
-            string func = medianfunc.minimunsubarray.ToString();
-            //string func = hardfunc.MergeLists.ToString();
+            string func = medianfunc.longestLeastK.ToString();
+            //string func = hardfunc.longestkunique.ToString();
 
             if (cl == LC_LEVEL.EASY)
             {

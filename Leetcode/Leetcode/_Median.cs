@@ -302,6 +302,12 @@ namespace Leetcode
                 int re = MinSubArrayLen(s, input);
                 Console.WriteLine("minimun subarray len:" + re);
             }
+            if(func == medianfunc.longestLeastK.ToString())
+            {
+                string s = "aaabb";
+                int k = 3;
+                Console.WriteLine(LongestSubstring(s, k));
+            }
         }        
     }
 
@@ -311,7 +317,7 @@ namespace Leetcode
         CopyRandomList, Permutate, LIS, RemoveKDig, ConstructTreeFromPrePost, bfs_minesweeper, sum3closet,
         sum3smaller, validtriangenumber, maxbyswap, candycrush, sum4from4group, sum4totarget, sumpath, uniqpath,
         uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist, compree1darray, compress2darray,
-        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray
+        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray,longestLeastK
     }
 }
 

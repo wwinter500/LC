@@ -5,63 +5,9 @@ using System.Text;
 using System.Collections;
 
 namespace Leetcode
-{
-    public enum hardfunc : int
-    {
-        NQueens = 0,
-        MergeLists
-    }
+{    
     public partial class _Hard
-    {
-        public List<string> Nqueen(int n = 4)
-        {
-            List<string> result = new List<string>();
-            string fl = "Q...";
-            result.Add(fl);
-            
-            //record used space
-            int[] record = new int[n];//to record occupied queen
-            record[0] = 0;
-            for (int row = 1; row < n; row++)
-            {
-                //for each line detect if that line is ok to use
-                string str = "";                
-                for (int col = 0; col < n; col++)
-                {
-                    bool avail = true;
-                    for(int i = 0; i <= row; i++)
-                    {
-                        if (col == record[i] || Math.Abs(col - record[i]) == Math.Abs(row - i))
-                        {
-                            avail = false;
-                            break;
-                        }
-                    }
-
-                    if (avail)
-                    {
-                        str += 'Q';
-                        break;
-                    }
-                    else
-                        str += '.';
-                }
-
-                result.Add(str);
-            }
-            return result;
-        }
-
-        
-
-        #region divide and conqure
-        /*312. Burst Balloons
-         */
-        public int MaxCoins(int[] nums)
-        {
-            return 0;
-        }
-
+    {                
         public void HardRun(string func)
         {
             if (func == hardfunc.NQueens.ToString())
@@ -70,7 +16,6 @@ namespace Leetcode
                 foreach (string st in r2)
                     Console.WriteLine("{0}", st);
             }
-
             if (func == hardfunc.MergeLists.ToString())
             {
                 ListNode[] input = new ListNode[3];
@@ -102,7 +47,17 @@ namespace Leetcode
                 }
                 Console.WriteLine(re);
             }
-        }
-        #endregion
+            if(func == hardfunc.longestkunique.ToString())
+            {
+                string s = "eqgkcwGFvjjmxutystqdfhuMblWbylgjxsxgnoh";
+                int k = 16;
+                Console.WriteLine(LengthOfLongestSubstringKDistinct(s, k));
+            }
+        }        
+    }
+
+    public enum hardfunc : int
+    {
+        NQueens = 0, MergeLists, longest2unique, longestkunique
     }
 }
