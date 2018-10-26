@@ -342,7 +342,7 @@ namespace Leetcode
         CopyRandomList, Permutate, LIS, RemoveKDig, ConstructTreeFromPrePost, bfs_minesweeper, sum3closet,
         sum3smaller, validtriangenumber, maxbyswap, candycrush, sum4from4group, sum4totarget, sumpath, uniqpath,
         uniqpathwithobstacle, patitionlabel, partitionLinkedList, insertocyclelinkedlist, compree1darray, compress2darray,
-        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray,longestLeastK，
+        splitArrayto4equals, splitStringToFibonacci, IsAdditiveNumber, finddupliatefile, minimunsubarray,longestLeastK,
 		SpiralMatrix, GenerateMatrix
     }
 }

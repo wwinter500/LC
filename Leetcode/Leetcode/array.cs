@@ -613,7 +613,7 @@ namespace Leetcode
             return re;
         }
         #endregion
-        #region 209 - minimum size subarray sum{same direction double pointer}
+        #region 209 - minimum size subarray sum{same direction 2 pointer}
         public int MinSubArrayLen(int s, int[] nums)
         {
             if (s <= 0 || nums == null || nums.Length == 0)
@@ -648,44 +648,50 @@ namespace Leetcode
             return minL;
         }
         #endregion
-        #region 395 - longest substring with at least K repeatable character
+        #region 395 - longest substring with at least K repeatable character -{2 pointer solution}
         public int LongestSubstring(string s, int k)
         {
+            //find not available point then segment into multipul piece
             if (s == null || s.Length == 0)
                 return 0;
-            if (k <= 1)
-                return s.Length;
 
-            int maxL = 0;
-            Dictionary<char, int> dic = new Dictionary<char, int>();            
-            int i = 0, j = 0;
-            while(i < s.Length && j < s.Length)
+            int[] recorder = new int[26];
+            int re = 0;
+            for (int ic = 1; ic <= 26; ++ic)
             {
-                int len = j - i + 1;
-                if(dic.ContainsKey(s[j]))
-                {                    
-                    dic[s[j++]]++;
-                    if (dic.Count * k <= len)
+                Array.Clear(recorder, 0, recorder.Length);
+                int i = 0, j = 0;
+                int good = 0, appear = 0;
+                while (i < s.Length && j < s.Length)
+                {
+                    if (appear <= ic)
                     {
-                        if(len > maxL)
-                            maxL = len;
-                    }                        
+                        int idx = s[j] - 'a';
+                        if (recorder[idx] == 0)
+                            appear++;
+
+                        if (++recorder[idx] == k)
+                            good++;
+                        j++;
+                    }
                     else
                     {
-                        dic[s[i]]--;
-                        if (dic[s[i]] == 0)
-                            dic.Remove(s[i]);
+                        int idx = s[i] - 'a';
+
+                        if (recorder[idx] == k)
+                            good--;
+                        if (--recorder[idx] == 0)
+                            appear--;
 
                         i++;
                     }
-                }
-                else
-                {
-                    dic.Add(s[j++], 1);
+
+                    if (appear == ic && good == appear)
+                        re = Math.Max(j - i, re);
                 }
             }
 
-            return maxL;
+            return re;
         }
 
 
