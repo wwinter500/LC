@@ -1,6 +1,6 @@
 #include "Interface.h"
 using namespace SolutionSpace;
-#define quest 35
+#define quest 28
 int main() {
 #pragma region  easy 
 #if quest == 11
@@ -51,6 +51,12 @@ int main() {
 	MedianQuest mq;
 	string str = "12";
 	cout << mq.numDecodings(str) << endl;
+#elif quest == 28
+	MedianQuest mq;
+	vector<int> nums = { 1,2,3 };
+	NumArray na(nums);
+	na.update(0, 10);
+	cout << na.sumRange(0, 2) << endl;
 #pragma endregion
 
 #pragma region hard

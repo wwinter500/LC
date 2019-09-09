@@ -188,5 +188,19 @@ int HardQuest::kthSmallestSum(vector<int> &A, vector<int> &B, int k) {
 	if (A.empty() || B.empty() || k <= 0)
 		return 0;
 	
-}
+	int n = A.size(), m = B.size();
+	priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+	pq.push({ A[0] + B[0], 0, 0 });
+	for (int i = 1; i < k; ++i) {
+		int ax = pq.top()[1], bx = pq.top()[2];
+		if (ax == 0 && bx < m - 1)
+			pq.push({ A[ax] + B[bx + 1], ax, bx + 1 });
+		if (ax < n - 1) {
+			pq.push({ A[ax + 1] + B[bx], ax + 1, bx });
+		}
 
+		pq.pop();
+	}
+
+	return pq.top()[0];
+}
