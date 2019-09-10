@@ -34,14 +34,21 @@ namespace SolutionSpace
 
 	class NumArray {
 	public:
+		vector<int> nn;
 		NumArray(vector<int> nums) {
+			nn = nums;
 		}
-
 		void update(int i, int val);
-
 		int sumRange(int i, int j);
 	};
 
+	class WordDictionary {
+	public:
+		//trie tree
+		WordDictionary(){}
+		void addWord(string &word);
+		bool search(string &word);
+	};
 	class Lintcode {
 	public:
 		Lintcode(){}
