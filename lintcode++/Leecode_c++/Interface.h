@@ -40,17 +40,18 @@ namespace SolutionSpace
 		void update(int i, int val);
 		int sumRange(int i, int j);
 	};
-	class WordDictionary {
-	public:
-		//trie tree
-		WordDictionary(){}
-		void addWord(string &word);
-		bool search(string &word);
-	};
+
 	class TrieNode {
 	public:
-		
+		TrieNode* child[26];
+		bool isEnd;
+		string str;
 
+		TrieNode(): isEnd(false), str(""){
+			for (int i = 0; i < 26; ++i) {
+				child[i] = NULL;
+			}
+		}
 	};
 	class Lintcode {
 	public:
@@ -81,18 +82,23 @@ namespace SolutionSpace
 	};
 	class HardQuest :public Lintcode {
 	public:
+		vector<Connection> lowestCost(vector<Connection>& connections);
+		int kthSmallestSum(vector<int> &A, vector<int> &B, int k);
+		vector<string> wordSearchII(vector<vector<char>> &board, vector<string> &words);
 
 		//dp 
 		int maxCoins(vector<int> &nums);
 		int mergeStones(vector<int> &stones, int K);
 		int postOffice(vector<int> &A, int k);
-		vector<Connection> lowestCost(vector<Connection>& connections);
-		int kthSmallestSum(vector<int> &A, vector<int> &B, int k);
 	};
 	class ContestQuest :public Lintcode{
 	public:
 		int skipstones(vector<int> stones, int n, int m, int target);
 		long long playgames(vector<int> A);
 	};
+
+	TrieNode* trie_root;
+	vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
+	vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
 }
 

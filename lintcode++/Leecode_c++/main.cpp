@@ -1,6 +1,6 @@
 #include "Interface.h"
 using namespace SolutionSpace;
-#define quest 28
+#define quest 36
 int main() {
 #pragma region  easy 
 #if quest == 11
@@ -78,6 +78,9 @@ int main() {
 	vector<int> A = {1, 7, 11};
 	vector<int> B = { 2, 4, 6 };
 	cout << hq.kthSmallestSum(A, B, 3) << endl;
+#elfi quest == 36
+	HardQuest hq;
+	
 #pragma endregion
 
 #pragma region contest
