@@ -1,5 +1,6 @@
 #include "Interface.h"
 using namespace SolutionSpace;
+//Union find
 vector<int> parents;
 int np;
 int Find(int a) {
@@ -28,6 +29,12 @@ bool Union(int a, int b) {
 
 	return false;
 }
+
+//tritree
+TrieNode* trie_root;
+vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
+vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
+
 /*Lintcode 168- burst balloons - dp*/
 int HardQuest::maxCoins(vector<int> &nums) {
 	if (nums.empty())

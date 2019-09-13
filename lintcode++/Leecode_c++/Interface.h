@@ -11,15 +11,16 @@
 #include <functional>
 #include <unordered_map>
 using namespace std;
+
+
 namespace SolutionSpace
-{
+{	
 	/*comman function*/
 	struct Employee
 	{
 		int id, importance;
 		vector<int> subordinates;
 	};
-
 	class Connection {
 	public:
 		string city1, city2;
@@ -40,12 +41,12 @@ namespace SolutionSpace
 		void update(int i, int val);
 		int sumRange(int i, int j);
 	};
-
 	class TrieNode {
 	public:
 		TrieNode* child[26];
 		bool isEnd;
 		string str;
+		set<int> fre;
 
 		TrieNode(): isEnd(false), str(""){
 			for (int i = 0; i < 26; ++i) {
@@ -96,9 +97,5 @@ namespace SolutionSpace
 		int skipstones(vector<int> stones, int n, int m, int target);
 		long long playgames(vector<int> A);
 	};
-
-	TrieNode* trie_root;
-	vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
-	vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
 }
 
