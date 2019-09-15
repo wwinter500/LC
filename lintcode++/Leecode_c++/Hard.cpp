@@ -35,7 +35,7 @@ TrieNode* trie_root;
 vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
 vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
 
-/*Lintcode 168- burst balloons - dp*/
+///
 int HardQuest::maxCoins(vector<int> &nums) {
 	if (nums.empty())
 		return 0;
@@ -65,7 +65,7 @@ int HardQuest::maxCoins(vector<int> &nums) {
 	return dp[0][n - 1];
 }
 
-/*Lintcode 1798 - minimum cost to merge stones - dp*/
+///
 int helper(vector<int> stones, int left, int right, int k, unordered_map<pair<int, int>, int> &ump) {
 	//Incorrect solution as memorized searching
 	if (left > right)
@@ -131,7 +131,8 @@ int HardQuest::mergeStones(vector<int> &stones, int K) {
 
 	return dp[0][n - 1];
 }
-/*Lintcode 435 post office problem - serials dp*/
+
+///
 int HardQuest::postOffice(vector<int> &A, int k) {
 	if(A.empty() || k <= 0)
 		return 0;
@@ -141,7 +142,8 @@ int HardQuest::postOffice(vector<int> &A, int k) {
 
 	return dp[0][n - 1];
 }
-/*Lintcode - 629 minimun spanning tree*/
+
+///
 vector<Connection> HardQuest::lowestCost(vector<Connection>& connections)
 {
 	//minimun spanning tree
@@ -190,7 +192,8 @@ vector<Connection> HardQuest::lowestCost(vector<Connection>& connections)
 
 	return ans;
 }
-/*Lintcode - 465 kth sum within two sorted array*/
+
+///
 int HardQuest::kthSmallestSum(vector<int> &A, vector<int> &B, int k) {
 	if (A.empty() || B.empty() || k <= 0)
 		return 0;
@@ -211,7 +214,8 @@ int HardQuest::kthSmallestSum(vector<int> &A, vector<int> &B, int k) {
 
 	return pq.top()[0];
 }
-/*Lintcode - 132 word search II*/
+
+///
 void insertToTrieTree(string str) {
 	TrieNode* cp = trie_root;
 	for (int i = 0; i < str.size(); ++i) {
@@ -224,7 +228,6 @@ void insertToTrieTree(string str) {
 	cp->isEnd = true;
 	cp->str = str;
 }
-
 void searchTrieTree(vector<vector<char>> &board, vector<vector<bool>> &visited, vector<string> &ans, TrieNode* nn, int y, int x) {
 	if (nn->str != "") {
 		ans.push_back(nn->str);
@@ -255,3 +258,5 @@ vector<string> HardQuest::wordSearchII(vector<vector<char>> &board, vector<strin
 
 	return ans;
 }
+
+///

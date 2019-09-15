@@ -12,7 +12,7 @@
 #include <unordered_map>
 using namespace std;
 
-
+static unordered_map<int, int> questions;
 namespace SolutionSpace
 {	
 	/*comman function*/
@@ -54,48 +54,53 @@ namespace SolutionSpace
 			}
 		}
 	};
-	class Lintcode {
+	class Interface {
 	public:
-		Lintcode(){}
-		~Lintcode() {}
+		Interface();
+		~Interface();
+		static void call(int quest);
+		
+	private:
+		static string getQuestionInformation(int id);
 	};
-	class EasyQuest:public Lintcode
+
+	class EasyQuest
 	{
 	public:
 		//int getImportance(vector<Employee*> employees, int id);
-
 		void runTest(int questid);
 	};
-	class MedianQuest :public Lintcode
+
+	class MedianQuest
 	{
 	public:
-		int calculate(string& s);
-		vector<int> partitionLabels(string &input);
-		int kthSmallest(vector<vector<int>> &matrix, int k);
-		int trapRainWater(vector<int> &heights);
-		int minimumSize(vector<int> &nums, int s);
-		int lengthOfLongestSubstring(string &s);
-		int lengthOfLongestSubstringKDistinct(string &s, int k);
+		static int calculate(string& s);
+		static vector<int> partitionLabels(string &input);
+		static int kthSmallest(vector<vector<int>> &matrix, int k);
+		static int trapRainWater(vector<int> &heights);
+		static int minimumSize(vector<int> &nums, int s);
+		static int lengthOfLongestSubstring(string &s);
+		static int lengthOfLongestSubstringKDistinct(string &s, int k);
 		
 		//dp
-		int numDecodings(string &s);
-		int longestPalindromeSubseq(string &s);
+		static int numDecodings(string &s);
+		static int longestPalindromeSubseq(string &s);
 	};
-	class HardQuest :public Lintcode {
+	class HardQuest{
 	public:
-		vector<Connection> lowestCost(vector<Connection>& connections);
-		int kthSmallestSum(vector<int> &A, vector<int> &B, int k);
-		vector<string> wordSearchII(vector<vector<char>> &board, vector<string> &words);
+		static vector<Connection> lowestCost(vector<Connection>& connections);
+		static int kthSmallestSum(vector<int> &A, vector<int> &B, int k);
+		static vector<string> wordSearchII(vector<vector<char>> &board, vector<string> &words);
 
 		//dp 
-		int maxCoins(vector<int> &nums);
-		int mergeStones(vector<int> &stones, int K);
-		int postOffice(vector<int> &A, int k);
+		static int maxCoins(vector<int> &nums);
+		static int mergeStones(vector<int> &stones, int K);
+		static int postOffice(vector<int> &A, int k);
 	};
-	class ContestQuest :public Lintcode{
+	class ContestQuest{
 	public:
-		int skipstones(vector<int> stones, int n, int m, int target);
-		long long playgames(vector<int> A);
+		static int skipstones(vector<int> stones, int n, int m, int target);
+		static long long playgames(vector<int> A);
 	};
 }
 

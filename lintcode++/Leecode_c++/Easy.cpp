@@ -2,7 +2,4 @@
 using namespace std;
 using namespace SolutionSpace;
 
-
-void EasyQuest::runTest(int questid) {
-
-}
+void EasyQuest::runTest(int questid) {}

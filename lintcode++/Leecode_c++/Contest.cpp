@@ -21,7 +21,6 @@ int ContestQuest::skipstones(vector<int> stones, int n, int m, int target) {
 
 	return dp[0][n + 1];
 }
-
 long long ContestQuest::playgames(vector<int> A) {
 	//binary search
 	if (A.empty())

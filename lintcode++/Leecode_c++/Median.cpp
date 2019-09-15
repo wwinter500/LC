@@ -1,7 +1,7 @@
 #include "Interface.h"
 
 using namespace SolutionSpace;
-/*Lintcode 978*/
+
 void updateStacks(stack<char> &ops, stack<int> &vals, int newv) {
 	int target = newv;
 	while (!vals.empty() && !ops.empty()) {
@@ -71,7 +71,6 @@ int MedianQuest::calculate(string &s) {
 	return vals.top();
 }
 
-/*Lintcode 1045*/
 vector<int> MedianQuest::partitionLabels(string &input) {
 	if (input.length() == 0)
 		return {};
@@ -118,12 +117,13 @@ vector<int> MedianQuest::partitionLabels(string &input) {
 	}
 	return ans;
 }
-/*Lintcode 401 - kth smallest in sorted matrix*/
+
 int MedianQuest::kthSmallest(vector<vector<int>> &matrix, int k) {
 	//binary search max / min
 	if (matrix.empty() || k <= 0)
 		return 0;
 }
+
 int MedianQuest::trapRainWater(vector<int> &heights) {
 	if(heights.empty())
 		return 0;
@@ -157,6 +157,7 @@ int MedianQuest::trapRainWater(vector<int> &heights) {
 
 	return ans;
 }
+
 int MedianQuest::minimumSize(vector<int> &nums, int s) {
 	if (nums.empty())
 		return -1;
@@ -183,8 +184,8 @@ int MedianQuest::minimumSize(vector<int> &nums, int s) {
 
 	return ans;
 }
+
 int MedianQuest::lengthOfLongestSubstring(string &s) {
-	//length of longest substring without duplicate character
 	if (s.length() == 0)
 		return 0;
 
@@ -215,6 +216,7 @@ int MedianQuest::lengthOfLongestSubstring(string &s) {
 
 	return ans;
 }
+
 int MedianQuest::lengthOfLongestSubstringKDistinct(string &s, int k) {
 	if (s.length() == 0)
 		return 0;
@@ -246,7 +248,7 @@ int MedianQuest::lengthOfLongestSubstringKDistinct(string &s, int k) {
 
 	return ans;
 }
-/*Lintcode 668 - range dp*/
+
 int MedianQuest::longestPalindromeSubseq(string &s){
 	if (s.length() == 0)
 		return 0;
@@ -268,15 +270,16 @@ int MedianQuest::longestPalindromeSubseq(string &s){
 
 	return dp[0][n - 1];
 }
-/*Lintcode 512 - Decode ways*/
+
 int MedianQuest::numDecodings(string &s) {
 	if(s.length() == 0)
 		return 0;
 
 	int n = s.length();
-	vector<int> dp(n, 0);
-	dp[0] = (s[0] == '0' ? 0 : 1);
-	for (int i = 1; i < n; ++i) {
+	vector<int> dp(n + 1, 0);
+	dp[0] = 1;
+	dp[1] = (s[0] == '0' ? 0 : 1);
+	for (int i = 2; i <= n; ++i) {
 		if (s[i] != '0')
 			dp[i] = dp[i - 1];
 		if (s[i - 1] != '0' && stoi(s.substr(i - 1, 2)) <= 26) {
@@ -287,6 +290,7 @@ int MedianQuest::numDecodings(string &s) {
 			return 0;
 	}
 	
-	return dp[n - 1];
+	return dp[n];
 }
+
 /*Lintcode 840 - range sum query*/
