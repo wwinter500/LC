@@ -19,6 +19,7 @@ Interface::Interface() {
 	questions[512] = 27;
 	questions[386] = 28;
 	questions[668] = 29;
+	questions[431] = 30;
 
 	questions[1798] = 31;
 	questions[168] = 32;
@@ -26,6 +27,7 @@ Interface::Interface() {
 	questions[629] = 34;
 	questions[465] = 35;
 	questions[132] = 36;
+	questions[635] = 37;
 
 	questions[40001] = 41;
 	questions[40002] = 42;
@@ -101,6 +103,10 @@ void Interface::call(int quest) {
 		string str = "fnwofnaobmaowmofwo";
 		cout << MedianQuest::longestPalindromeSubseq(str) << endl;
 	}
+	else if (quest == 431) {
+		cout << "check code, no test case" << endl;
+	}
+	//Hard Section
 	else if (quest == 1798) {
 		vector<int> input = { 3,2, 4,1 };
 		int k = 2;
@@ -129,9 +135,10 @@ void Interface::call(int quest) {
 		vector<int> B = { 2, 4, 6 };
 		cout << HardQuest::kthSmallestSum(A, B, 3) << endl;
 	}
-	else if (quest == 132) {
+	else if (quest == 132 || quest == 635) {
 		cout << "check code, no test case" << endl;
 	}
+	//Contest section
 	else if (quest == 40001) {
 		vector<int> input = { 10,10,10,10,10,10,10,10,10,10,10,10 };
 		cout << ContestQuest::playgames(input) << endl;
@@ -168,6 +175,10 @@ string Interface::getQuestionInformation(int id) {
 		res = "length of longest substring with at most unique character"; break;
 	case 512:
 		res = "Decode ways"; break;
+	case 431:
+		res = "group of connection on Undirection Graph"; break;
+	
+	//hard section
 	case 1798:
 		res = "minimum cost to merge stones - dp"; break;
 	case 168:
@@ -180,6 +191,10 @@ string Interface::getQuestionInformation(int id) {
 		res = "kth sum within two sorted array"; break;
 	case 668:
 		res = "longest subseq of palindron - range dp"; break;
+	case 635:
+		res = "boggle game -- trie tree"; break;
+
+	//contest section
 	case 40001:
 		res = "play games"; break;
 	case 40002:

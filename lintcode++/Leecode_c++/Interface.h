@@ -14,8 +14,43 @@ using namespace std;
 
 static unordered_map<int, int> questions;
 namespace SolutionSpace
-{	
+{
+	//Union find
+	static vector<int> parents;
+	static int np;
+	static int Find(int a) {
+		int tmp = a;
+		while (a != parents[a]) {
+			a = parents[a];
+		}
+
+		while (tmp != parents[tmp]) {
+			int tp = parents[tmp];
+			parents[tmp] = a;
+			tmp = tp;
+		}
+
+		return a;
+	}
+	static bool Union(int a, int b) {
+		int ap = Find(a);
+		int bp = Find(b);
+
+		if (ap != bp) {
+			parents[ap] = bp;
+			np--;
+			return true;
+		}
+
+		return false;
+	}
+
 	/*comman function*/
+	struct UndirectedGraphNode {
+		int label;
+		vector<UndirectedGraphNode *> neighbors;
+		UndirectedGraphNode(int x) : label(x) {};
+	};
 	struct Employee
 	{
 		int id, importance;

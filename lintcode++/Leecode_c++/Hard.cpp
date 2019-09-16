@@ -1,34 +1,6 @@
 #include "Interface.h"
 using namespace SolutionSpace;
 //Union find
-vector<int> parents;
-int np;
-int Find(int a) {
-	int tmp = a;
-	while (a != parents[a]) {
-		a = parents[a];
-	}
-
-	while (tmp != parents[tmp]) {
-		int tp = parents[tmp];
-		parents[tmp] = a;
-		tmp = tp;
-	}
-
-	return a;
-}
-bool Union(int a, int b) {
-	int ap = Find(a);
-	int bp = Find(b);
-
-	if (ap != bp) {
-		parents[ap] = bp;
-		np--;
-		return true;
-	}
-
-	return false;
-}
 
 //tritree
 TrieNode* trie_root;
@@ -153,7 +125,7 @@ vector<Connection> HardQuest::lowestCost(vector<Connection>& connections)
 	vector<Connection> ans;
 	int idx = 0;
 	unordered_map<string, int> cities;
-	map<int, set<vector<string>>> costs;
+	map<int, set<vector<string>>> costs;//sort
 	unordered_map<string, Connection> mp;
 	
 	for (Connection con : connections) {
