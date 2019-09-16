@@ -38,8 +38,12 @@ namespace SolutionSpace
 	};
 	class NumArray {
 	public:
-		vector<int> nn;
+		//format of segment tree
+		// 1 ~ n | 1 ~ n / 2 | n / 2 + 1 ~ n | 1 ~ n / 4 | ....... | 1 | 2 | 3
+		vector<int> arr;
+		vector<int> sums;
 		NumArray(vector<int> nums);
+		int sum(int idx);
 		void update(int i, int val);
 		int sumRange(int i, int j);
 	};
@@ -134,11 +138,13 @@ namespace SolutionSpace
 
 		return false;
 	}
+	
 
 	static TrieNode* trie_root;
 	static vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
 	static vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
 
+	static inline int lowbit(int x) { return x & (-x + 1); }
 	static unordered_map<int, int> questions;
 }
 

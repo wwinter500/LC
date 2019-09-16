@@ -28,6 +28,7 @@ Interface::Interface() {
 	questions[465] = 35;
 	questions[132] = 36;
 	questions[635] = 37;
+	questions[840] = 38;
 
 	questions[40001] = 41;
 	questions[40002] = 42;
@@ -105,6 +106,9 @@ void Interface::call(int quest) {
 	}
 	else if (quest == 431) {
 		cout << "check code, no test case" << endl;
+	}
+	else if (quest == 840) {
+		
 	}
 	//Hard Section
 	else if (quest == 1798) {
@@ -193,7 +197,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "longest subseq of palindron - range dp"; break;
 	case 635:
 		res = "boggle game -- trie tree"; break;
-
+	case 840:
+		res = "range sum with mutable -- segment tree"; break;
 	//contest section
 	case 40001:
 		res = "play games"; break;
