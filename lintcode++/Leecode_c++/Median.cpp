@@ -332,4 +332,7 @@ vector<vector<int>> connectedSet(vector<UndirectedGraphNode*>& nodes) {
 	}
 	return res;
 }
-/*Lintcode 840 - range sum query*/
+
+NumArray::NumArray(vector<int> nums) {
+
+}
