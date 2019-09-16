@@ -1,13 +1,6 @@
 #include "Interface.h"
 using namespace SolutionSpace;
-//Union find
 
-//tritree
-TrieNode* trie_root;
-vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
-vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
-
-///
 int HardQuest::maxCoins(vector<int> &nums) {
 	if (nums.empty())
 		return 0;

@@ -12,39 +12,8 @@
 #include <unordered_map>
 using namespace std;
 
-static unordered_map<int, int> questions;
 namespace SolutionSpace
 {
-	//Union find
-	static vector<int> parents;
-	static int np;
-	static int Find(int a) {
-		int tmp = a;
-		while (a != parents[a]) {
-			a = parents[a];
-		}
-
-		while (tmp != parents[tmp]) {
-			int tp = parents[tmp];
-			parents[tmp] = a;
-			tmp = tp;
-		}
-
-		return a;
-	}
-	static bool Union(int a, int b) {
-		int ap = Find(a);
-		int bp = Find(b);
-
-		if (ap != bp) {
-			parents[ap] = bp;
-			np--;
-			return true;
-		}
-
-		return false;
-	}
-
 	/*comman function*/
 	struct UndirectedGraphNode {
 		int label;
@@ -137,5 +106,41 @@ namespace SolutionSpace
 		static int skipstones(vector<int> stones, int n, int m, int target);
 		static long long playgames(vector<int> A);
 	};
+
+	//Union find
+	static vector<int> parents;
+	static int np;
+	static int Find(int a) {
+		int tmp = a;
+		while (a != parents[a]) {
+			a = parents[a];
+		}
+
+		while (tmp != parents[tmp]) {
+			int tp = parents[tmp];
+			parents[tmp] = a;
+			tmp = tp;
+		}
+
+		return a;
+	}
+	static inline bool Union(int a, int b) {
+		int ap = Find(a);
+		int bp = Find(b);
+
+		if (ap != bp) {
+			parents[ap] = bp;
+			np--;
+			return true;
+		}
+
+		return false;
+	}
+
+	static TrieNode* trie_root;
+	static vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
+	static vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };
+
+	static unordered_map<int, int> questions;
 }
 
