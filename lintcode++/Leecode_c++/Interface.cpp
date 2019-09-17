@@ -3,6 +3,7 @@ using namespace SolutionSpace;
 
 Interface::Interface() {
 	questions[638] = 11;
+	questions[626] = 12;
 
 	questions[978] = 21;
 	questions[1045] = 22;
@@ -24,7 +25,7 @@ Interface::Interface() {
 	questions[132] = 36;
 	questions[635] = 37;
 	questions[634] = 39;
-
+	
 	questions[40001] = 41;
 	questions[40002] = 42;
 }
@@ -58,6 +59,17 @@ void Interface::call(int quest) {
 		cout << "Level: " << "CONTEST" << endl;
 
 	//run solution
+	if (level == 1) {
+		EasyQuest::run(quest);
+	}
+	else if (level == 2) {
+		MedianQuest::run(quest);
+	}
+	else if (level == 3) {
+		HardQuest::run(quest);
+	}
+	else if (level == 4)
+		ContestQuest::run(quest);
 }
 
 string Interface::getQuestionInformation(int id) {
@@ -65,6 +77,8 @@ string Interface::getQuestionInformation(int id) {
 	switch (id) {
 	case 638:
 		res = "check if string a can be replaced by b -- HIGH FREQ - LINKEDIN"; break;
+	case 626:
+		res = "check if rectange overlapped or not -- HIGH FREQ - AMAZON"; break;
 	//median section
 	case 132:
 		res = "word search II"; break;

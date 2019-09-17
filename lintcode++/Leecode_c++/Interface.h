@@ -20,6 +20,12 @@ namespace SolutionSpace
 		vector<UndirectedGraphNode *> neighbors;
 		UndirectedGraphNode(int x) : label(x) {};
 	};
+	struct Point {
+		int x;
+		int y;
+		Point() : x(0), y(0) {}
+		Point(int a, int b) : x(a), y(b) {}
+	};
 	struct Employee
 	{
 		int id, importance;
@@ -75,6 +81,7 @@ namespace SolutionSpace
 	public:
 		static void run(int quest);
 		static bool isIsomorphic(string &s, string &t);
+		static bool doOverlap(Point &l1, Point &r1, Point &l2, Point &r2);
 	};
 
 	class MedianQuest
