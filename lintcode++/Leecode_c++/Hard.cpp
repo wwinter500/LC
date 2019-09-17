@@ -225,3 +225,48 @@ vector<string> HardQuest::wordSearchII(vector<vector<char>> &board, vector<strin
 }
 
 ///
+bool search(vector<vector<char>> &board, vector<vector<bool>> &visited, TrieNode* nn, int y, int x) {
+	visited[y][x] = true;
+	if (nn->str != "") {
+		return true;
+	}
+
+	for (auto dir : dirs4) {
+		int ny = y + dir[0], nx = x + dir[1];
+		if (ny >= 0 && ny < board.size() && nx >= 0 && nx < board[0].size() && visited[ny][nx] == false && nn->child[board[ny][nx] - 'a']) {
+			if (search(board, visited, nn->child[board[ny][nx] - 'a'], ny, nx)) {
+				return true;
+			}
+		}
+	}
+
+	visited[y][x] = false;
+	return false;
+}
+int HardQuest::boggleGame(vector<vector<char>> &board, vector<string> &words) {
+	int n = board.size();
+	int m = board[0].size();
+
+	trie_root = new TrieNode();
+	vector<vector<bool>> visited(n, vector<bool>(m, false));
+	for (string str : words) {
+		insertToTrieTree(str);
+	}
+
+	int ans = 0;
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (trie_root->child[board[i][j] - 'a']) {
+				if (search(board, visited, trie_root->child[board[i][j] - 'a'], i, j))
+					ans += 1;
+			}
+		}
+	}
+
+	return ans;
+}
+
+///
+vector<vector<string>> HardQuest::wordSquares(vector<string> &words) {
+	return {};
+}

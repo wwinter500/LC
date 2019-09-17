@@ -97,6 +97,8 @@ namespace SolutionSpace
 		static vector<Connection> lowestCost(vector<Connection>& connections);
 		static int kthSmallestSum(vector<int> &A, vector<int> &B, int k);
 		static vector<string> wordSearchII(vector<vector<char>> &board, vector<string> &words);
+		static int boggleGame(vector<vector<char>> &board, vector<string> &words);
+		static vector<vector<string>> wordSquares(vector<string> &words);
 
 		//dp 
 		static int maxCoins(vector<int> &nums);

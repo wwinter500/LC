@@ -1,13 +1,5 @@
 #include "Interface.h"
 using namespace SolutionSpace;
-void NumArray::update(int i, int val) {
-	//update value of index i to val
-}
-
-int NumArray::sumRange(int i, int j) {
-	//return sum of index from i to j
-	return 0;
-}
 
 Interface::Interface() {
 	questions[978] = 21;
@@ -29,6 +21,7 @@ Interface::Interface() {
 	questions[132] = 36;
 	questions[635] = 37;
 	questions[840] = 38;
+	questions[634] = 39;
 
 	questions[40001] = 41;
 	questions[40002] = 42;
@@ -108,7 +101,6 @@ void Interface::call(int quest) {
 		cout << "check code, no test case" << endl;
 	}
 	else if (quest == 840) {
-		
 	}
 	//Hard Section
 	else if (quest == 1798) {
@@ -139,8 +131,20 @@ void Interface::call(int quest) {
 		vector<int> B = { 2, 4, 6 };
 		cout << HardQuest::kthSmallestSum(A, B, 3) << endl;
 	}
-	else if (quest == 132 || quest == 635) {
+	else if (quest == 132) {
 		cout << "check code, no test case" << endl;
+	}
+	else if (quest == 635) {
+		vector<vector<char>> board = { {'a','b','c','d','e','f','g'},
+									   {'h','u','y','u','y','w','w'},
+									   {'g','h','i','h','j','u','i'},
+									   {'w','u','i','i','u','w','w'} };
+		vector<string> words = { "efg","defi","gh","iuw","ww","iw","ghih","dasf","aaa" };
+		cout << HardQuest::boggleGame(board, words) << endl;
+	}
+	else if (quest == 634) {
+		vector<string> input = { "area", "lead", "wall", "lady", "ball" };
+		auto res = HardQuest::wordSquares(input);
 	}
 	//Contest section
 	else if (quest == 40001) {
@@ -181,7 +185,9 @@ string Interface::getQuestionInformation(int id) {
 		res = "Decode ways"; break;
 	case 431:
 		res = "group of connection on Undirection Graph"; break;
-	
+	case 840:
+		res = "range sum with mutable -- segment tree"; break;
+
 	//hard section
 	case 1798:
 		res = "minimum cost to merge stones - dp"; break;
@@ -197,8 +203,9 @@ string Interface::getQuestionInformation(int id) {
 		res = "longest subseq of palindron - range dp"; break;
 	case 635:
 		res = "boggle game -- trie tree"; break;
-	case 840:
-		res = "range sum with mutable -- segment tree"; break;
+	case 634:
+		res = "find all words squares"; break;
+
 	//contest section
 	case 40001:
 		res = "play games"; break;
