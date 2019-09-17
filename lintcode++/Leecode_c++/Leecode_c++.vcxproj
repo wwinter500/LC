@@ -22,7 +22,7 @@
     <ProjectGuid>{982C990C-54D0-4A60-AD47-001F0D5B53C1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Leecode_c</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>tryout_c++</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -150,9 +150,15 @@
     <ClCompile Include="Contest.cpp" />
     <ClCompile Include="Easy.cpp" />
     <ClCompile Include="Hard.cpp" />
+    <ClCompile Include="hard_dp.cpp" />
+    <ClCompile Include="hard_tritree.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Median.cpp" />
+    <ClCompile Include="med_bs.cpp" />
+    <ClCompile Include="med_dp.cpp" />
+    <ClCompile Include="med_segTree.cpp" />
+    <ClCompile Include="med_tritree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface.h" />

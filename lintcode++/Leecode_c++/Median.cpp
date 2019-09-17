@@ -2,6 +2,56 @@
 
 using namespace SolutionSpace;
 
+void MedianQuest::run(int quest) {
+	if (quest == 978) {
+		string input = "2-4-(8+2-6+(8+4-(1)+8-10)) + 6";
+		cout << "Result:" << MedianQuest::calculate(input) << endl;
+	}
+	else if (quest == 1045) {
+		string input = "abcab";
+		vector<int> ans = MedianQuest::partitionLabels(input);
+		for (int v : ans)
+			cout << v << " ";
+		cout << endl;
+	}
+	else if (quest == 401) {
+		vector<vector<int>> input = { { 1 ,5 ,7 },{ 3 ,7 ,8 },{ 4 ,8 ,9 } };
+		int ans = MedianQuest::kthSmallest(input, 2);
+		cout << ans << endl;
+	}
+	else if (quest == 363) {
+		vector<int> input = { 3,1,2,4,0,1,0,3,0,2 };// result = 6
+		cout << "Result: " << MedianQuest::trapRainWater(input) << endl;
+	}
+	else if (quest == 406) {
+		vector<int> in = { 2, 3,1 ,2,4,3 }; //result = 2
+		cout << MedianQuest::minimumSize(in, 7) << endl;
+	}
+	else if (quest == 384) {
+		string s = "WORLD";//result = 4
+		cout << "longest length with at most k: " << MedianQuest::lengthOfLongestSubstringKDistinct(s, 4) << endl;
+	}
+	else if (quest == 512) {
+		string str = "12";
+		cout << MedianQuest::numDecodings(str) << endl;
+	}
+	else if (quest == 386) {
+		string str = "abesxswas";
+		int k = 3;
+		cout << MedianQuest::lengthOfLongestSubstringKDistinct(str, k) << endl;
+	}
+	else if (quest == 668) {
+		string str = "fnwofnaobmaowmofwo";
+		cout << MedianQuest::longestPalindromeSubseq(str) << endl;
+	}
+	else if (quest == 431) {
+		cout << "check code, no test case" << endl;
+	}
+	else if (quest == 840) {
+		cout << "check code, no test case" << endl;
+	}
+}
+
 void updateStacks(stack<char> &ops, stack<int> &vals, int newv) {
 	int target = newv;
 	while (!vals.empty() && !ops.empty()) {
@@ -71,6 +121,12 @@ int MedianQuest::calculate(string &s) {
 	return vals.top();
 }
 
+int MedianQuest::kthSmallest(vector<vector<int>> &matrix, int k) {
+	//binary search max / min
+	if (matrix.empty() || k <= 0)
+		return 0;
+}
+
 vector<int> MedianQuest::partitionLabels(string &input) {
 	if (input.length() == 0)
 		return {};
@@ -116,12 +172,6 @@ vector<int> MedianQuest::partitionLabels(string &input) {
 		ans.push_back(tmp.second - tmp.first + 1);
 	}
 	return ans;
-}
-
-int MedianQuest::kthSmallest(vector<vector<int>> &matrix, int k) {
-	//binary search max / min
-	if (matrix.empty() || k <= 0)
-		return 0;
 }
 
 int MedianQuest::trapRainWater(vector<int> &heights) {
@@ -249,50 +299,6 @@ int MedianQuest::lengthOfLongestSubstringKDistinct(string &s, int k) {
 	return ans;
 }
 
-int MedianQuest::longestPalindromeSubseq(string &s){
-	if (s.length() == 0)
-		return 0;
-	
-	int n = s.length();
-	vector<vector<int>> dp(n, vector<int>(n, 0));
-	for (int i = 0; i < n; ++i) {
-		dp[i][i] = 1;
-	}
-
-	for (int i = n - 2; i >= 0; --i) {
-		for (int j = i + 1; j < n; ++j) {
-			if (s[i] == s[j])
-				dp[i][j] = dp[i + 1][j - 1] + 2;
-			else
-				dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
-		}
-	}
-
-	return dp[0][n - 1];
-}
-
-int MedianQuest::numDecodings(string &s) {
-	if(s.length() == 0)
-		return 0;
-
-	int n = s.length();
-	vector<int> dp(n + 1, 0);
-	dp[0] = 1;
-	dp[1] = (s[0] == '0' ? 0 : 1);
-	for (int i = 2; i <= n; ++i) {
-		if (s[i] != '0')
-			dp[i] = dp[i - 1];
-		if (s[i - 1] != '0' && stoi(s.substr(i - 1, 2)) <= 26) {
-			dp[i] += dp[i - 2];
-		}
-
-		if (dp[i] == 0)
-			return 0;
-	}
-	
-	return dp[n];
-}
-
 vector<vector<int>> connectedSet(vector<UndirectedGraphNode*>& nodes) {
 	if (nodes.empty())
 		return {};
@@ -331,36 +337,4 @@ vector<vector<int>> connectedSet(vector<UndirectedGraphNode*>& nodes) {
 		res.push_back(vec);
 	}
 	return res;
-}
-
-NumArray::NumArray(vector<int> nums) {
-	arr = vector<int>(nums.size());
-	for (int i = 0; i < nums.size(); ++i)
-		arr[i] = nums[i];
-
-	sums = vector<int>(nums.size() + 1, 0);
-	for (int i = 0; i < nums.size(); ++i)
-		update(i, nums[i]);
-}
-int NumArray::sum(int idx) {
-	idx++;
-	int res = 0;
-	while (idx <= arr.size()) {
-		res += sums[idx];
-		idx -= lowbit(idx);
-	}
-
-	return res;
-}
-int NumArray::sumRange(int i, int j) {
-	return sum(i) - sum(j - 1);
-}
-void NumArray::update(int i, int val) {
-	int diff = val - arr[i];
-	arr[i] = val;
-	i += 1;
-	while(i <= arr.size()){
-		sums[i] += diff;
-		i += lowbit(i);
-	}
 }

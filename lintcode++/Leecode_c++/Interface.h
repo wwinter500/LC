@@ -73,13 +73,14 @@ namespace SolutionSpace
 	class EasyQuest
 	{
 	public:
-		//int getImportance(vector<Employee*> employees, int id);
-		void runTest(int questid);
+		static void run(int quest);
+		static bool isIsomorphic(string &s, string &t);
 	};
 
 	class MedianQuest
 	{
 	public:
+		static void run(int quest);
 		static int calculate(string& s);
 		static vector<int> partitionLabels(string &input);
 		static int kthSmallest(vector<vector<int>> &matrix, int k);
@@ -94,6 +95,8 @@ namespace SolutionSpace
 	};
 	class HardQuest{
 	public:
+		static void run(int quest);
+
 		static vector<Connection> lowestCost(vector<Connection>& connections);
 		static int kthSmallestSum(vector<int> &A, vector<int> &B, int k);
 		static vector<string> wordSearchII(vector<vector<char>> &board, vector<string> &words);
@@ -107,6 +110,8 @@ namespace SolutionSpace
 	};
 	class ContestQuest{
 	public:
+		static void run(int quest);
+
 		static int skipstones(vector<int> stones, int n, int m, int target);
 		static long long playgames(vector<int> A);
 	};
