@@ -34,10 +34,10 @@ bool EasyQuest::isIsomorphic(string &s, string &t) {
 
 bool EasyQuest::doOverlap(Point &l1, Point &r1, Point &l2, Point &r2) {
 	int x11 = l1.x, x12 = r1.x, x21 = l2.x, x22 = r2.x;
-	int y11 = l1.x, y12 = r1.x, y21 = l2.y, y22 = r2.y;
+	int y11 = l1.y, y12 = r1.y, y21 = l2.y, y22 = r2.y;
 
-	if (((x11 >= x21 && x11 < x22) || (x12 > x21 && x12 <= x22)) &&
-		((y11 >= y21 && y11 < y22) || (y12 > y21 && y12 <= y22)))
+	if (((x11 > x21 && x11 <= x22) || (x12 >= x21 && x12 < x22) || (x11 <= x21 && x12 >= x22) || (x11 >= x21 && x12 <= x22)) &&
+		((y12 > y22 && y12 <= y21) || (y11 >= y22 && y11 < y21) || (y12 <= y22 && y11 >= y21) || (y12 >= y22 && y11 <= y21)))
 		return true;
 
 	return false;
