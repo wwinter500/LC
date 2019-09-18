@@ -51,6 +51,9 @@
     <ClCompile Include="hard_dp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="med_bfs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface.h">

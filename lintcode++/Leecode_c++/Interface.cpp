@@ -16,6 +16,7 @@ Interface::Interface() {
 	questions[668] = 29;
 	questions[431] = 210;
 	questions[840] = 211;
+	questions[477] = 212;
 	
 	questions[1798] = 31;
 	questions[168] = 32;
@@ -102,6 +103,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "group of connection on Undirection Graph"; break;
 	case 840:
 		res = "range sum with mutable -- segment tree"; break;
+	case 477:
+		res = "flip char 'O' to 'X' if not connected to boarder -- Unionfind or BFS"; break;
 	
 	//hard section
 	case 1798:

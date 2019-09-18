@@ -50,6 +50,20 @@ void MedianQuest::run(int quest) {
 	else if (quest == 840) {
 		cout << "check code, no test case" << endl;
 	}
+	else if (quest == 477) {
+		vector<vector<char>> board = { {'X','X','X','X'},
+									   {'X','O','O','X'},
+									   {'X','X','O','X'},
+									   {'X','O','X','X'} };
+
+		MedianQuest::surroundedRegions(board);
+
+		for (auto vec : board) {
+			for (auto ch : vec)
+				cout << ch << " ";
+			cout << endl;
+		}
+	}
 }
 
 void updateStacks(stack<char> &ops, stack<int> &vals, int newv) {

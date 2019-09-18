@@ -22,7 +22,7 @@
     <ProjectGuid>{982C990C-54D0-4A60-AD47-001F0D5B53C1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Leecode_c</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
     <ProjectName>tryout_c++</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -155,6 +155,7 @@
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Median.cpp" />
+    <ClCompile Include="med_bfs.cpp" />
     <ClCompile Include="med_bs.cpp" />
     <ClCompile Include="med_dp.cpp" />
     <ClCompile Include="med_segTree.cpp" />

@@ -95,7 +95,8 @@ namespace SolutionSpace
 		static int minimumSize(vector<int> &nums, int s);
 		static int lengthOfLongestSubstring(string &s);
 		static int lengthOfLongestSubstringKDistinct(string &s, int k);
-		
+		static void surroundedRegions(vector<vector<char>> &board);
+
 		//dp
 		static int numDecodings(string &s);
 		static int longestPalindromeSubseq(string &s);
