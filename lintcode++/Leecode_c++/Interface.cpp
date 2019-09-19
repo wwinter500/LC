@@ -17,6 +17,7 @@ Interface::Interface() {
 	questions[431] = 210;
 	questions[840] = 211;
 	questions[477] = 212;
+	questions[575] = 213;
 	
 	questions[1798] = 31;
 	questions[168] = 32;
@@ -105,6 +106,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "range sum with mutable -- segment tree"; break;
 	case 477:
 		res = "flip char 'O' to 'X' if not connected to boarder -- Unionfind or BFS"; break;
+	case 575:
+		res = "decode string with repeatable section -- stack"; break;
 	
 	//hard section
 	case 1798:

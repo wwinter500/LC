@@ -64,6 +64,10 @@ void MedianQuest::run(int quest) {
 			cout << endl;
 		}
 	}
+	else if (quest == 575) {
+		string s = "abs2[s]";
+		cout << MedianQuest::expressionExpand(s) << endl;
+	}
 }
 
 void updateStacks(stack<char> &ops, stack<int> &vals, int newv) {

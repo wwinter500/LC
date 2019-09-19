@@ -96,6 +96,7 @@ namespace SolutionSpace
 		static int lengthOfLongestSubstring(string &s);
 		static int lengthOfLongestSubstringKDistinct(string &s, int k);
 		static void surroundedRegions(vector<vector<char>> &board);
+		static string expressionExpand(string &s);
 
 		//dp
 		static int numDecodings(string &s);
