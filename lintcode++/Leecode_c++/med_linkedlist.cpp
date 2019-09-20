@@ -10,6 +10,8 @@ RandomListNode* MedianQuest::copyRandomList(RandomListNode *head){
 		RandomListNode* tmp = cp->next;
 		cp->next = ncp;
 		ncp->next = tmp;
+
+		cp = cp->next->next;
 	}
 
 	cp = head;
@@ -19,7 +21,6 @@ RandomListNode* MedianQuest::copyRandomList(RandomListNode *head){
 
 		cp = cp->next->next;
 	}
-	
 
 	cp = head;
 	RandomListNode* ncp = dummy;

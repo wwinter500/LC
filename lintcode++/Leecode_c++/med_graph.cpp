@@ -42,5 +42,49 @@ vector<vector<int>> connectedSet(vector<UndirectedGraphNode*>& nodes) {
 }
 
 vector<int> MedianQuest::findOrder(int numCourses, vector<pair<int, int>> &prerequisites){
-	return {};
+	if(numCourses == 0 || prerequisites.empty())
+		return {};
+	
+	unordered_map<int, unordered_set<int>> indegree;
+	unordered_map<int, unordered_set<int>> outdegree;
+	for (auto p : prerequisites) {
+		indegree[p.first].insert(p.second);
+		outdegree[p.second].insert(p.first);
+	}
+
+	vector<unordered_set<int>> seq;
+	unordered_set<int> st;
+	for (int i = 0; i < numCourses; ++i) {
+		if (!indegree.count(i))
+			st.insert(i);
+	}
+	seq.push_back(st);
+
+	vector<int> ans;
+	while (!seq.empty() && !seq.back().empty()) {
+		unordered_set<int> tmp;
+		for (auto cur : seq.back()) {
+			for (auto nxt : outdegree[cur]) {
+				indegree[nxt].erase(cur);
+				if (indegree[nxt].empty()) {
+					tmp.insert(nxt);
+					indegree.erase(nxt);
+				}
+			}
+
+			outdegree.erase(cur);
+		}
+
+		seq.push_back(tmp);
+	}
+
+	for (auto st : seq) {
+		for (auto v : st)
+			ans.push_back(v);
+	}
+
+	if (ans.size() != numCourses)
+		return {};
+
+	return ans;
 }

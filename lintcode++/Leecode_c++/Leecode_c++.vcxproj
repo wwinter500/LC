@@ -155,9 +155,12 @@
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Median.cpp" />
+    <ClCompile Include="med_2pointer.cpp" />
     <ClCompile Include="med_bfs.cpp" />
     <ClCompile Include="med_bs.cpp" />
     <ClCompile Include="med_dp.cpp" />
+    <ClCompile Include="med_graph.cpp" />
+    <ClCompile Include="med_linkedlist.cpp" />
     <ClCompile Include="med_segTree.cpp" />
     <ClCompile Include="med_std.cpp" />
     <ClCompile Include="med_tritree.cpp" />

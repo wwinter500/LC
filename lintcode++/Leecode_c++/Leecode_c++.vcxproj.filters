@@ -57,6 +57,15 @@
     <ClCompile Include="med_std.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="med_2pointer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="med_graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="med_linkedlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface.h">

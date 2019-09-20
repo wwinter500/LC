@@ -113,7 +113,7 @@ string Interface::getQuestionInformation(int id) {
 	case 105:
 		res = "copy linkedlist with random pointer "; break;
 	case 616:
-		res = "course schedule II - toplogical search"; break;
+		res = "course schedule II to return order to finish all courses - toplogical search"; break;
 
 	//hard section
 	case 1798:

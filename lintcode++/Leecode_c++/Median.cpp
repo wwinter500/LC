@@ -44,12 +44,6 @@ void MedianQuest::run(int quest) {
 		string str = "fnwofnaobmaowmofwo";
 		cout << MedianQuest::longestPalindromeSubseq(str) << endl;
 	}
-	else if (quest == 431) {
-		cout << "check code, no test case" << endl;
-	}
-	else if (quest == 840) {
-		cout << "check code, no test case" << endl;
-	}
 	else if (quest == 477) {
 		vector<vector<char>> board = { {'X','X','X','X'},
 									   {'X','O','O','X'},
@@ -68,11 +62,11 @@ void MedianQuest::run(int quest) {
 		string s = "abs2[s]";
 		cout << MedianQuest::expressionExpand(s) << endl;
 	}
-	else if (quest == 105) {
-		//TODO
-	}
 	else if (quest == 616) {
 		//TODO
+	}
+	else if (quest == 431 || quest == 840 || quest == 105) {
+		cout << "check code, no test case" << endl;
 	}
 }
 
