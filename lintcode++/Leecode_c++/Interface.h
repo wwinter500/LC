@@ -14,7 +14,8 @@ using namespace std;
 
 namespace SolutionSpace
 {
-	/*comman function*/
+
+	/*fundamental structure*/
 	struct UndirectedGraphNode {
 		int label;
 		vector<UndirectedGraphNode *> neighbors;
@@ -75,7 +76,13 @@ namespace SolutionSpace
 	private:
 		static string getQuestionInformation(int id);
 	};
+	struct RandomListNode {
+		int label;
+		RandomListNode *next, *random;
+		RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
+	};
 
+	/*Questions*/
 	class EasyQuest
 	{
 	public:
@@ -97,6 +104,8 @@ namespace SolutionSpace
 		static int lengthOfLongestSubstringKDistinct(string &s, int k);
 		static void surroundedRegions(vector<vector<char>> &board);
 		static string expressionExpand(string &s);
+		static RandomListNode *copyRandomList(RandomListNode *head);
+		static vector<int> findOrder(int numCourses, vector<pair<int, int>> &prerequisites);
 
 		//dp
 		static int numDecodings(string &s);
@@ -125,7 +134,7 @@ namespace SolutionSpace
 		static long long playgames(vector<int> A);
 	};
 
-	//Union find
+	/*fundamental functions*/
 	static vector<int> parents;
 	static int np;
 	static int Find(int a) {

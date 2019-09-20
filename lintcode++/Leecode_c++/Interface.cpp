@@ -18,6 +18,8 @@ Interface::Interface() {
 	questions[840] = 211;
 	questions[477] = 212;
 	questions[575] = 213;
+	questions[105] = 214;
+	questions[616] = 215;
 	
 	questions[1798] = 31;
 	questions[168] = 32;
@@ -87,7 +89,7 @@ string Interface::getQuestionInformation(int id) {
 	case 978:
 		res = "Calculation operator"; break;
 	case 1045:
-		res = "Partition Labels"; break;
+		res = "partition string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts"; break;
 	case 401:
 		res = "kth smallest in sorted matrix"; break;
 	case 363:
@@ -108,7 +110,11 @@ string Interface::getQuestionInformation(int id) {
 		res = "flip char 'O' to 'X' if not connected to boarder -- Unionfind or BFS"; break;
 	case 575:
 		res = "decode string with repeatable section -- stack"; break;
-	
+	case 105:
+		res = "copy linkedlist with random pointer "; break;
+	case 616:
+		res = "course schedule II - toplogical search"; break;
+
 	//hard section
 	case 1798:
 		res = "minimum cost to merge stones - dp"; break;
