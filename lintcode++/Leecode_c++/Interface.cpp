@@ -29,6 +29,7 @@ Interface::Interface() {
 	questions[132] = 36;
 	questions[635] = 37;
 	questions[634] = 39;
+	questions[639] = 310;
 	
 	questions[40001] = 41;
 	questions[40002] = 42;
@@ -132,6 +133,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "boggle game -- trie tree"; break;
 	case 634:
 		res = "find all words squares"; break;
+	case 639:
+		res = "word abbreviation"; break;
 
 	//contest section
 	case 40001:

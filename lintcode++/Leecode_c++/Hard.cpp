@@ -45,6 +45,9 @@ void HardQuest::run(int quest) {
 		vector<string> input = { "area", "lead", "wall", "lady", "ball" };
 		auto res = HardQuest::wordSquares(input);
 	}
+	else if (quest == 639) {
+		//TODO
+	}
 }
 
 ///
@@ -67,4 +70,8 @@ int HardQuest::kthSmallestSum(vector<int> &A, vector<int> &B, int k) {
 	}
 
 	return pq.top()[0];
+}
+
+vector<string> HardQuest::wordsAbbreviation(vector<string> &dict) {
+	return {};
 }
