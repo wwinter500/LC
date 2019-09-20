@@ -159,6 +159,7 @@
     <ClCompile Include="med_bs.cpp" />
     <ClCompile Include="med_dp.cpp" />
     <ClCompile Include="med_segTree.cpp" />
+    <ClCompile Include="med_std.cpp" />
     <ClCompile Include="med_tritree.cpp" />
   </ItemGroup>
   <ItemGroup>
