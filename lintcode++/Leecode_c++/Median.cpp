@@ -62,10 +62,14 @@ void MedianQuest::run(int quest) {
 		string s = "abs2[s]";
 		cout << MedianQuest::expressionExpand(s) << endl;
 	}
-	else if (quest == 616) {
-		//TODO
+	else if (quest == 779) {
+		string str = "word";
+		auto re = MedianQuest::generateAbbreviations(str);
+		for (string st : re)
+			cout << st << " ";
+		cout << endl;
 	}
-	else if (quest == 431 || quest == 840 || quest == 105) {
+	else if (quest == 431 || quest == 840 || quest == 105 || quest == 616) {
 		cout << "check code, no test case" << endl;
 	}
 }

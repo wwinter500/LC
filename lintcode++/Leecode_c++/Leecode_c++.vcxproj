@@ -161,6 +161,7 @@
     <ClCompile Include="med_dp.cpp" />
     <ClCompile Include="med_graph.cpp" />
     <ClCompile Include="med_linkedlist.cpp" />
+    <ClCompile Include="med_permut+comb.cpp" />
     <ClCompile Include="med_segTree.cpp" />
     <ClCompile Include="med_std.cpp" />
     <ClCompile Include="med_tritree.cpp" />

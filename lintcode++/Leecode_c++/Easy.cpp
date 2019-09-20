@@ -7,6 +7,9 @@ void EasyQuest::run(int quest) {
 		string a = "egg", b = "add";
 		cout << (EasyQuest::isIsomorphic(a, b) ? "True" : "False") << endl;
 	}
+	else if (quest == 637) {
+
+	}
 }
 
 bool EasyQuest::isIsomorphic(string &s, string &t) {
@@ -41,4 +44,42 @@ bool EasyQuest::doOverlap(Point &l1, Point &r1, Point &l2, Point &r2) {
 		return true;
 
 	return false;
+}
+
+bool EasyQuest::validWordAbbreviation(string &word, string &abbr) {
+	if ((word.length() == 0 && abbr.length() != 0) || (abbr.length() == 0 && word.length() != 0))
+		return false;
+
+	int widx = 0, aidx = 0;
+	while (aidx < abbr.length()) {
+		if (widx == word.length())
+			return false;
+
+		if ((abbr[aidx] >= 'a' && abbr[aidx] <= 'z') || 
+			(abbr[aidx] >= 'A' && abbr[aidx] <= 'Z') ||
+			(abbr[aidx] == '0')) {
+			if (abbr[aidx] != word[widx])
+				return false;
+
+			aidx++;
+			widx++;
+			continue;
+		}
+
+		string tmp;
+		while (aidx < abbr.length() && abbr[aidx] >= '0' && abbr[aidx] <= '9') {
+			tmp += abbr[aidx++];
+		}
+
+		int ntmp = stoi(tmp);
+		if (ntmp + widx > word.length())
+			return false;
+
+		widx += ntmp;
+	}
+
+	if (widx < word.length())
+		return false;
+
+	return true;
 }

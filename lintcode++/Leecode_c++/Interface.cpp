@@ -2,37 +2,18 @@
 using namespace SolutionSpace;
 
 Interface::Interface() {
-	questions[638] = 11;
-	questions[626] = 12;
+	questions[638] = 11;	questions[626] = 12;	questions[637] = 13;
 
-	questions[978] = 21;
-	questions[1045] = 22;
-	questions[401] = 23;
-	questions[363] = 24;
-	questions[406] = 25;
-	questions[384] = 26;
-	questions[512] = 27;
-	questions[386] = 28;
-	questions[668] = 29;
-	questions[431] = 210;
-	questions[840] = 211;
-	questions[477] = 212;
-	questions[575] = 213;
-	questions[105] = 214;
-	questions[616] = 215;
+	questions[978] = 21;	questions[1045] = 22;	questions[401] = 23;	questions[363] = 24;
+	questions[406] = 25;	questions[384] = 26;	questions[512] = 27;	questions[386] = 28;
+	questions[668] = 29;	questions[431] = 210;	questions[840] = 211;	questions[477] = 212;
+	questions[575] = 213;	questions[105] = 214;	questions[616] = 215;	questions[779] = 216;
 	
-	questions[1798] = 31;
-	questions[168] = 32;
-	questions[435] = 33;
-	questions[629] = 34;
-	questions[465] = 35;
-	questions[132] = 36;
-	questions[635] = 37;
-	questions[634] = 39;
+	questions[1798] = 31;	questions[168] = 32;	questions[435] = 33;	questions[629] = 34;
+	questions[465] = 35;	questions[132] = 36;	questions[635] = 37;	questions[634] = 39;
 	questions[639] = 310;
 	
-	questions[40001] = 41;
-	questions[40002] = 42;
+	questions[40001] = 41;	questions[40002] = 42;	questions[40003] = 43;
 }
 
 Interface::~Interface() {};
@@ -84,6 +65,9 @@ string Interface::getQuestionInformation(int id) {
 		res = "check if string a can be replaced by b -- HIGH FREQ - LINKEDIN"; break;
 	case 626:
 		res = "check if rectange overlapped or not -- HIGH FREQ - AMAZON"; break;
+	case 637:
+		res = "valid word abbrevation"; break;
+
 	//median section
 	case 132:
 		res = "word search II"; break;
@@ -115,6 +99,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "copy linkedlist with random pointer "; break;
 	case 616:
 		res = "course schedule II to return order to finish all courses - toplogical search"; break;
+	case 779:
+		res = "generate all abbreviation for string input"; break;
 
 	//hard section
 	case 1798:
@@ -141,6 +127,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "play games"; break;
 	case 40002:
 		res = "skip stones"; break;
+	case 40003:
+		res = "partition array to 3 parts representing 3 binary value"; break;
 	default:
 		res = "Unkown ID";
 		break;

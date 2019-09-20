@@ -89,6 +89,7 @@ namespace SolutionSpace
 		static void run(int quest);
 		static bool isIsomorphic(string &s, string &t);
 		static bool doOverlap(Point &l1, Point &r1, Point &l2, Point &r2);
+		static bool validWordAbbreviation(string &word, string &abbr);
 	};
 
 	class MedianQuest
@@ -106,7 +107,7 @@ namespace SolutionSpace
 		static string expressionExpand(string &s);
 		static RandomListNode *copyRandomList(RandomListNode *head);
 		static vector<int> findOrder(int numCourses, vector<pair<int, int>> &prerequisites);
-
+		static vector<string> generateAbbreviations(string &word);
 		//dp
 		static int numDecodings(string &s);
 		static int longestPalindromeSubseq(string &s);
@@ -132,6 +133,7 @@ namespace SolutionSpace
 
 		static int skipstones(vector<int> stones, int n, int m, int target);
 		static long long playgames(vector<int> A);
+		static vector<vector<int>> partitionArrayToSameBinary(vector<int> &num);
 	};
 
 	/*fundamental functions*/
