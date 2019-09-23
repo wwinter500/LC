@@ -48,29 +48,16 @@ void HardQuest::run(int quest) {
 	else if (quest == 639) {
 		//TODO
 	}
-}
-
-///
-int HardQuest::kthSmallestSum(vector<int> &A, vector<int> &B, int k) {
-	if (A.empty() || B.empty() || k <= 0)
-		return 0;
-	
-	int n = A.size(), m = B.size();
-	priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
-	pq.push({ A[0] + B[0], 0, 0 });
-	for (int i = 1; i < k; ++i) {
-		int ax = pq.top()[1], bx = pq.top()[2];
-		if (ax == 0 && bx < m - 1)
-			pq.push({ A[ax] + B[bx + 1], ax, bx + 1 });
-		if (ax < n - 1) {
-			pq.push({ A[ax + 1] + B[bx], ax + 1, bx });
-		}
-
-		pq.pop();
+	else if (quest == 360) {
+		int k = 3;
+		vector<int> input = { 1,2,7,8,5 };
+		auto ans = HardQuest::medianSlidingWindow(input, k);
+		for (int v : ans)
+			cout << v << " ";
+		cout << endl;
 	}
-
-	return pq.top()[0];
 }
+
 
 vector<string> HardQuest::wordsAbbreviation(vector<string> &dict) {
 	return {};

@@ -122,6 +122,8 @@ namespace SolutionSpace
 		static int boggleGame(vector<vector<char>> &board, vector<string> &words);
 		static vector<vector<string>> wordSquares(vector<string> &words);
 		static vector<string> wordsAbbreviation(vector<string> &dict);
+		static vector<int> medianSlidingWindow(vector<int> &nums, int k);
+
 		//dp 
 		static int maxCoins(vector<int> &nums);
 		static int mergeStones(vector<int> &stones, int K);

@@ -151,6 +151,7 @@
     <ClCompile Include="Easy.cpp" />
     <ClCompile Include="Hard.cpp" />
     <ClCompile Include="hard_dp.cpp" />
+    <ClCompile Include="hard_std.cpp" />
     <ClCompile Include="hard_tritree.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="main.cpp" />

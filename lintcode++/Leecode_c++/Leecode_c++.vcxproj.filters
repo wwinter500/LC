@@ -69,6 +69,9 @@
     <ClCompile Include="med_permut+comb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="hard_std.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface.h">
