@@ -54,6 +54,15 @@ namespace SolutionSpace
 		void update(int i, int val);
 		int sumRange(int i, int j);
 	};
+	class TreeNode {
+	public:
+		int val;
+		TreeNode *left, *right;
+		TreeNode(int val) {
+			this->val = val;
+			this->left = this->right = NULL;
+		}
+	};
 	class TrieNode {
 	public:
 		TrieNode* child[26];
@@ -108,6 +117,9 @@ namespace SolutionSpace
 		static RandomListNode *copyRandomList(RandomListNode *head);
 		static vector<int> findOrder(int numCourses, vector<pair<int, int>> &prerequisites);
 		static vector<string> generateAbbreviations(string &word);
+		static void heapify(vector<int> &A);
+		static int maxPathSum2(TreeNode * root);
+
 		//dp
 		static int numDecodings(string &s);
 		static int longestPalindromeSubseq(string &s);
@@ -168,7 +180,6 @@ namespace SolutionSpace
 		return false;
 	}
 	
-
 	static TrieNode* trie_root;
 	static vector < vector<int>> dirs4 = { {0, 1},{0, -1},{1, 0},{-1, 0} };
 	static vector < vector<int>> dirs8 = { {0, 1},{0, -1},{1, 0},{-1, 0},{1, -1},{-1, 1},{1, 1},{-1, -1} };

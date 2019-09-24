@@ -132,3 +132,43 @@ int MedianQuest::calculate(string &s) {
 	return vals.top();
 }
 
+void adjustHeap(vector<int> &heap, int val) {
+	heap.push_back(val);
+	if (heap.size() == 1)
+		return;
+
+	int last = heap.size() - 1;
+	while (last > 0) {
+		int pare = (last - (last % 2 == 0 ? 2 : 1)) / 2;
+		if (heap[last] >= heap[pare])
+			break;
+
+		int tmp = heap[pare];
+		heap[pare] = heap[last];
+		heap[last] = tmp;
+
+		last = pare;
+	}
+}
+void MedianQuest::heapify(vector<int> &A) {
+	//O(n) solution
+	if (A.empty())
+		return;
+
+	vector<int> tmp;
+	for (int i = 0; i < A.size(); ++i) {
+		adjustHeap(tmp, A[i]);
+	}
+
+	for (int i = 0; i < A.size(); ++i){
+		A[i] = tmp[i];
+	}
+}
+
+int MedianQuest::maxPathSum2(TreeNode * root) {
+	if (root == NULL)
+		return 0;
+
+	int ans = INT_MIN;
+	return ans;
+}

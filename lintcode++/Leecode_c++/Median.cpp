@@ -69,7 +69,14 @@ void MedianQuest::run(int quest) {
 			cout << st << " ";
 		cout << endl;
 	}
-	else if (quest == 431 || quest == 840 || quest == 105 || quest == 616) {
+	else if (quest == 130) {
+		vector<int> input = { 2,3,5,7,1 };
+		MedianQuest::heapify(input);
+		for (int v : input)
+			cout << v << " ";
+		cout << endl;
+	}
+	else if (quest == 431 || quest == 840 || quest == 105 || quest == 616 || quest == 475) {
 		cout << "check code, no test case" << endl;
 	}
 }

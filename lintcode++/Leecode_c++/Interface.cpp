@@ -8,6 +8,7 @@ Interface::Interface() {
 	questions[406] = 25;	questions[384] = 26;	questions[512] = 27;	questions[386] = 28;
 	questions[668] = 29;	questions[431] = 210;	questions[840] = 211;	questions[477] = 212;
 	questions[575] = 213;	questions[105] = 214;	questions[616] = 215;	questions[779] = 216;
+	questions[130] = 217;	questions[475] = 218;
 	
 	questions[1798] = 31;	questions[168] = 32;	questions[435] = 33;	questions[629] = 34;
 	questions[465] = 35;	questions[132] = 36;	questions[635] = 37;	questions[634] = 39;
@@ -101,7 +102,10 @@ string Interface::getQuestionInformation(int id) {
 		res = "course schedule II to return order to finish all courses - toplogical search"; break;
 	case 779:
 		res = "generate all abbreviation for string input"; break;
-
+	case 130:
+		res = "heapify normal array to heap array"; break;
+	case 475:
+		res = "maximum binary tree path - II"; break;
 	//hard section
 	case 1798:
 		res = "minimum cost to merge stones - dp"; break;
