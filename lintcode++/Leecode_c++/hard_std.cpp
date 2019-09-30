@@ -61,3 +61,8 @@ vector<int> HardQuest::medianSlidingWindow(vector<int> &nums, int k) {
 
 	return result;
 } 
+
+///
+int HardQuest::trapRainWater(vector<vector<int>> &heights) {
+	return 0;
+}

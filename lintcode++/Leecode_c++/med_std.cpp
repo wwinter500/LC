@@ -1,6 +1,7 @@
 #include "Interface.h"
 using namespace SolutionSpace;
 
+///
 string MedianQuest::expressionExpand(string &s) {
 	stack<char> stk_ch;
 	
@@ -63,6 +64,7 @@ string MedianQuest::expressionExpand(string &s) {
 	return ans;
 }
 
+///
 void updateStacks(stack<char> &ops, stack<int> &vals, int newv) {
 	int target = newv;
 	while (!vals.empty() && !ops.empty()) {
@@ -132,6 +134,7 @@ int MedianQuest::calculate(string &s) {
 	return vals.top();
 }
 
+///
 void adjustHeap(vector<int> &heap, int val) {
 	heap.push_back(val);
 	if (heap.size() == 1)
@@ -165,10 +168,15 @@ void MedianQuest::heapify(vector<int> &A) {
 	}
 }
 
+///
 int MedianQuest::maxPathSum2(TreeNode * root) {
 	if (root == NULL)
 		return 0;
 
-	int ans = INT_MIN;
-	return ans;
+	int lefts = maxPathSum2(root->left);
+	int rights = maxPathSum2(root->right);
+	if (max(lefts, rights) < 0)
+		return root->val;
+	else
+		return root->val + max(lefts, rights);
 }

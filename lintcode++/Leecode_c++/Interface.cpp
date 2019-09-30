@@ -12,7 +12,7 @@ Interface::Interface() {
 	
 	questions[1798] = 31;	questions[168] = 32;	questions[435] = 33;	questions[629] = 34;
 	questions[465] = 35;	questions[132] = 36;	questions[635] = 37;	questions[634] = 39;
-	questions[639] = 310;	questions[360] = 311;
+	questions[639] = 310;	questions[360] = 311;	questions[364] = 38;
 	
 	questions[40001] = 41;	questions[40002] = 42;	questions[40003] = 43;
 }
@@ -106,6 +106,7 @@ string Interface::getQuestionInformation(int id) {
 		res = "heapify normal array to heap array"; break;
 	case 475:
 		res = "maximum binary tree path - II"; break;
+
 	//hard section
 	case 1798:
 		res = "minimum cost to merge stones - dp"; break;
@@ -127,6 +128,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "word abbreviation"; break;
 	case 360:
 		res = "slding window median"; break;
+	case 364:
+		res = "trap water II - 2d"; break;
 
 	//contest section
 	case 40001:
