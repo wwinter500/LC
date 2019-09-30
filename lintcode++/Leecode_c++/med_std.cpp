@@ -180,3 +180,55 @@ int MedianQuest::maxPathSum2(TreeNode * root) {
 	else
 		return root->val + max(lefts, rights);
 }
+
+///
+vector<string> MedianQuest::convertToRPN(vector<string> &expression) {
+	if (expression.empty())
+		return {};
+
+	stack<string> st;
+	vector<string> ans;
+	for (auto str : expression) {
+		//if str is (
+		if (str == "(") {
+			st.push(str);
+		}
+		//if str is )
+		else if (str == ")") {
+			while (!st.empty() && st.top() != "(") {
+				ans.push_back(st.top());
+				st.pop();
+			}
+
+			if (!st.empty())
+				st.pop();
+		}
+		//if str is operator
+		else if (str == "+" || str == "-") {
+			while (!st.empty() && st.top() != "(") {
+				ans.push_back(st.top());
+				st.pop();
+			}
+
+			st.push(str);
+		}
+		else if (str == "*" || str == "/") {
+			while (!st.empty() && st.top() != "(" && st.top() != "+" && st.top() != "-") {
+				ans.push_back(st.top());
+				st.pop();
+			}
+
+			st.push(str);
+		}
+		//if str is data
+		else
+			ans.push_back(str);
+	}
+
+	while (!st.empty()) {
+		ans.push_back(st.top());
+		st.pop();
+	}
+
+	return ans;
+}

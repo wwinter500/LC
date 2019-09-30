@@ -76,6 +76,13 @@ void MedianQuest::run(int quest) {
 			cout << v << " ";
 		cout << endl;
 	}
+	else if (quest == 370) {
+		vector<string> input= {"3", "+", "4","-","5" };
+		auto re = MedianQuest::convertToRPN(input);
+		for (auto str : re)
+			cout << str << " ";
+		cout << endl;
+	}
 	else if (quest == 431 || quest == 840 || quest == 105 || quest == 616 || quest == 475) {
 		cout << "check code, no test case" << endl;
 	}

@@ -119,6 +119,7 @@ namespace SolutionSpace
 		static vector<string> generateAbbreviations(string &word);
 		static void heapify(vector<int> &A);
 		static int maxPathSum2(TreeNode * root);
+		static vector<string> convertToRPN(vector<string> &expression);
 
 		//dp
 		static int numDecodings(string &s);
