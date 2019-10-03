@@ -64,5 +64,43 @@ vector<int> HardQuest::medianSlidingWindow(vector<int> &nums, int k) {
 
 ///
 int HardQuest::trapRainWater(vector<vector<int>> &heights) {
-	return 0;
+	//water flood to get diiference when first time flooded for each pixel
+	if(heights.empty() || heights[0].empty())
+		return 0;
+
+	int ans = 0;
+	int n = heights.size(), m = heights[0].size();
+	vector<vector<bool>> vis(n, vector<bool>(m, false));
+	priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (i == 0 || i == n - 1 || j == 0 || j == m - 1) {
+				pq.push({ heights[i][j], i, j });
+				vis[i][j] = true;
+			}
+		}
+	}
+
+	int level = 1;
+	while (!pq.empty()) {
+		auto hd = pq.top();
+		pq.pop();
+		while(hd[0] > level) {
+			level++;
+		}
+
+		for (int i = 0; i < dirs4.size(); ++i) {
+			int ny = hd[1] + dirs4[i][0];
+			int nx = hd[2] + dirs4[i][1];
+
+			if (ny >= 0 && ny < n && nx >= 0 && nx < m && vis[ny][nx] == false) {
+				if (heights[ny][nx] < level)
+					ans += level - heights[ny][nx];
+				pq.push({ heights[ny][nx], ny, nx });
+				vis[ny][nx] = true;
+			}
+		}
+	}
+
+	return ans;
 }

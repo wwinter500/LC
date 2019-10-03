@@ -56,6 +56,14 @@ void HardQuest::run(int quest) {
 			cout << v << " ";
 		cout << endl;
 	}
+	else if (quest == 364) {
+		vector<vector<int>> input = {{12,13,0,12},
+									{13,4,13,12},
+									{13,8,10,12},
+									{12,13,12,12},
+									{13,13,13,13}};
+		cout << "Result: " << HardQuest::trapRainWater(input) << endl;
+	}
 }
 
 
