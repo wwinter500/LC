@@ -104,3 +104,53 @@ int HardQuest::trapRainWater(vector<vector<int>> &heights) {
 
 	return ans;
 }
+
+///
+int longestContinueArray(vector<int> &arr) {
+	int ans = 0;
+	int count = 0;
+	for (int i = 0; i < arr.size(); ++i) {
+		if (arr[i] == 0) {
+			ans = max(ans, count);
+			count = 0;
+		}
+		else {
+			count++;
+		}
+	}
+
+	ans = max(ans, count);
+	return ans;
+}
+int HardQuest::largestRectangleArea(vector<int> &height) {
+	//version_1 
+	if (height.empty())
+		return 0;
+
+	int ans = 0;
+	priority_queue<vector<int>> pq;
+	vector<int> vis(height.size(), 0);
+
+	int level = *(max_element(height.begin(), height.end()));
+	for (int i = 0; i < height.size(); ++i) {
+		pq.push({ height[i], i });
+	}
+
+	while (!pq.empty()) {
+		while (!pq.empty() && pq.top()[0] == level) {
+			auto hd = pq.top();
+			pq.pop();
+			
+			vis[hd[1]] = 1;
+		}
+		
+
+		int lg = longestContinueArray(vis);
+		ans = max(ans, lg * level);
+
+		while (!pq.empty() && pq.top()[0] < level)
+			level--;
+	}
+
+	return ans;
+}

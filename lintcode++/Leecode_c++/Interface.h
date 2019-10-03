@@ -137,7 +137,7 @@ namespace SolutionSpace
 		static vector<string> wordsAbbreviation(vector<string> &dict);
 		static vector<int> medianSlidingWindow(vector<int> &nums, int k);
 		static int trapRainWater(vector<vector<int>> &heights);
-
+		static int largestRectangleArea(vector<int> &height);
 		//dp 
 		static int maxCoins(vector<int> &nums);
 		static int mergeStones(vector<int> &stones, int K);

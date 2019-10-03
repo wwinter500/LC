@@ -64,6 +64,10 @@ void HardQuest::run(int quest) {
 									{13,13,13,13}};
 		cout << "Result: " << HardQuest::trapRainWater(input) << endl;
 	}
+	else if (quest == 122) {
+		vector<int> input = { 2, 1, 5, 6, 3, 2 };
+		cout << "Result: " << HardQuest::largestRectangleArea(input) << endl;
+	}
 }
 
 
