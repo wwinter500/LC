@@ -237,32 +237,37 @@ vector<string> MedianQuest::convertToRPN(vector<string> &expression){
 ///
 vector<Interval> MedianQuest::timeIntersection(vector<Interval> &seqA, vector<Interval> &seqB) {
 	vector<Interval> ans;
-	vector<vector<int>> re;
 	vector<vector<int>> sq;
-	for (Interval sa : seqA) {
-		sq.push_back({ sa.start, 0, 0 });
-		sq.push_back({ sa.end, 1, 0 });
+	for (Interval ap : seqA) {
+		sq.push_back({ ap.start, 1 });
+		sq.push_back({ ap.end, -1 });
 	}
-
-	for (auto sb : seqB) {
-		sq.push_back({ sb.start, 0, 1 });
-		sq.push_back({ sb.end, 1, 1 });
+		
+	for (Interval bp : seqB) {
+		sq.push_back({ bp.start, 1 });
+		sq.push_back({ bp.end, -1 });
 	}
-
+	
 	sort(sq.begin(), sq.end());
-	stack<int> sa, sb;
+	int online = 0;
+	int pre = -1;
 	for (auto pt : sq) {
-		if (pt[1] == 0) {
-			if (pt[2] == 0)
-				sa.push(pt[0]);
-			else
-				sb.push(pt[0]);
-			continue;
+		if (online == 2) {
+			if (pre == -1 || pre == pt[0])
+				continue;
+
+			auto thelast = ans.back();
+			if (!ans.empty() && thelast.end == pre) {
+				thelast.end = pt[0];
+				continue;
+			}
+
+			ans.push_back(Interval(pre, pt[0]));
 		}
 
-
+		online += pt[1];
+		pre = pt[0];
 	}
 
-	sort(re.begin(), re.end());
 	return ans;
 }
