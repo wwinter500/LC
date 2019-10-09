@@ -182,7 +182,7 @@ int MedianQuest::maxPathSum2(TreeNode * root) {
 }
 
 ///
-vector<string> MedianQuest::convertToRPN(vector<string> &expression) {
+vector<string> MedianQuest::convertToRPN(vector<string> &expression){
 	if (expression.empty())
 		return {};
 
@@ -210,7 +210,8 @@ vector<string> MedianQuest::convertToRPN(vector<string> &expression) {
 				st.pop();
 			}
 
-			st.push(str);
+			st.push(str
+);
 		}
 		else if (str == "*" || str == "/") {
 			while (!st.empty() && st.top() != "(" && st.top() != "+" && st.top() != "-") {
@@ -231,4 +232,9 @@ vector<string> MedianQuest::convertToRPN(vector<string> &expression) {
 	}
 
 	return ans;
+}
+
+///
+vector<Interval> MedianQuest::timeIntersection(vector<Interval> &seqA, vector<Interval> &seqB) {
+	return {};
 }

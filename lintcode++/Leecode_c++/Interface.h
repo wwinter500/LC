@@ -14,7 +14,6 @@ using namespace std;
 
 namespace SolutionSpace
 {
-
 	/*fundamental structure*/
 	struct UndirectedGraphNode {
 		int label;
@@ -91,6 +90,11 @@ namespace SolutionSpace
 		RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
 	};
 
+	class Interval {
+		int start;
+		int end;
+		Interval(int s, int e) : start(s), end(e){}
+	};
 	/*Questions*/
 	class EasyQuest
 	{
@@ -120,7 +124,8 @@ namespace SolutionSpace
 		static void heapify(vector<int> &A);
 		static int maxPathSum2(TreeNode * root);
 		static vector<string> convertToRPN(vector<string> &expression);
-
+		static vector<Interval> timeIntersection(vector<Interval> &seqA, vector<Interval> &seqB);
+		
 		//dp
 		static int numDecodings(string &s);
 		static int longestPalindromeSubseq(string &s);
