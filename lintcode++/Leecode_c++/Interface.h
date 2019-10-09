@@ -91,6 +91,7 @@ namespace SolutionSpace
 	};
 
 	class Interval {
+	public:
 		int start;
 		int end;
 		Interval(int s, int e) : start(s), end(e){}

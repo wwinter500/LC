@@ -236,5 +236,33 @@ vector<string> MedianQuest::convertToRPN(vector<string> &expression){
 
 ///
 vector<Interval> MedianQuest::timeIntersection(vector<Interval> &seqA, vector<Interval> &seqB) {
-	return {};
+	vector<Interval> ans;
+	vector<vector<int>> re;
+	vector<vector<int>> sq;
+	for (Interval sa : seqA) {
+		sq.push_back({ sa.start, 0, 0 });
+		sq.push_back({ sa.end, 1, 0 });
+	}
+
+	for (auto sb : seqB) {
+		sq.push_back({ sb.start, 0, 1 });
+		sq.push_back({ sb.end, 1, 1 });
+	}
+
+	sort(sq.begin(), sq.end());
+	stack<int> sa, sb;
+	for (auto pt : sq) {
+		if (pt[1] == 0) {
+			if (pt[2] == 0)
+				sa.push(pt[0]);
+			else
+				sb.push(pt[0]);
+			continue;
+		}
+
+
+	}
+
+	sort(re.begin(), re.end());
+	return ans;
 }
