@@ -68,6 +68,15 @@ void HardQuest::run(int quest) {
 		vector<int> input = { 2,1,5,6,5,3,5,7,6,2 };
 		cout << "Result: " << HardQuest::largestRectangleArea(input) << endl;
 	}
+	else if (quest == 510) {
+		/*vector<vector<bool>> input = {	{1,1,0,0,1},
+										{0,1,0,0,1},
+										{0,0,1,1,1},
+										{0,0,1,1,1},
+										{0,0,0,0,1} };*/
+		vector<vector<bool>> input = { {1} };
+		cout << "Result: " << HardQuest::maximalRectangle(input) << endl;
+	}
 }
 
 

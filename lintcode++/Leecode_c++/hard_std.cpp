@@ -160,3 +160,78 @@ int HardQuest::largestRectangleArea(vector<int> &height) {
 
 	return ans;
 }
+
+///
+int largesthistRectangle(vector<int> &height) {
+	int n = height.size();
+	vector<int> lens(n, 1);
+	stack<pair<int, int>> pre, post;
+
+	for (int i = 0; i < n; ++i) {
+		if (!pre.empty() && height[i] <= pre.top().first) {
+			while (!pre.empty() && height[i] <= pre.top().first) {
+				pre.pop();
+			}
+
+			if (pre.empty())
+				lens[i] += i;
+			else
+				lens[i] += i - pre.top().second - 1;
+		}
+
+		pre.push({ height[i], i });
+	}
+
+	for (int i = n - 1; i >= 0; --i) {
+		if (!post.empty() && height[i] <= post.top().first) {
+			while (!post.empty() && height[i] <= post.top().first) {
+				post.pop();
+			}
+
+			if (post.empty())
+				lens[i] += n - 1 - i;
+			else
+				lens[i] += post.top().second - i - 1;
+		}
+
+		post.push({ height[i] , i });
+	}
+
+	int ans = 0;
+	for (int i = 0; i < n; ++i) {
+		ans = max(ans, lens[i] * height[i]);
+	}
+
+	return ans;
+}
+int HardQuest::maximalRectangle(vector<vector<bool>> &matrix) {
+	if (matrix.empty() || matrix[0].empty())
+		return 0;
+
+	int n = matrix.size();
+	int m = matrix[0].size();
+	vector<vector<int>> sums(n, vector<int>(m, 0));
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (i > 0 && matrix[i][j] == true && matrix[i - 1][j] == true) {
+				sums[i][j] = sums[i - 1][j] + 1;
+			}
+			else
+				sums[i][j] = matrix[i][j];
+		}
+	}
+
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			cout << sums[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	int ans = 0;
+	for (int i = n - 1; i >= 0; --i) {
+		ans = max(ans, largesthistRectangle(sums[i]));
+	}
+
+	return ans;
+}

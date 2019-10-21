@@ -13,7 +13,8 @@ Interface::Interface() {
 	questions[1798] = 31;	questions[168] = 32;	questions[435] = 33;	questions[629] = 34;
 	questions[465] = 35;	questions[132] = 36;	questions[635] = 37;	questions[634] = 39;
 	questions[639] = 310;	questions[360] = 311;	questions[364] = 38;	questions[122] = 312;
-	
+	questions[510] = 313;
+
 	questions[40001] = 41;	questions[40002] = 42;	questions[40003] = 43;
 }
 
@@ -133,6 +134,8 @@ string Interface::getQuestionInformation(int id) {
 		res = "trap water II - 2d"; break;
 	case 122:
 		res = "largest rectangle of histogram"; break;
+	case 510:
+		res = "Maximal rectangle area size on 2d matrix"; break;
 	//contest section
 	case 40001:
 		res = "play games"; break;

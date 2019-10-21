@@ -3,7 +3,7 @@ using namespace SolutionSpace;
 #define quest 36
 int main() {
 	Interface it;
-	it.call(122);
+	it.call(510);
  
 #if quest == 28
 	MedianQuest mq;
