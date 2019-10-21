@@ -4,6 +4,7 @@ using namespace SolutionSpace;
 int main() {
 	Interface it;
 	it.call(122);
+ 
 #if quest == 28
 	MedianQuest mq;
 	vector<int> nums = { 1,2,3 };

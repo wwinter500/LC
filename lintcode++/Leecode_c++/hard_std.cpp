@@ -106,50 +106,56 @@ int HardQuest::trapRainWater(vector<vector<int>> &heights) {
 }
 
 ///
-int longestContinueArray(vector<int> &arr) {
-	int ans = 0;
-	int count = 0;
-	for (int i = 0; i < arr.size(); ++i) {
-		if (arr[i] == 0) {
-			ans = max(ans, count);
-			count = 0;
-		}
-		else {
-			count++;
-		}
-	}
-
-	ans = max(ans, count);
-	return ans;
-}
 int HardQuest::largestRectangleArea(vector<int> &height) {
 	//version_1 
 	if (height.empty())
 		return 0;
+	
+	//monotonous stack
+	int n = height.size();
+	vector<int> lens(n, 1);
+	stack<pair<int,int>> pre, post;
 
-	int ans = 0;
-	priority_queue<vector<int>> pq;
-	vector<int> vis(height.size(), 0);
+	for (int i = 0; i < n; ++i) {
+		if (pre.empty() || height[i] > pre.top().first) {
+			pre.push({ height[i], i});
+			continue;
+		}
 
-	int level = *(max_element(height.begin(), height.end()));
-	for (int i = 0; i < height.size(); ++i) {
-		pq.push({ height[i], i });
+		while (!pre.empty() && height[i] <= pre.top().first) {
+			pre.pop();
+		}
+
+		if (pre.empty())
+			lens[i] += i;
+		else
+			lens[i] += i - pre.top().second - 1;
+
+		pre.push({ height[i], i });
 	}
 
-	while (!pq.empty()) {
-		while (!pq.empty() && pq.top()[0] == level) {
-			auto hd = pq.top();
-			pq.pop();
-			
-			vis[hd[1]] = 1;
+	for (int i = n - 1; i >= 0; --i) {
+		if (post.empty() || height[i] > post.top().first) {
+			post.push({ height[i], i });
+			continue;
 		}
-		
 
-		int lg = longestContinueArray(vis);
-		ans = max(ans, lg * level);
+		while (!post.empty() && height[i] <= post.top().first) {
+			post.pop();
+		}
 
-		while (!pq.empty() && pq.top()[0] < level)
-			level--;
+		if (post.empty())
+			lens[i] += n - 1 - i;
+		else
+			lens[i] += post.top().second - i - 1;
+
+		post.push({ height[i], i});
+	}
+
+
+	int ans = 0;
+	for (int i = 0; i < n; ++i) {
+		ans = max(ans, height[i] * lens[i]);
 	}
 
 	return ans;
