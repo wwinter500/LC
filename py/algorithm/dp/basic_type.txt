@@ -1,0 +1,7 @@
+basic type of DP:
+1.  Index [坐标]
+2.  Sequence [序列]
+3.  Partition [划分]
+4.  Game [博弈]
+5.  Range [区间]
+6.  Backpack  [背包]
